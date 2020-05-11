@@ -178,7 +178,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/21/200421%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%863/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/03/200503html%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -192,7 +192,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/04/21/200421%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%863/" class="post-title-link" itemprop="url">200421一些基础知识3</a>
+            <a href="/2020/05/03/200503html%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/" class="post-title-link" itemprop="url">200503html懒加载和预加载</a>
         </h2>
 
         <div class="post-meta">
@@ -201,23 +201,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-04-21 18:39:27" itemprop="dateCreated datePublished" datetime="2020-04-21T18:39:27+08:00">2020-04-21</time>
+              <time title="创建时间：2020-05-03 10:27:39 / 修改时间：13:26:24" itemprop="dateCreated datePublished" datetime="2020-05-03T10:27:39+08:00">2020-05-03</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-22 22:19:28" itemprop="dateModified" datetime="2020-04-22T22:19:28+08:00">2020-04-22</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/css/" itemprop="url" rel="index"><span itemprop="name">css</span></a>
+                  <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
                 </span>
             </span>
 
@@ -232,28 +226,473 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="背景拓展"><a href="#背景拓展" class="headerlink" title="背景拓展"></a>背景拓展</h4><ul>
-<li>background-size 背景图的尺寸大小<ul>
-<li>cover 覆盖  填满</li>
-<li>cotain 包含 等比例放大</li>
+          <h1 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>一张图片就是一个img标签，浏览器是否发起请求图片是根据img的src属性，所以实现懒加载的关键就是，在图片没有进入可视区域时，先不给img的src赋值，这样浏览器就不会发送请求了，等到图片进入可视区域再给src赋值。</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>加载loading图片</li>
+<li><strong>判断哪些图片要加载</strong></li>
+<li>隐形加载图片</li>
+<li>替换真图片</li>
+</ol>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><ol>
+<li><p>加载loading图片</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">img</span>  <span class="attr">src</span>=<span class="string">"1.jpg"</span>  <span class="attr">data-src</span>=<span class="string">"http://120.79.183.71/img/home/1.png"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">img</span>  <span class="attr">src</span>=<span class="string">"1.jpg"</span>  <span class="attr">data-src</span>=<span class="string">"http://120.79.183.71/img/home/2.png"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">img</span>  <span class="attr">src</span>=<span class="string">"1.jpg"</span>  <span class="attr">data-src</span>=<span class="string">"http://120.79.183.71/img/home/3.png"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">img</span>  <span class="attr">src</span>=<span class="string">"1.jpg"</span>    <span class="attr">data-src</span>=<span class="string">"http://120.79.183.71/img/home/4.png"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">img</span>  <span class="attr">src</span>=<span class="string">"1.jpg"</span>  <span class="attr">data-src</span>=<span class="string">"http://120.79.183.71/img/home/5.png"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">img</span>  <span class="attr">src</span>=<span class="string">"1.jpg"</span>  <span class="attr">data-src</span>=<span class="string">"http://120.79.183.71/img/avatar/a.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>此处的data-* 是一种定义标签自定义属性的属性名称,在js获取dom节点后可以通过dataset.* 来获取</p>
+</li>
+<li><p>如何判断图片进入可视区域是关键。<br><img src="https://img-blog.csdnimg.cn/20190524164645631.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3cxNDE4ODk5NTMy,size_16,color_FFFFFF,t_70" alt=""><br>如上图所示，让在浏览器可视区域的图片显示，可视区域外的不显示，所以当图片距离顶部的距离top-height等于可视区域h和滚动区域高度s之和时说明图片马上就要进入可视区了，就是说当top-height&lt;=s+h时，图片在可视区。</p>
+</li>
+<li><p>具体代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> lazyLoad = <span class="function"><span class="keyword">function</span>(<span class="params">imgs</span>)</span>&#123;</span><br><span class="line">  imgs.forEach(<span class="function">(<span class="params">img,index</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// img.offsetTop 某个元素离顶点的距离</span></span><br><span class="line">      <span class="comment">//  window.innerHeight 可视化的高度</span></span><br><span class="line">      <span class="comment">// document.documentElement.scrollTop 滚动高度</span></span><br><span class="line">      <span class="keyword">if</span> (img.offsetTop &lt;= <span class="built_in">window</span>.innerHeight+<span class="built_in">document</span>.documentElement.scrollTop) &#123;</span><br><span class="line">        <span class="comment">// 一般会有延时</span></span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> temp = <span class="keyword">new</span> Image();</span><br><span class="line">            <span class="comment">// 这样就只会发送一次网络请求</span></span><br><span class="line">            temp.src = img.dataset.src;</span><br><span class="line">            temp.onload = <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">            img.src = temp.src</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="number">500</span>);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.onscroll = <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">  lazyLoad(<span class="built_in">document</span>.querySelectorAll(<span class="string">'img'</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 初始化 执行一次</span></span><br><span class="line">lazyLoad(<span class="built_in">document</span>.querySelectorAll(<span class="string">'img'</span>));</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="几个dom的api"><a href="#几个dom的api" class="headerlink" title="几个dom的api"></a>几个dom的api</h2><p>页可见区域宽： document.body.clientWidth;<br>网页可见区域高： document.body.clientHeight;<br>网页可见区域宽： document.body.offsetWidth (包括边线的宽);<br>网页可见区域高： document.body.offsetHeight (包括边线的宽);<br>网页正文全文宽： document.body.scrollWidth;<br>网页正文全文高： document.body.scrollHeight;<br>网页被卷去的高： document.body.scrollTop;<br>网页被卷去的左： document.body.scrollLeft;<br>网页正文部分上： window.screenTop;<br>网页正文部分左： window.screenLeft;<br>屏幕分辨率的高： window.screen.height;<br>屏幕分辨率的宽： window.screen.width;<br>屏幕可用工作区高度： window.screen.availHeight;</p>
+<h1 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h1><h2 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h2><p>资源预加载是另一个性能优化技术，我们可以使用该技术来预先告知浏览器某些资源可能在将来会被使用到。预加载简单来说就是将所有所需的资源<strong>提前请求加载到本地</strong>，这样后面在需要用到时就直接从缓存取资源。</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ol>
+<li>使用html标签<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://pic26.nipic.com/20121213/6168183 0044449030002.jpg"</span> <span class="attr">style</span>=<span class="string">"display:none"</span>/&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>使用Image对象<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> image= <span class="keyword">new</span> Image()</span><br><span class="line">image.src=<span class="string">"http://pic26.nipic.com/20121213/6168183 004444903000 2.jpg"</span></span><br></pre></td></tr></table></figure></li>
+<li>使用属性<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"prefetch"</span> <span class="attr">href</span>=<span class="string">"big.jpeg"</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/01/200501%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%865/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Zhang Yin">
+      <meta itemprop="description" content="zoeee">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/01/200501%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%865/" class="post-title-link" itemprop="url">200501一些基础知识5</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-01 09:12:57 / 修改时间：20:05:00" itemprop="dateCreated datePublished" datetime="2020-05-01T09:12:57+08:00">2020-05-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="null-和-undefined"><a href="#null-和-undefined" class="headerlink" title="null 和 undefined"></a>null 和 undefined</h1><ul>
+<li>null 针对对象</li>
+<li>undefined 针对值</li>
+</ul>
+<h1 id="Set和Weakset"><a href="#Set和Weakset" class="headerlink" title="Set和Weakset"></a>Set和Weakset</h1><h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><blockquote>
+<p>set元素只能是数组，不能是对象，并且支持定义的时候直接赋值<br>ES6提供了新的数据结构Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。<br>Set函数可以接受一个数组（或类似数组的对象）作为参数，用来初始化。</p>
+</blockquote>
+<h2 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a>WeakSet</h2><blockquote>
+<p>WeakSet的元素可以是对象，不支持定义的的时候直接赋值<br>WeakSet对于对象的引用时<strong>弱引用</strong>,即如果除了它之外的引用被清空,那么值就会被垃圾回收.<br>因此,WeakSet没有size或者遍历的这些方法.</p>
+</blockquote>
+<h1 id="Map和WeakMap"><a href="#Map和WeakMap" class="headerlink" title="Map和WeakMap"></a>Map和WeakMap</h1><h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><blockquote>
+<p>Map更适合用来做哈希表</p>
+</blockquote>
+<ul>
+<li>各种类型的值（包括object）都可以作为key</li>
+<li>Map支持迭代，直接使用for…of来遍历，而不需要像对象一样先获取key再遍历，typeof obj[Symbol.iterator] === function</li>
+<li>Map在遇到频繁删除添加和键值对的场景下，有更好的性能表现</li>
+<li>Map用迭代的方式遍历key时，得到的key的顺序与key添加到Map时的顺序相同</li>
+</ul>
+<h2 id="WeakMap"><a href="#WeakMap" class="headerlink" title="WeakMap"></a>WeakMap</h2><blockquote>
+<p>WeakMap跟Map结构类似，也拥有get、has、delete等方法，使用法和使用途都一样</p>
+</blockquote>
+<ul>
+<li>WeakMap只接受对象作为键名，但null不能作为键名</li>
+<li>WeakMap不支持clear方法，不支持遍历，也就没有了keys、values、entries、forEach这4个方法，也没有属性size</li>
+<li>WeakMap 键名中的引用类型是<strong>弱引使用</strong>，假如这个引使用类型的值被垃圾机制回收了，WeakMap实例中的对应键值对也会消失。WeakMap中的key不计入垃圾回收，即若只有WeakMap中的key对某个对象有引用，那么此时执行垃圾回收时就会回收该对象，而Map中的key是计入垃圾回收</li>
+</ul>
+<h1 id="call-apply"><a href="#call-apply" class="headerlink" title="call apply"></a>call apply</h1><h2 id="call"><a href="#call" class="headerlink" title="call"></a>call</h2><ul>
+<li>立即执行</li>
+<li>参数顺序传递<h2 id="aplly"><a href="#aplly" class="headerlink" title="aplly"></a>aplly</h2></li>
+<li>立即执行</li>
+<li>参数以数组形式传递</li>
+</ul>
+<h2 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h2><p>改变指针,但是不<strong>立即执行</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> zy  = &#123;</span><br><span class="line">  name : <span class="string">'zy'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">arg1,arg2</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + arg1 + arg2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test.call(zy,<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">test.apply(zy,[<span class="number">1</span>,<span class="number">2</span>])</span><br><span class="line">test.bind(zy)(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="作用域和闭包"><a href="#作用域和闭包" class="headerlink" title="作用域和闭包"></a>作用域和闭包</h1><ul>
+<li>普通的函数,每一次运行会开辟一块内存空间,执行完毕后,会销毁内存空间</li>
+<li>如果想要反复使用函数的中值,就要在外部用一个引用变量接受return出的函数,这样会使这个环境在外部有引用,就不会被销毁</li>
+<li>两次引用一个函数,也会开辟不同的环境<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> m = <span class="number">0</span> ;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(++m)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = test()</span><br><span class="line">a()</span><br><span class="line">a()</span><br><span class="line"><span class="keyword">let</span> b = test()</span><br><span class="line">b()</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1</span></span><br><span class="line"><span class="comment">2</span></span><br><span class="line"><span class="comment">1</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></li>
+<li></li>
+<li>return几次,在外部就要执行几次<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> m = <span class="number">1</span> ;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> n = <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'m:'</span> + ++m);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'n:'</span> + ++n);</span><br><span class="line">    &#125;   </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = test()();</span><br><span class="line">a();</span><br><span class="line">a();</span><br><span class="line">a();</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">m:2</span></span><br><span class="line"><span class="comment">n:2</span></span><br><span class="line"><span class="comment">m:3</span></span><br><span class="line"><span class="comment">n:3</span></span><br><span class="line"><span class="comment">m:4</span></span><br><span class="line"><span class="comment">n:4</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h1><h2 id="可以通过-Object-create创建没有原型的对象-纯字面量"><a href="#可以通过-Object-create创建没有原型的对象-纯字面量" class="headerlink" title="可以通过 Object.create创建没有原型的对象,纯字面量"></a>可以通过 Object.create创建没有原型的对象,纯字面量</h2><ul>
+<li>不传参,则是创建没有原型的对象</li>
+<li>传参,就是以该参数为原型的对象<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = <span class="built_in">Object</span>.create(<span class="literal">null</span>,&#123;</span><br><span class="line">  name:&#123;</span><br><span class="line">    value: <span class="string">'zy'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(obj);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;name: "zy"&#125;</span></span><br><span class="line"><span class="comment">name: "zy"</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/30/200430%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98-bilibili2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Zhang Yin">
+      <meta itemprop="description" content="zoeee">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/30/200430%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98-bilibili2/" class="post-title-link" itemprop="url">200430一些面试题(bilibili2)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-30 21:24:21 / 修改时间：23:31:41" itemprop="dateCreated datePublished" datetime="2020-04-30T21:24:21+08:00">2020-04-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>根据网上一篇大厂的面试题总结<a href="https://segmentfault.com/a/1190000020296556" target="_blank" rel="noopener">地址</a></strong></p>
+<h1 id="纯js如何获取scrolltop值"><a href="#纯js如何获取scrolltop值" class="headerlink" title="纯js如何获取scrolltop值"></a>纯js如何获取scrolltop值</h1><p>document.documentElement.scrollTop</p>
+<h1 id="详述js闭包原理和意义"><a href="#详述js闭包原理和意义" class="headerlink" title="详述js闭包原理和意义"></a>详述js闭包原理和意义</h1><p>原理:闭包是指有权访问另一个函数作用域中的变量的函数。<br>做法:在一个函数内部创建另一个函数.<br>意义: 闭包可以帮助把一些不需要暴露在全局的变量封装成“私有变量”。</p>
+<h1 id="深拷贝-浅拷贝是什么"><a href="#深拷贝-浅拷贝是什么" class="headerlink" title="深拷贝,浅拷贝是什么"></a>深拷贝,浅拷贝是什么</h1><p>例如拷贝一个对象.<br>浅拷贝只会拷贝属性的引用值<br>深拷贝会拷贝实际值</p>
+<h1 id="arguments如何转数组"><a href="#arguments如何转数组" class="headerlink" title="arguments如何转数组"></a>arguments如何转数组</h1><ol>
+<li>利用数组的分割,改变this指向 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.slice.apply(<span class="built_in">arguments</span>)</span><br></pre></td></tr></table></figure></li>
+<li>利用数组的连接 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> thisArg = [];</span><br><span class="line"><span class="built_in">Array</span>.prototype.concat.apply(thisArg,<span class="built_in">arguments</span>);</span><br></pre></td></tr></table></figure></li>
+<li>利用数组的构造函数<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> thisArg = [];</span><br><span class="line"><span class="built_in">Array</span>.apply(thisArg,<span class="built_in">arguments</span>);</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h1 id="移动端和pc端click事件为什么差了300毫秒"><a href="#移动端和pc端click事件为什么差了300毫秒" class="headerlink" title="移动端和pc端click事件为什么差了300毫秒"></a>移动端和pc端click事件为什么差了300毫秒</h1><p>这是为了检查用户是否在做双击</p>
+<h1 id="flex布局用法"><a href="#flex布局用法" class="headerlink" title="flex布局用法"></a>flex布局用法</h1><ol>
+<li>display:flex,flex-direction方向</li>
+<li>换行</li>
+<li>主轴</li>
+<li>垂直于主轴</li>
+</ol>
+<h1 id="如何实现移动端响应式布局"><a href="#如何实现移动端响应式布局" class="headerlink" title="如何实现移动端响应式布局"></a>如何实现移动端响应式布局</h1><h2 id="流式布局"><a href="#流式布局" class="headerlink" title="流式布局"></a>流式布局</h2><ol>
+<li>文字流式</li>
+<li>控件弹性</li>
+<li>图片等比缩放</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 淘宝网在iphone6下font-size=100px;在plus下font-size为110.4</span></span><br><span class="line"><span class="comment">// iewport = document.documentElement.clientWidth</span></span><br><span class="line"><span class="comment">// iphone 6 = 375</span></span><br><span class="line"><span class="comment">// iphone 6 plus =  414</span></span><br><span class="line"><span class="comment">// iphone 6 : document.documentElement.clientWidth / 3.75 -&gt; 100</span></span><br><span class="line"><span class="comment">// iphone 6 plus : document.documentElement.clientWidth / 3.75 -&gt; 110.4</span></span><br><span class="line"><span class="comment">// 要得到100px 是因为根据设计稿的px换算时,100比较好算</span></span><br><span class="line"><span class="keyword">let</span> fontSize = <span class="built_in">document</span>.documentElement.clientWidth / <span class="number">3.75</span></span><br><span class="line"><span class="built_in">document</span>.documentElement.style.fontSize = fontSize + <span class="string">'px'</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="rem布局"><a href="#rem布局" class="headerlink" title="rem布局"></a>rem布局</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* vm 把屏幕分成100份,屏幕款=100vw</span></span><br><span class="line"><span class="comment">iphone 6  375px  1vw = 3.75px</span></span><br><span class="line"><span class="comment">iphone 6  plus 414px  1vw = 4.14px</span></span><br><span class="line"><span class="comment">如果在iphone6下想得到100px,该设置多少vw呢</span></span><br><span class="line"><span class="comment">100/3.75 = 26.6666667 </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>:<span class="number">26.666667vw</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="media"><a href="#media" class="headerlink" title="@media"></a>@media</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> all <span class="keyword">and</span> (<span class="attribute">min-width:</span><span class="number">500px</span>)&#123;</span><br><span class="line">  <span class="selector-id">#box</span>&#123;<span class="attribute">background</span>:<span class="number">#ccc</span>;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="ES6的作用域"><a href="#ES6的作用域" class="headerlink" title="ES6的作用域"></a>ES6的作用域</h1><ol>
+<li>var定义的变量，可以跨块访问, 不能跨函数访问；<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="string">'1'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(b);  <span class="comment">// 2</span></span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// error</span></span><br></pre></td></tr></table></figure></li>
+<li>let定义的变量，只能在块作用域里访问，不能跨块访问，也不能跨函数访问；</li>
+<li>const用来定义常量，使用时必须初始化(即必须赋值)，只能在块作用域里访问，也不能跨函数访问，且不能修改。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">const</span> a = <span class="number">2</span> ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//error</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h1 id="async-await是什么"><a href="#async-await是什么" class="headerlink" title="async await是什么"></a>async await是什么</h1><p>语法糖,promise和then<br>值得注意的是 await必须用在async里面,用同步的方式编写异步代码.<br>并且await返回的是一个 resolve的值,类似于then接收到的res;<br>至于await中的reject的值,用catch来接受.</p>
+<h1 id="块级作用域有哪些"><a href="#块级作用域有哪些" class="headerlink" title="块级作用域有哪些"></a>块级作用域有哪些</h1><h1 id="详述promise异步机制"><a href="#详述promise异步机制" class="headerlink" title="详述promise异步机制"></a>详述promise异步机制</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/30/200430%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%B0%8F%E7%B1%B31%E7%AF%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Zhang Yin">
+      <meta itemprop="description" content="zoeee">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/30/200430%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%B0%8F%E7%B1%B31%E7%AF%87/" class="post-title-link" itemprop="url">200430一些面试题(小米1篇)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-30 08:52:10 / 修改时间：13:45:57" itemprop="dateCreated datePublished" datetime="2020-04-30T08:52:10+08:00">2020-04-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>根据网上一篇大厂的面试题总结<a href="https://segmentfault.com/a/1190000020296556" target="_blank" rel="noopener">地址</a></strong></p>
+<h1 id="es6新特性"><a href="#es6新特性" class="headerlink" title="es6新特性"></a>es6新特性</h1><ul>
+<li>let const</li>
+<li>块级作用域</li>
+<li>箭头函数</li>
+<li>模板字符串</li>
+<li>解构赋值</li>
+<li>模块导入导出</li>
+<li>类</li>
+<li>迭代</li>
+<li>Promise</li>
+<li>Symbol</li>
+<li>Set  Map</li>
+<li>默认参数</li>
+<li>参数展开符</li>
+</ul>
+<h1 id="promise有几种状态"><a href="#promise有几种状态" class="headerlink" title="promise有几种状态"></a>promise有几种状态</h1><ul>
+<li>pending  等待</li>
+<li>rejectd  拒绝</li>
+<li>fulfilled  成功</li>
+</ul>
+<h1 id="promise如何满足多个异步进程的同步顺序"><a href="#promise如何满足多个异步进程的同步顺序" class="headerlink" title="promise如何满足多个异步进程的同步顺序"></a>promise如何满足多个异步进程的同步顺序</h1><p>return  new Promise<br>然后通过.then链式调用</p>
+<h1 id="promise-race和promise-all的区别"><a href="#promise-race和promise-all的区别" class="headerlink" title="promise.race和promise.all的区别"></a>promise.race和promise.all的区别</h1><p>race是哪个promise先完成,结果是谁<br>all是所有的结果</p>
+<h1 id="如何用flex让8个图标排成两行"><a href="#如何用flex让8个图标排成两行" class="headerlink" title="如何用flex让8个图标排成两行"></a>如何用flex让8个图标排成两行</h1><p> flex-wrap: wrap;</p>
+<h1 id="垂直居中和水平居中"><a href="#垂直居中和水平居中" class="headerlink" title="垂直居中和水平居中"></a>垂直居中和水平居中</h1><h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><ul>
+<li>首先设置父元素为相对定位，再设置子元素为绝对定位，设置子元素的top: 50%，即让子元素的左上角垂直居中；</li>
+<li>设置绝对子元素的 margin-top: -元素高度的一半px; </li>
+<li>或者设置transform: translateY(-50%);</li>
+<li>使用flexbox布局实现:align-items: center;</li>
+</ul>
+<h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h2><ul>
+<li>margin: 0 auto; </li>
+<li>display: inline;||display: inline-block;   text-align: center; </li>
+<li>首先设置父元素为相对定位，再设置子元素为绝对定位，设置子元素的left:50%，即让子元素的左上角水平居中；</li>
+<li>设置绝对子元素的 margin-left: -元素宽度的一半px; </li>
+<li>transform: translateX(-50%);</li>
+<li>flex: justify-content: center;</li>
+</ul>
+<h2 id="水平垂直居中"><a href="#水平垂直居中" class="headerlink" title="水平垂直居中"></a>水平垂直居中</h2><ul>
+<li>设置父元素为相对定位，给子元素设置绝对定位，top: 0; right: 0; bottom: 0; left: 0; margin: auto;</li>
+<li>设置父元素为相对定位，给子元素设置绝对定位，left: 50%; top: 50%; margin-left: –元素宽度的一半px; margin-top: –元素高度的一半px;</li>
+<li>flex:justify-content: center; align-items: center;</li>
+</ul>
+<h1 id="vue中的fetch和axios是什么"><a href="#vue中的fetch和axios是什么" class="headerlink" title="vue中的fetch和axios是什么"></a>vue中的fetch和axios是什么</h1><blockquote>
+<p>fetch API 是基于 Promise 设计,旧浏览器不支持 Promise，需要使用 polyfill es6-promise 。fetch 不需要额外的安装什么东西或引入文件，直接可以使用。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//headers为：'Content-Type': 'application/x-www-form-urlencoded'</span></span><br><span class="line">fetch(<span class="string">'https://www.daxunxun.com/users/register'</span>, &#123;</span><br><span class="line">    method: <span class="string">'post'</span>,<span class="comment">//设置请求方式</span></span><br><span class="line">    headers: &#123; <span class="comment">//应该你要根据你们自己的接口来判断，本案例中适合'application/x-www-form-urlencoded'，不是'application/json'</span></span><br><span class="line">        <span class="string">'Content-Type'</span>: <span class="string">'application/x-www-form-urlencoded'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    body: <span class="string">'username=12345678912&amp;password=123456'</span>,</span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> res.json()).then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>必须得引入 axios.js 文件或安装模块之后才能使用 npm install axios</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">axios.post(<span class="string">'https://www.daxunxun.com/users/login'</span>,&#123;</span><br><span class="line">              username: <span class="string">'12345678932'</span>,</span><br><span class="line">              password: <span class="string">'123456'</span>,</span><br><span class="line">          &#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">              <span class="built_in">console</span>.log(res.data);</span><br><span class="line">          &#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Vue页面加载完成前出现花括号"><a href="#Vue页面加载完成前出现花括号" class="headerlink" title="Vue页面加载完成前出现花括号"></a>Vue页面加载完成前出现花括号</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">   <span class="selector-attr">[v-cloak]</span> &#123;</span></span><br><span class="line">     display: none;</span><br><span class="line">     &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"app"</span> <span class="attr">v-cloak</span>&gt;</span></span><br><span class="line">你的代码。。。。。。。。。。。。。。。</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>v-cloak v-text v-html<br>v-cloak用于大段<br>v-text用于单个标签<br>v-html用于带有标签的处理</p>
+<h1 id="解决跨域问题"><a href="#解决跨域问题" class="headerlink" title="解决跨域问题"></a>解决跨域问题</h1><ul>
+<li>jsonp<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">script.type = <span class="string">'text/javascript'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 传参一个回调函数名给后端，方便后端返回时执行这个在前端定义的回调函数</span></span><br><span class="line">script.src = <span class="string">'http://www.domain2.com:8080/login?user=admin&amp;callback=handleCallback'</span>;</span><br><span class="line"><span class="built_in">document</span>.head.appendChild(script);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 回调执行函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleCallback</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">    alert(<span class="built_in">JSON</span>.stringify(res));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>反向代理</li>
+<li>跨域资源共享（CORS）<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest(); <span class="comment">// IE8/9需用window.XDomainRequest兼容</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 前端设置是否带cookie</span></span><br><span class="line">xhr.withCredentials = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">xhr.open(<span class="string">'post'</span>, <span class="string">'http://www.domain2.com:8080/login'</span>, <span class="literal">true</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/x-www-form-urlencoded'</span>);</span><br><span class="line">xhr.send(<span class="string">'user=admin'</span>);</span><br><span class="line"></span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (xhr.readyState == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>) &#123;</span><br><span class="line">        alert(xhr.responseText);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>nodejs中间件代理跨域</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/29/200429%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98-%E9%98%BF%E9%87%8C2%E7%AF%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Zhang Yin">
+      <meta itemprop="description" content="zoeee">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/29/200429%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98-%E9%98%BF%E9%87%8C2%E7%AF%87/" class="post-title-link" itemprop="url">200429一些面试题(阿里2篇)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-29 11:52:39" itemprop="dateCreated datePublished" datetime="2020-04-29T11:52:39+08:00">2020-04-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 12:46:28" itemprop="dateModified" datetime="2020-05-06T12:46:28+08:00">2020-05-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>根据网上一篇大厂的面试题总结<a href="https://segmentfault.com/a/1190000020296556" target="_blank" rel="noopener">地址</a></strong></p>
+<h1 id="列举几个css中可继承和不可继承的元素"><a href="#列举几个css中可继承和不可继承的元素" class="headerlink" title="列举几个css中可继承和不可继承的元素"></a>列举几个css中可继承和不可继承的元素</h1><ul>
+<li>可以继承: <ul>
+<li>字体系列</li>
+<li>文本系列:text-indent,text-align,text-transform,line-height</li>
+<li>光标  :cursor</li>
+<li>列表布局: list-style-type,list-style-image</li>
+<li>表格布局 : caption-side,border-collapse,table-layout</li>
 </ul>
 </li>
-<li>backgound-origin 背景图的填充位置<ul>
-<li>padding-box  默认</li>
-<li>border-box</li>
-<li>content-box</li>
-</ul>
-</li>
-<li>background-clip<ul>
-<li>padding-box  </li>
-<li>border-box 默认</li>
-<li>content-box</li>
-</ul>
-</li>
-</ul>
+<li>不可继承: <ul>
+<li>display: </li>
+<li>文本属性 : text-decoration ,text-shadow,white-space</li>
+<li>盒子模型属性</li>
+<li>背景</li>
+<li>定位</li>
+<li>生成内容,content,couter-reset
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/04/21/200421%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%863/#more" rel="contents">
+              <a class="btn" href="/2020/04/29/200429%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98-%E9%98%BF%E9%87%8C2%E7%AF%87/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -277,7 +716,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/20/200420%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%862/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/27/200427%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98-bilibili%E7%AF%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -291,7 +730,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/04/20/200420%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%862/" class="post-title-link" itemprop="url">200420一些基础知识2</a>
+            <a href="/2020/04/27/200427%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98-bilibili%E7%AF%87/" class="post-title-link" itemprop="url">200427一些面试题(bilibili篇)</a>
         </h2>
 
         <div class="post-meta">
@@ -301,14 +740,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-04-20 10:16:37" itemprop="dateCreated datePublished" datetime="2020-04-20T10:16:37+08:00">2020-04-20</time>
+              <time title="创建时间：2020-04-27 11:05:45" itemprop="dateCreated datePublished" datetime="2020-04-27T11:05:45+08:00">2020-04-27</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-22 22:19:25" itemprop="dateModified" datetime="2020-04-22T22:19:25+08:00">2020-04-22</time>
+                <time title="修改时间：2020-04-29 11:50:00" itemprop="dateModified" datetime="2020-04-29T11:50:00+08:00">2020-04-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -316,7 +755,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/css/" itemprop="url" rel="index"><span itemprop="name">css</span></a>
+                  <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
                 </span>
             </span>
 
@@ -331,21 +770,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="触发BFC规范-让具备BFC特性的容器看作一个独立的容器-容器里的元素不会影响外面的元素"><a href="#触发BFC规范-让具备BFC特性的容器看作一个独立的容器-容器里的元素不会影响外面的元素" class="headerlink" title="触发BFC规范(让具备BFC特性的容器看作一个独立的容器,容器里的元素不会影响外面的元素)"></a>触发BFC规范(让具备BFC特性的容器看作一个独立的容器,容器里的元素不会影响外面的元素)</h4><ul>
-<li>浮动元素(float除了none以外的值)</li>
-<li>绝对定位元素 position(absolute,flex)</li>
-<li>display为inline-block,table-cells,flex</li>
-<li>overflow除了visible以外的值(hidden,auto,scroll)</li>
-</ul>
-<p><strong>可以解决的问题</strong></p>
-<ul>
-<li>解决margin叠加问题</li>
-<li>解决margin传递问题</li>
-<li>解决浮动问题</li>
-<li>解决覆盖问题
+          <p><strong>根据网上一篇大厂的面试题总结<a href="https://segmentfault.com/a/1190000020296556" target="_blank" rel="noopener">地址</a></strong></p>
+<h2 id="详述es5-es6中的作用域和闭包（es5全局-函数级，函数化闭包，es6块级）"><a href="#详述es5-es6中的作用域和闭包（es5全局-函数级，函数化闭包，es6块级）" class="headerlink" title="详述es5 es6中的作用域和闭包（es5全局+函数级，函数化闭包，es6块级）"></a>详述es5 es6中的作用域和闭包（es5全局+函数级，函数化闭包，es6块级）</h2>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/04/20/200420%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%862/#more" rel="contents">
+              <a class="btn" href="/2020/04/27/200427%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98-bilibili%E7%AF%87/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -369,7 +798,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/19/200419%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/25/200425Html5%E7%9A%84Canvas/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -383,7 +812,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/04/19/200419%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-title-link" itemprop="url">一些基础知识1</a>
+            <a href="/2020/04/25/200425Html5%E7%9A%84Canvas/" class="post-title-link" itemprop="url">200425Html5的Canvas</a>
         </h2>
 
         <div class="post-meta">
@@ -393,14 +822,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-04-19 19:22:44" itemprop="dateCreated datePublished" datetime="2020-04-19T19:22:44+08:00">2020-04-19</time>
+              <time title="创建时间：2020-04-25 21:58:02" itemprop="dateCreated datePublished" datetime="2020-04-25T21:58:02+08:00">2020-04-25</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-22 22:20:23" itemprop="dateModified" datetime="2020-04-22T22:20:23+08:00">2020-04-22</time>
+                <time title="修改时间：2020-05-10 09:01:37" itemprop="dateModified" datetime="2020-05-10T09:01:37+08:00">2020-05-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -408,7 +837,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/css/" itemprop="url" rel="index"><span itemprop="name">css</span></a>
+                  <a href="/categories/Html/" itemprop="url" rel="index"><span itemprop="name">Html</span></a>
                 </span>
             </span>
 
@@ -423,16 +852,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="边框实现三角形"><a href="#边框实现三角形" class="headerlink" title="边框实现三角形"></a>边框实现三角形</h4><p>把div的width和height置为0,利用四分之一的border来做成三角形的效果,另外三个三角形通过将颜色置为透明实现</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">0px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0px</span>;</span><br><span class="line">  <span class="attribute">border-top-color</span>: transparent;</span><br><span class="line">  <span class="attribute">border-top-style</span>: solid;</span><br><span class="line">  <span class="attribute">border-top-width</span>: <span class="number">30px</span>;</span><br><span class="line">  <span class="attribute">border-left-color</span>: transparent;</span><br><span class="line">  <span class="attribute">border-left-style</span>: solid;</span><br><span class="line">  <span class="attribute">border-left-width</span>: <span class="number">30px</span>;</span><br><span class="line">  <span class="attribute">border-right-color</span>: transparent;</span><br><span class="line">  <span class="attribute">border-right-style</span>: solid;</span><br><span class="line">  <span class="attribute">border-right-width</span>: <span class="number">30px</span>;</span><br><span class="line">  <span class="attribute">border-bottom-color</span>: red;</span><br><span class="line">  <span class="attribute">border-bottom-style</span>: solid;</span><br><span class="line">  <span class="attribute">border-bottom-width</span>: <span class="number">30px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/19/200419%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <blockquote>
+<p>H5的新特性,在低版本浏览器中不支持</p>
+</blockquote>
+<h2 id="创建一个画布"><a href="#创建一个画布" class="headerlink" title="创建一个画布"></a>创建一个画布</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">width</span>=<span class="string">"200"</span> <span class="attr">height</span>=<span class="string">"100"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="通过-JavaScript-来绘制"><a href="#通过-JavaScript-来绘制" class="headerlink" title="通过 JavaScript 来绘制"></a>通过 JavaScript 来绘制</h2><blockquote>
+<p>canvas 元素本身是没有绘图能力的。所有的绘制工作必须在 JavaScript 内部完成<br><strong>getContext(“2d”) 对象是内建的 HTML5 对象，拥有多种绘制路径、矩形、圆形、字符以及添加图像的方法。</strong></p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">width</span>=<span class="string">"200px"</span> <span class="attr">height</span>=<span class="string">"200px"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> &gt;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"myCanvas"</span>);</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> content=canvas.getContext(<span class="string">"2d"</span>); </span></span><br><span class="line"><span class="actionscript">        content.fillStyle=<span class="string">"#FF0000"</span>;</span></span><br><span class="line">        content.fillRect(0,0,150,75); </span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="放置图像"><a href="#放置图像" class="headerlink" title="放置图像"></a>放置图像</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> c=<span class="built_in">document</span>.getElementById(<span class="string">"myCanvas"</span>);</span></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> cxt=c.getContext(<span class="string">"2d"</span>);</span></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> img=<span class="keyword">new</span> Image()</span></span><br><span class="line"><span class="actionscript">img.src=<span class="string">"flower.png"</span></span></span><br><span class="line">cxt.drawImage(img,0,0);</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    * &#123;</span><br><span class="line">        margin: 0;</span><br><span class="line">        padding: 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    canvas &#123;</span><br><span class="line">        display: block;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> w, h;                          <span class="comment">// 定义一个窗口宽高的变量</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> ball_num = <span class="number">1</span>;                  <span class="comment">//每次点击生成的小球个数</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> Gravity = <span class="number">0.8</span>;                 <span class="comment">//小球下落速度 越小越慢</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> Firction = <span class="number">0.9</span>;                <span class="comment">//小球弹跳力度 越大越高</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> ballArray = [];               <span class="comment">//储存小球的数组</span></span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="comment">//获取canvas标签</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> canvas = <span class="built_in">document</span>.querySelector(<span class="string">"#canvas"</span>)</span></span><br><span class="line"><span class="actionscript">    <span class="comment">//创建画笔</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> ctx = canvas.getContext(<span class="string">"2d"</span>);</span></span><br><span class="line"><span class="actionscript">    <span class="comment">//小球颜色数组</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> colorArray = [<span class="string">"rgb(65, 105, 225)"</span>, <span class="string">"rgb(65, 166, 225)"</span>, <span class="string">"rgb(65, 214, 225)"</span>, <span class="string">"rgb(65, 225, 190)"</span>, <span class="string">"rgb(65, 225, 132)"</span>];</span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="comment">// 获取窗口大小方法</span></span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">getWindow_size</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">        w = <span class="built_in">window</span>.innerWidth;</span></span><br><span class="line"><span class="javascript">        h = <span class="built_in">window</span>.innerHeight;</span></span><br><span class="line">        canvas.width = w;</span><br><span class="line">        canvas.height = h;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="comment">// 随机生成一个 lower ~ upper 的整数</span></span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">randomIntFronRange</span><span class="params">(lower, upper)</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (upper - lower)) + lower;</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="comment">//创建小球的方法(主要是小球运动轨迹的绘制)</span></span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">Ball</span><span class="params">(x, y, dx, dy, radius, color)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">//此处并没有直接执行绘制动画，而是事先定义好相关属性值</span></span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.x = x;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.y = y;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.dy = dy</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.dx = dx;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.radius = radius;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.color = color;</span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">        <span class="comment">//绘制一个圆球，并填充颜色</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">// https://www.w3school.com.cn/tags/canvas_arc.asp</span></span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.draw = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span></span><br><span class="line">            ctx.beginPath();</span><br><span class="line"><span class="javascript">            ctx.arc(<span class="keyword">this</span>.x, <span class="keyword">this</span>.y, <span class="keyword">this</span>.radius, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI);</span></span><br><span class="line"><span class="actionscript">            ctx.fillStyle = <span class="keyword">this</span>.color;</span></span><br><span class="line">            ctx.fill();</span><br><span class="line">            ctx.closePath();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">        <span class="comment">//实时更新动画</span></span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.update = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="comment">//y 轴临界值判断</span></span></span><br><span class="line"><span class="actionscript">            <span class="comment">//如果小球在下降过程中到达底部时(及绘制小球的中心坐标位置超出窗口高度时)</span></span></span><br><span class="line"><span class="actionscript">            <span class="comment">// alert(this.dy)  //不太清楚的可以 alert 一下</span></span></span><br><span class="line"><span class="actionscript">            <span class="keyword">if</span> (<span class="keyword">this</span>.y + <span class="keyword">this</span>.radius + <span class="keyword">this</span>.dy + Gravity &gt; h) &#123;</span></span><br><span class="line"><span class="actionscript">                <span class="comment">//小球 y轴方向改变 （往上）</span></span></span><br><span class="line"><span class="actionscript">                <span class="keyword">this</span>.dy = -<span class="keyword">this</span>.dy;</span></span><br><span class="line"><span class="actionscript">                <span class="keyword">this</span>.dy *= Firction;</span></span><br><span class="line"><span class="actionscript">                <span class="keyword">this</span>.dx *= Firction;</span></span><br><span class="line"><span class="actionscript">            &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="actionscript">                <span class="comment">//小球  y轴坐标递增 (往下)</span></span></span><br><span class="line"><span class="actionscript">                <span class="keyword">this</span>.dy += Gravity;</span></span><br><span class="line">            &#125;</span><br><span class="line"><span class="actionscript">            <span class="comment">//x 轴临界值判断</span></span></span><br><span class="line"><span class="actionscript">            <span class="keyword">if</span> (<span class="keyword">this</span>.x + <span class="keyword">this</span>.radius + <span class="keyword">this</span>.dx &gt;= w || <span class="keyword">this</span>.x - <span class="keyword">this</span>.radius + <span class="keyword">this</span>.dx &lt;= <span class="number">0</span>) &#123;</span></span><br><span class="line"><span class="actionscript">                <span class="comment">//小球 x轴方向改变</span></span></span><br><span class="line"><span class="actionscript">                <span class="keyword">this</span>.dx = -<span class="keyword">this</span>.dx;</span></span><br><span class="line">            &#125;</span><br><span class="line"><span class="actionscript">            <span class="comment">//小球 x,y坐标位置改变（因为之前的 dy,dx有取反过，所以此处会实现上下，左右的运动路线）</span></span></span><br><span class="line"><span class="actionscript">            <span class="keyword">this</span>.y += <span class="keyword">this</span>.dy;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">this</span>.x += <span class="keyword">this</span>.dx;</span></span><br><span class="line"><span class="actionscript">            <span class="comment">//根据改变后的坐标位置绘图</span></span></span><br><span class="line"><span class="actionscript">            <span class="keyword">this</span>.draw();</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="comment">//创建小球的方法(相关样式，起始坐标位置等)</span></span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">init</span><span class="params">(m_x, m_y)</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; ball_num; i++) &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> radius = randomIntFronRange(<span class="number">2</span>, <span class="number">10</span>); <span class="comment">//圆的半径</span></span></span><br><span class="line"><span class="actionscript">            <span class="comment">// x,y 为绘制圆的中心坐标</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> x = m_x;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> y = m_y;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> dx = randomIntFronRange(<span class="number">-5</span>, <span class="number">5</span>);<span class="comment">//小球 x 轴位置 递增或者递减的一个随机值（小球是往左还是往右弹）</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> dy = randomIntFronRange(<span class="number">1</span>, <span class="number">2</span>); <span class="comment">//小球 y 轴位置 递增或者递减的一个随机值（小球上下弹动高度）</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> color = colorArray[<span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * colorArray.length)]; <span class="comment">//从颜色数组里面随机取一个颜色</span></span></span><br><span class="line"><span class="actionscript">            ballArray.push(<span class="keyword">new</span> Ball(x, y, dx, dy, radius, color)); <span class="comment">//往小球数组里面添加每个小球的相关数值</span></span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">   </span><br><span class="line"><span class="actionscript">   <span class="comment">//执行动画方法</span></span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">animation</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 更新动画</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">// https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame</span></span></span><br><span class="line">        requestAnimationFrame(animation)</span><br><span class="line"><span class="actionscript">        <span class="comment">//清除每个小球的运动痕迹</span></span></span><br><span class="line">        ctx.clearRect(0, 0, w, h);</span><br><span class="line"><span class="javascript">        <span class="keyword">for</span> (<span class="keyword">let</span> n <span class="keyword">of</span> ballArray) &#123;</span></span><br><span class="line">            n.update();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line">        getWindow_size();</span><br><span class="line"><span class="actionscript">        <span class="comment">//监听鼠标点击事件</span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.addEventListener(<span class="string">"mousedown"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="comment">//清空画布</span></span></span><br><span class="line"><span class="actionscript">            <span class="comment">// https://www.w3school.com.cn/tags/canvas_clearrect.asp</span></span></span><br><span class="line">            ctx.clearRect(0, 0, w, h);</span><br><span class="line"><span class="actionscript">            <span class="comment">//每次点击时获取鼠标位置，以鼠标位置生成小球</span></span></span><br><span class="line">            init(event.clientX, event.clientY);</span><br><span class="line">        &#125;);</span><br><span class="line">        animation();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -451,7 +882,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/200419Word-power-made-easy-mind/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/25/200425Cookie%E5%92%8CSession/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -465,7 +896,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/04/18/200419Word-power-made-easy-mind/" class="post-title-link" itemprop="url">Word power made easy 章节在线思维导图</a>
+            <a href="/2020/04/25/200425Cookie%E5%92%8CSession/" class="post-title-link" itemprop="url">200425Cookie和Session</a>
         </h2>
 
         <div class="post-meta">
@@ -474,27 +905,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-04-18 19:22:44" itemprop="dateCreated datePublished" datetime="2020-04-18T19:22:44+08:00">2020-04-18</time>
+              <time title="创建时间：2020-04-25 21:28:32 / 修改时间：21:55:14" itemprop="dateCreated datePublished" datetime="2020-04-25T21:28:32+08:00">2020-04-25</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-19 15:53:17" itemprop="dateModified" datetime="2020-04-19T15:53:17+08:00">2020-04-19</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/English/" itemprop="url" rel="index"><span itemprop="name">English</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/English/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
                 </span>
             </span>
 
@@ -509,645 +930,217 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="word-power-made-easy-章节在线思维导图"><a href="#word-power-made-easy-章节在线思维导图" class="headerlink" title="word power made easy 章节在线思维导图"></a>word power made easy 章节在线思维导图</h4><p><a href="https://hanxiaomax.github.io/WordPowerMadeEasy/wpme/" target="_blank" rel="noopener">github思维导图</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/200419js%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%AC%E4%B8%89%E5%A4%A9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Zhang Yin">
-      <meta itemprop="description" content="zoeee">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/18/200419js%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%AC%E4%B8%89%E5%A4%A9/" class="post-title-link" itemprop="url">js高级程序设计第三天</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-18 19:22:44" itemprop="dateCreated datePublished" datetime="2020-04-18T19:22:44+08:00">2020-04-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-19 15:54:24" itemprop="dateModified" datetime="2020-04-19T15:54:24+08:00">2020-04-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="属性类型"><a href="#属性类型" class="headerlink" title="属性类型"></a>属性类型</h3><h4 id="1-数据属性"><a href="#1-数据属性" class="headerlink" title="1. 数据属性"></a>1. 数据属性</h4><p><strong>数据属性包含一个数据值的位置,在这个位置可以度去和写入值。</strong></p>
-<ul>
-<li>[[Configurable]] 表示可否通过delete删除，或能否修改属性特性，或者改为访问器属性。默认为true。</li>
-<li>[[Enumerable]]表示能否通过for-in循环返回属性。默认true。</li>
-<li>[[Writable]]能否修改属性的值。默认为true。</li>
-<li>[[Value]]包含这个属性的数据值。默认为undefined。  </li>
-<li><em>可以用Object.defineProperty来修改属性默认的特性*</em><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person &#x3D; &#123;&#125;;</span><br><span class="line">Object.defineProperty(person,&quot;name&quot;,&#123;</span><br><span class="line">  writable : false,</span><br><span class="line">  value : &quot;Zy&quot;</span><br><span class="line">&#125;);</span><br><span class="line">alert(person.name);&#x2F;&#x2F;Zy</span><br><span class="line">person.name &#x3D; 111111;</span><br><span class="line">alert(person.name);&#x2F;&#x2F;Zy</span><br></pre></td></tr></table></figure></li>
-<li>如果将 configurable 设置为 false ,就不能把它变回可配置的.此时 Object.defineProperty 方法除了修改 writable 之外的特性都会导致错误.*<h4 id="2-访问器属性"><a href="#2-访问器属性" class="headerlink" title="2. 访问器属性"></a>2. 访问器属性</h4></li>
-<li><em>访问器属性不包含数据值，它们包含一对儿getter和setter（非必须）*</em></li>
-<li>[[Configurable]] 表示可否通过delete删除，或能否修改属性特性，或者改为访问器属性。默认为true。</li>
-<li>[[Enumerable]]表示能否通过for-in循环返回属性。默认true。</li>
-<li>[[Get]]读取属性时调用的函数,默认为undefined。</li>
-<li>[[Set]]写入属性时调用的函数,默认为undefined。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var book &#x3D; &#123;</span><br><span class="line">  _year : 2004,</span><br><span class="line">  edition : 1 </span><br><span class="line">&#125;;</span><br><span class="line">Object.defineProperty(book,&quot;year&quot;,&#123;</span><br><span class="line">  get : function()&#123;</span><br><span class="line">    return this._year;</span><br><span class="line">  &#125;,</span><br><span class="line">  set: function(newValue)&#123;</span><br><span class="line">    if(newValue &gt; 2019)&#123;</span><br><span class="line">      this._year &#x3D; newValue;</span><br><span class="line">      this.edtion +&#x3D; newValue - 2019;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">book.year &#x3D; 2020;</span><br><span class="line">alert(book.edition);&#x2F;&#x2F;1</span><br><span class="line">&#x2F;*以上代码创建一个book对象,并给他定义两个默认的属性,_year和edtion。_year前面的下划线是一种常用的标记符号，表示只能通过对象方法访问的属性。*&#x2F;</span><br></pre></td></tr></table></figure></li>
-<li>这里是使用访问器属性的常见方式，即设置一个属性的值会导致其他属性发生变化。且不一定非要同时指定getter和setter。只指定set在读取值时会返回undefined，而只指定getter时表明其不可写入。*</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/200419js%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%AC%E4%B8%80%E5%A4%A9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Zhang Yin">
-      <meta itemprop="description" content="zoeee">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/18/200419js%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%AC%E4%B8%80%E5%A4%A9/" class="post-title-link" itemprop="url">js高级程序设计第一天</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-18 19:22:44" itemprop="dateCreated datePublished" datetime="2020-04-18T19:22:44+08:00">2020-04-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-19 15:53:10" itemprop="dateModified" datetime="2020-04-19T15:53:10+08:00">2020-04-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>五大基本数据类型 ：Undefined Null Boolean Number String</p>
-<p>和一个复杂类型 ：Object </p>
-<p>返回数据类型使用操作符 typeof 注意 该操作符并不是一个函数</p>
-<h3 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h3><p>声明变量但尚未初始化的值会被赋予Undefined值，但与尚未定义的变量还是又不一样。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var message;</span><br><span class="line">&#x2F;&#x2F;var age ;</span><br><span class="line">alert(message); &#x2F;&#x2F; undefined</span><br><span class="line">alert(age);&#x2F;&#x2F; Error！</span><br></pre></td></tr></table></figure>
-<p><strong>值得注意的是：如果用typeof返回这两个值，都会得到undefined这个结过。如果我们能在每个变量声明的时候将其初始化，那么typeof返回undefined时我们就能知道其是未定义的变量</strong></p>
-<hr>
-<h3 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h3><ol>
-<li>用typeof返回一个null值会得到一个 object，因为null表示一个空对象的指针<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var car &#x3D; null ;</span><br><span class="line">alert(typeof car);&#x2F;&#x2F; &quot;object&quot;</span><br></pre></td></tr></table></figure></li>
-<li>事实上，undefined值是派生自null值的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(null &#x3D;&#x3D; undefined) &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure></li>
-<li>在任何情况下都没必要将一个值初始化为undefined，但可以将一个值初始化为null，这样可以体现其空指针的特性</li>
+          <h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><blockquote>
+<p>其实是一份小数据,是服务器给客户端的,并存储在客户端的一份小数据<br>自动登录,浏览记录,购物车</p>
+</blockquote>
+<h3 id="为什么要有这个cookie"><a href="#为什么要有这个cookie" class="headerlink" title="为什么要有这个cookie"></a>为什么要有这个cookie</h3><blockquote>
+<p>http的协议是无状态的,客户端与服务器在通讯的时候是无状态的,其实就是客户端第二次来访的时候服务端根本就不知道这个客户端的记录.为了更好的用户体验,更好的交互,使用cookie.其实从公司层面想,就是需要更好的收集用户习惯</p>
+</blockquote>
+<h3 id="cookie有什么用"><a href="#cookie有什么用" class="headerlink" title="cookie有什么用"></a>cookie有什么用</h3><h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><ol>
+<li>在响应的时候,添加cookie</li>
+<li>客户端收到的信息里面,响应头的字段多了一个 cookie</li>
+<li>当浏览器再请求该网站时，浏览器把请求的网址连同该Cookie一同提交给服务器。服务器检查该Cookie，以此来辨认用户状态。服务器还可以根据需要修改Cookie的内容。</li>
 </ol>
-<hr>
-<h3 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h3><ol>
-<li>boolean类型区分大小写，也就是说True不是boolean值而true才是</li>
-<li>true不一定等于1，false不一定等于0</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="center">数据类型</th>
-<th align="center">转换为true的值</th>
-<th align="center">转换为false的值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">String</td>
-<td align="center">任何非空字符串</td>
-<td align="center">“”</td>
-</tr>
-<tr>
-<td align="center">Number</td>
-<td align="center">任何非零（包括无穷大）</td>
-<td align="center">0</td>
-</tr>
-<tr>
-<td align="center">Object</td>
-<td align="center">任何对象</td>
-<td align="center">null</td>
-</tr>
-<tr>
-<td align="center">Undefined</td>
-<td align="center">not applicable</td>
-<td align="center">undefined</td>
-</tr>
-</tbody></table>
-<h3 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h3><ol>
-<li>前面加0是八进制，前面加0x是十六进制<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var num1 &#x3D; 070 &#x2F;&#x2F;56</span><br><span class="line">var num2 &#x3D; 0xA ; &#x2F;&#x2F;10</span><br></pre></td></tr></table></figure></li>
-<li>无意义的浮点数会转化为整数  </li>
-</ol>
-<p><strong>浮点数值最高精度为17，如0.1+0.2=0.30000000000004</strong><br>3. NaN 意为 not a number<br>本来要返回一个数，却未返回数则返回一个NaN。这样不会抛出错误。<br>例如0/10 = NaN。NaN != NaN。有个函数名为isNaN()可以检测。<br>4. 使用 paserInt解析字符串时最好制定第二个参数作为进制。</p>
-<hr>
-<h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><ol>
-<li>null 和 undefind没有toString方法。</li>
-<li>toString可以传入一个参数作为进制。</li>
-<li>也可以将一个数字+””（空字符串）代替toString</li>
-</ol>
-<hr>
-<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><p>Object所具有的任何属性和方法都能存在更具体的对象中</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/200419js%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%AC%E4%B8%83%E5%A4%A9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Zhang Yin">
-      <meta itemprop="description" content="zoeee">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/18/200419js%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%AC%E4%B8%83%E5%A4%A9/" class="post-title-link" itemprop="url">js高级程序设计第七天</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-18 19:22:44" itemprop="dateCreated datePublished" datetime="2020-04-18T19:22:44+08:00">2020-04-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-19 15:52:52" itemprop="dateModified" datetime="2020-04-19T15:52:52+08:00">2020-04-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="借用构造函数"><a href="#借用构造函数" class="headerlink" title="借用构造函数"></a>借用构造函数</h3><p>有一种借用构造函数的技术（也被叫做伪造对象或者经典继承）。这种技术的基本思想相当简单，即在子类型构造函数内部调用超类型构造函数。<br><strong>函数只不过是在特定环境中执行代码的对象。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function SuperType()&#123;</span><br><span class="line">  this.nums &#x3D; [1,2,3];</span><br><span class="line">&#125;;</span><br><span class="line">function SubType()&#123;</span><br><span class="line">  &#x2F;&#x2F;继承SuperType</span><br><span class="line">  SuperType.call(this);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var instance1 &#x3D; new SubType();</span><br><span class="line">instance1.nums.push(4);</span><br><span class="line">alert(instance1.nums);&#x2F;&#x2F;1,2,3,4</span><br><span class="line"></span><br><span class="line">var instance2 &#x3D; new SubType();</span><br><span class="line">alert(instance1.nums);&#x2F;&#x2F;1,2,3</span><br></pre></td></tr></table></figure>
-<p>这段代码中，每个子类的实例将拥有属于自己的属性。<br>相对于原型链而言，借用构造函数有一个很大的优势，即可以在子类型构造函数中向超类型构造函数传递参数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function SuperType(name)&#123;</span><br><span class="line">  this.name &#x3D; name;</span><br><span class="line">&#125;</span><br><span class="line">function SubType()&#123;</span><br><span class="line">  &#x2F;&#x2F;继承了SuperType 同时传递了参数</span><br><span class="line">  SuperType.call(this,&quot;zy&quot;);</span><br><span class="line"></span><br><span class="line">  this.age &#x3D; 100;</span><br><span class="line">&#125;</span><br><span class="line">var instance &#x3D; new SubType();</span><br><span class="line">alert(instance.name);&#x2F;&#x2F;zy</span><br><span class="line">alert(instance.age);&#x2F;&#x2F;100</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>问题：无法避免构造函数模式存在的问题——方法都在构造函数内部定义。</p>
+<h3 id="Cookie具有不可跨域名性"><a href="#Cookie具有不可跨域名性" class="headerlink" title="Cookie具有不可跨域名性"></a>Cookie具有不可跨域名性</h3><blockquote>
+<p>浏览器访问Google只会携带Google的Cookie，而不会携带Baidu的Cookie。Google也只能操作Google的Cookie，而不能操作Baidu的Cookie。</p>
 </blockquote>
-<h3 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h3><p>有时也叫伪经典继承，指的是将原型链和借用构造函数的技术组合到一块，发挥二者之长。背后的思路是<strong>使用原型链实现队原型属性和方法的继承，使用借用构造函数实现对实例属性的继承。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">function SuperType(name)&#123;</span><br><span class="line">  this.name &#x3D; name ;</span><br><span class="line">  this.nums &#x3D; [1,2,3];</span><br><span class="line">&#125;</span><br><span class="line">SuperType.prototype.sayName &#x3D; function()&#123;</span><br><span class="line">  alert(this.name);</span><br><span class="line">&#125;;</span><br><span class="line">function SubType(name,age)&#123;</span><br><span class="line">  &#x2F;&#x2F;继承属性</span><br><span class="line">  SuperType.call(this,name);</span><br><span class="line"></span><br><span class="line">  this.age &#x3D; age;</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;&#x2F;继承方法</span><br><span class="line">SubType.prototype &#x3D; new SuperType();</span><br><span class="line"></span><br><span class="line">SubType.prototype.sayAge &#x3D; function()&#123;</span><br><span class="line">  alert(this.age);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;第一个实例</span><br><span class="line">var instance1 &#x3D; new SubType(&quot;zy&quot;,100);</span><br><span class="line">instance1.nums.push(4);</span><br><span class="line">alert(instacne1.nums)&#x2F;&#x2F;1,2,3,4</span><br><span class="line">instance1.sayName();&#x2F;&#x2F;zy</span><br><span class="line">instacne1.sayAge();&#x2F;&#x2F;100</span><br><span class="line">&#x2F;&#x2F;第二个实例</span><br><span class="line">var instance2 &#x3D; new SubType(&quot;zoe&quot;,1);</span><br><span class="line">instance2.sayName();&#x2F;&#x2F;zoe</span><br><span class="line">instacne2.sayAge();&#x2F;&#x2F;1</span><br></pre></td></tr></table></figure>
-
-<h3 id="原型式继承"><a href="#原型式继承" class="headerlink" title="原型式继承"></a>原型式继承</h3><p>没有使用严格意义上的构造函数，而是借助原型可以基于已有的对象创建新对象，同时还不必因下次创建自定义类型。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function object(o)&#123;</span><br><span class="line">  function F()&#123;&#125;;</span><br><span class="line">  F.prototype &#x3D; o ;</span><br><span class="line">  return new F();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在object函数内部，先创建了一个临时性的构造函数，然后将传入的对象作为这个构造函数的原型，最后返回了这个临时类型的一个新实例。<br>ES5中新增了Object.create来规范化原型式继承。这个方法接受两个参数：</p>
-<ul>
-<li>一个用作新对象原型的对象</li>
-<li>（可选）为新对象定义额外属性的对象<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var person &#x3D; &#123;</span><br><span class="line">  name : &quot;zy&quot;,</span><br><span class="line">  nums : [1,2,3]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var anotherPerson &#x3D; Object.create(person);</span><br><span class="line">anotherPerson.name &#x3D; &quot;zyy&quot;;</span><br><span class="line">anotherPerson.nums.push(4);</span><br><span class="line"></span><br><span class="line">var yetAnotherPerson &#x3D; Object.create(person);</span><br><span class="line">yetAnotherPerson.name &#x3D; &quot;zyyy&quot;;</span><br><span class="line">yetAnotherPerson.nums.push(5);</span><br><span class="line"></span><br><span class="line">alert(person.nums)&#x2F;&#x2F;1,2,3,4,5</span><br><span class="line">alert(person.name)&#x2F;&#x2F;zy</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>第二个参数中的属性会覆盖原型对象上的同名属性。</p>
+<h3 id="Cookie的修改、删除"><a href="#Cookie的修改、删除" class="headerlink" title="Cookie的修改、删除"></a>Cookie的修改、删除</h3><blockquote>
+<p>Cookie并不提供修改、删除操作。如果要修改某个Cookie，只需要新建一个同名的Cookie，添加到response中覆盖原来的Cookie。</p>
 </blockquote>
-</li>
-</ul>
-<p>在没有必要兴师动众地创建构造函数，而只是想让一个对象与另一个对象保持类似的情况下，原型式继承是可以胜任的。但是包含引用类型值的属性始终会共享相应的值，就像原型模式一样。</p>
-<h3 id="寄生式继承"><a href="#寄生式继承" class="headerlink" title="寄生式继承"></a>寄生式继承</h3><p>创建一个仅用于封装继承过程的函数，该函数在内部以某种方式来增强对象，最后再像是真的完成了所有工作一样返回对象。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function createAnother(original)&#123;</span><br><span class="line">  &#x2F;&#x2F;通过调用函数来创建一个新对象</span><br><span class="line">  var clone &#x3D; Object(original);</span><br><span class="line">  &#x2F;&#x2F;以某种方式增强这个对象</span><br><span class="line">  clone.sayHi &#x3D; function()&#123;</span><br><span class="line">    alert(&quot;hi&quot;);</span><br><span class="line">  &#125;;</span><br><span class="line">  return clone;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var person &#x3D; &#123;</span><br><span class="line">  name : &quot;zy&quot;,</span><br><span class="line">  nums : [1,2,3,4]</span><br><span class="line">&#125;</span><br><span class="line">var anotherPerson &#x3D; createAnother(person);</span><br><span class="line">anotherPerson.sayHi();&#x2F;&#x2F;hi</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>在主要考虑对象而不是自定义类型和构造函数的情况下，寄生式继承也是一种有用的模式。但会由于不能做到函数复用而降低效率。</p>
+<h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><blockquote>
+<p>除了使用Cookie，Web应用程序中还经常使用Session来记录客户端状态。Session是服务器端使用的一种记录客户端状态的机制，使用上比Cookie简单一些，相应的也增加了服务器的存储压力。</p>
 </blockquote>
-<h3 id="寄生组合式继承"><a href="#寄生组合式继承" class="headerlink" title="寄生组合式继承"></a>寄生组合式继承</h3><p>先看一下组合式继承的不足：无论在什么情况下，都会调用两次超类型构造函数：</p>
-<ul>
-<li>在创建子类型原型的时候</li>
-<li>在子类型构造函数内部<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function SuperType(name)&#123;</span><br><span class="line">  this.name &#x3D; name;</span><br><span class="line">  this.nums &#x3D; [1,2,3]</span><br><span class="line">&#125;</span><br><span class="line">SuperType.prototype.sayName &#x3D; function()&#123;</span><br><span class="line">  alert(this.name);</span><br><span class="line">&#125;</span><br><span class="line">function SubType(name,age)&#123;</span><br><span class="line">  SuperType.call(this,name);&#x2F;&#x2F;第二次调用</span><br><span class="line"></span><br><span class="line">  this.age &#x3D; age;</span><br><span class="line">&#125;)</span><br><span class="line">SubType.prototype &#x3D; new SuperType();&#x2F;&#x2F;第一次调用</span><br><span class="line">SubType.prototype.constructor &#x3D; SubType;</span><br><span class="line">SubType.prototype.sayAge &#x3D; function()&#123;</span><br><span class="line">  alert(this.age);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>第一次调用SuperType构造函数时，SubType.prototype会得到两个属性：name和nums，它们都是SuperType的实例属性，只不过现在位于SubType原型中。</li>
-<li>当调用SubType构造函数时，又会调用一次SuperType的构造函数，这一次又在新对象上创建了实例属性name和nums。  </li>
-</ul>
-<p>于是这两个属性就覆盖了原型中的两个同名属性。  就有两组name和nums属性，一组在实例上，一组在SubType的原型中。</p>
-<hr>
-<p>寄生组合式继承背后的基本思路是：<strong>不必为了指定子类型的原型而调用超类型的构造函数，我们所需要的无非是超类型原型的一个副本而已。本质上就是使用寄生式继承来继承超类型的原型，然后再将结果指定给子类型的原型</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function inheritPrototype(subType,superType)&#123;</span><br><span class="line">  var prototype &#x3D; Object(superType.prototype); &#x2F;&#x2F;创建超类型原型的一个副本</span><br><span class="line">  prototype.constructor &#x3D; subType;&#x2F;&#x2F;为创建的副本提供constructor属性</span><br><span class="line">  subType.prototype &#x3D; prototype;&#x2F;&#x2F;将新创建的对象（副本）赋值给子类型的原型</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function SuperType(name)&#123;</span><br><span class="line">  this.name  &#x3D; name ;</span><br><span class="line">  this.nums &#x3D; [1,2,3];</span><br><span class="line">&#125;</span><br><span class="line">SuperType.prototype.sayName &#x3D; function()&#123;</span><br><span class="line">  alert(this.name);</span><br><span class="line">&#125;</span><br><span class="line">function SubType(name,age)&#123;</span><br><span class="line">  SuperType.call(this,name);</span><br><span class="line">  this.age &#x3D; age;</span><br><span class="line">&#125;</span><br><span class="line">inheritPrototype(SubType,SuperTYpe);</span><br><span class="line"></span><br><span class="line">SubType.prototype.sayAge &#x3D; function()&#123;</span><br><span class="line">  alert(this.age);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>能正常使用instanceof 和 isPrototypeOf()</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/200419js%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%AC%E4%BA%8C%E5%A4%A9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Zhang Yin">
-      <meta itemprop="description" content="zoeee">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/18/200419js%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%AC%E4%BA%8C%E5%A4%A9/" class="post-title-link" itemprop="url">js高级程序设计第二天</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-18 19:22:44" itemprop="dateCreated datePublished" datetime="2020-04-18T19:22:44+08:00">2020-04-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-19 15:54:32" itemprop="dateModified" datetime="2020-04-19T15:54:32+08:00">2020-04-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="动态属性"><a href="#动态属性" class="headerlink" title="动态属性"></a>动态属性</h3><ul>
-<li>对于引用类型的值，可以动态添加属性<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var person &#x3D; new Object();</span><br><span class="line">person.name &#x3D; &quot;Zy&quot;;</span><br><span class="line">alert(person.name);&#x2F;&#x2F;Zy</span><br></pre></td></tr></table></figure></li>
-<li>对于基本类型 是不能添加属性的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var name &#x3D; &quot;Zy&quot;;</span><br><span class="line">name.age &#x3D; 27;</span><br><span class="line">alert(name.age);&#x2F;&#x2F;undefined</span><br></pre></td></tr></table></figure>
-<h3 id="复制变量值"><a href="#复制变量值" class="headerlink" title="复制变量值"></a>复制变量值</h3></li>
-<li>复制基本类型，会在新的内存空间存储<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var num1 &#x3D; 5; </span><br><span class="line">var num2 &#x3D; num1;</span><br><span class="line">alert(num1);&#x2F;&#x2F;5</span><br></pre></td></tr></table></figure></li>
-<li>但复制引用类型的值时，会出现两个指针指向同一个对象。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj1 &#x3D; new Object();</span><br><span class="line">var obj2 &#x3D; obj1;</span><br><span class="line">obj1.name &#x3D; &quot;Zy&quot;;</span><br><span class="line">alert(obj2.name);&#x2F;&#x2F;Zy</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="函数参数为对象时的细节"><a href="#函数参数为对象时的细节" class="headerlink" title="函数参数为对象时的细节"></a>函数参数为对象时的细节</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function setName(obj)&#123;</span><br><span class="line">    obj.name &#x3D; &quot;Zy&quot;;</span><br><span class="line">&#125;</span><br><span class="line">var person &#x3D; new Object();</span><br><span class="line">setName(person);</span><br><span class="line">alert(person.name);&#x2F;&#x2F; Zy</span><br></pre></td></tr></table></figure>
-<p>这段代码中在函数内部修改obj的属性，但是能在外部的person对象中反应这个修改，于是会有人认为参数为对象时使用的是引用传递，其实还是值传递</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function setName(obj)&#123;</span><br><span class="line">    obj.name &#x3D; &quot;Zy&quot;;</span><br><span class="line">    &#x2F;**&#x2F;</span><br><span class="line">    obj &#x3D; new Object();</span><br><span class="line">    obj.name &#x3D; &quot;Zoe&quot;;</span><br><span class="line">    &#x2F;**&#x2F;</span><br><span class="line">&#125;</span><br><span class="line">var person &#x3D; new Object();</span><br><span class="line">setName(person);</span><br><span class="line">alert(person.name);&#x2F;&#x2F; Zy</span><br></pre></td></tr></table></figure>
-<p>这个例子证明即使在函数内部修改了参数的值，但原始的引用仍然未改变。<br>实际上在函数内部重写obj的时候，这个变量引用的是一个局部变量，函数执行完毕即会销毁。</p>
-<h3 id="没有块级作用域"><a href="#没有块级作用域" class="headerlink" title="没有块级作用域"></a>没有块级作用域</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for(var i &#x3D; 0 ; i &lt; 10 ; i++)&#123;</span><br><span class="line">    doSomething(i);</span><br><span class="line">&#125;</span><br><span class="line">alert(i);&#x2F;&#x2F;10</span><br></pre></td></tr></table></figure>
-<p>这样的代码在类C语言中会报错，但是在js中能够运行。是因为使用用for语句创建的变量i在执行结束后依然存在于循环外部的执行环境中。<br><strong>使用var声明</strong>的变量会自动添加到最接近的环境中。如果初始化变量时没有使用var声明，该变量会自动添加到全局变量中。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>基本类型值在内存中占据固定大小的空间，因此保存在栈内存中。</li>
-<li>从一个变量向另一个变量复制基本类型的值，会创建这个值的一个副本。</li>
-<li>引用类型的值是对象，保存在堆内存中。</li>
-<li>包含引用类型值的变量实际上包含的并不是对象本身，而是一个指向该对象的指针</li>
-<li>从一个变量从另一个变量复制引用类型的值，复制的其实是指针，因此两个变量最终指向同一个变量。</li>
-<li>执行环境有全局执行环境和函数执行环境之分</li>
-<li>变量的执行环境有助于确定应该何时释放内存</li>
-<li>标记清除是主流垃圾收集方法，也有引用计数算法思想（已经弃用）</li>
-<li>弃用的原因是在循环引用时，引用计数会导致问题。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/200419js%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%AC%E4%B9%9D%E5%A4%A9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Zhang Yin">
-      <meta itemprop="description" content="zoeee">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/18/200419js%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%AC%E4%B9%9D%E5%A4%A9/" class="post-title-link" itemprop="url">js高级程序设计第九天</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-18 19:22:44" itemprop="dateCreated datePublished" datetime="2020-04-18T19:22:44+08:00">2020-04-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-19 15:52:46" itemprop="dateModified" datetime="2020-04-19T15:52:46+08:00">2020-04-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><blockquote>
-<p>闭包是指有权访问另一个函数作用域中的变量的函数。  </p>
-</blockquote>
-<p>创建闭包的常用方式就是在一个函数内部创建另一个函数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function createComparisonFunction(propertyName)&#123;</span><br><span class="line">  return function(object1 , object2)&#123;</span><br><span class="line">    var value1 &#x3D; object1[propertyName]; &#x2F;&#x2F;重点</span><br><span class="line">    var value2 &#x3D; object2[propertyName]; &#x2F;&#x2F;重点</span><br><span class="line"></span><br><span class="line">    if(value1 &lt; value2)&#123;</span><br><span class="line">      return -1;</span><br><span class="line">    &#125;</span><br><span class="line">    else if (value1 &gt; value2)&#123;</span><br><span class="line">      return 1 ;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">      return 0 ;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在这个例子中，两行代码访问了外部函数的变量propertyName，即使这个内部函数被返回了，而且在其他地方被调用了，但它仍然可以访问变量propertyName。之所以还能访问，是因为内部函数的作用域链中包含createComparisonFunction（）的作用于。</p>
-<blockquote>
-<p>当某个函数第一次被调用时，会创建一个执行环境（execution context）和相应的作用域链，并把作用域链赋值给一个特殊的内部属性（[Scope]）。然后，使用this，arguments和其他命名参数的值来初始化函数的活动对象（activation object）。</p>
-</blockquote>
-<p><img src="https://i.loli.net/2019/10/28/ex89GIpWUjowdzc.png" alt="compare作用域链"></p>
-<blockquote>
-<p>显然作用域链本质上是一个指向变量对象的指针列表，它只引用但不实际包含变量对象。</p>
-</blockquote>
-<p>无论什么时候在汉书中访问一个变量时，就会从作用域链中搜索具有相应名字的变量。一般来讲，当函数执行完毕后，局部活动对象就会被销毁，内存中仅保存全局作用域。</p>
-<blockquote>
-<p>在另一个函数内部定义的函数会将包含函数（外部函数）的活动对象添加到他的作用域链中。因此，在createComparisonFunction函数内部定义的匿名函数的作用域链中，实际上会包含外部函数createComparisonFunction的活动对象。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var compare &#x3D; createComparisonFunction(&quot;name&quot;);</span><br><span class="line">var result &#x3D; compare(&#123;name:&quot;zy&quot;&#125;,&#123;name:&quot;zoe&quot;&#125;);</span><br></pre></td></tr></table></figure>
-<p>在匿名函数从createComparisonFunction中被返回后，它的作用域链被初始化为包含createComparisonFunction函数的活动对象和全局变量对象。这样，匿名函数就可以访问createComparisonFunction中定义的所有变量。更重要的是<strong>createComparisonFunction函数执行完毕后，其活动对象也不会被销毁，因为匿名函数的作用域链仍然在引用这个活动对象。</strong>换句话说，在createComparisonFunction函数返回有，其执行环境的作用域链会被销毁，但其活动对象仍然会在内存中，直到匿名函数被销毁。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compare &#x3D; null&#x2F;&#x2F;销毁函数，释放内存</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2019/10/28/MI54LeQ37SpP98m.png" alt="compare和匿名函数作用域链"></p>
-<h3 id="闭包与变量"><a href="#闭包与变量" class="headerlink" title="闭包与变量"></a>闭包与变量</h3><p>作用域链的这种配置机制引出了一个值得注意的副作用，即闭包函数只能取得包含函数中任何变量的最后一个之。别忘了闭包所保存的是整个边栏搞对象，而不是某个特殊的变量。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function createFunction()&#123;</span><br><span class="line">  var result &#x3D; new Array();</span><br><span class="line"></span><br><span class="line">  for(var i &#x3D; 0 ; i &lt; 10 ; i ++)&#123;</span><br><span class="line">    result[i] &#x3D; function()&#123;</span><br><span class="line">      console.log(i);</span><br><span class="line">      return i ;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; </span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个函数会返回一个函数数组。表面上看，似乎每个函数都应该返回自己的所引致，即位置0的函数返回0。实际上，每个函数都返回10。因为每个函数的u总用于联众都保存着createFunction的活动对象，它们引用的都是同一个变量i。但是我们可以通过创建另一个匿名函数强制让闭包的规则符合预期。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function createFunction()&#123;</span><br><span class="line">  var result &#x3D; new Array();</span><br><span class="line"></span><br><span class="line">  for(var i &#x3D; 0 ; i &lt;10 ; i++)&#123;</span><br><span class="line">    result[i] &#x3D; function(num)&#123;</span><br><span class="line">      return function(num)&#123;</span><br><span class="line">        return num;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;(i);</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在这个版本中，我们没有直接把闭包赋值给数组，而是定义了一个匿名函数，并将立即执行该匿名函数的结果赋值给数组。在调用每个匿名函数是，我们传入了变量i。由于函数参数是值传递，所以会将变量i的当前值复制给参数num。而在这个函数内部，又创建了并返回了一个可以访问num的闭包。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/18/200419js%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%AC%E4%BA%94%E5%A4%A9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Zhang Yin">
-      <meta itemprop="description" content="zoeee">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZY">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/18/200419js%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%AC%E4%BA%94%E5%A4%A9/" class="post-title-link" itemprop="url">js高级程序设计第五天</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-18 19:22:44" itemprop="dateCreated datePublished" datetime="2020-04-18T19:22:44+08:00">2020-04-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-19 15:53:07" itemprop="dateModified" datetime="2020-04-19T15:53:07+08:00">2020-04-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="组合使用构造函数模式和原型模式"><a href="#组合使用构造函数模式和原型模式" class="headerlink" title="组合使用构造函数模式和原型模式"></a>组合使用构造函数模式和原型模式</h3><p><strong>创建自定义类型的最常见方式，就是组合使用构造函数模式和原型模式。</strong></p>
 <ol>
-<li>构造函数模式用于定义实例属性</li>
-<li>原型模式用于定义方法和共享的属性<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function Person(name)&#123;</span><br><span class="line">  this.name &#x3D; name ;</span><br><span class="line">  this.friends &#x3D; [&quot;aaa&quot;,&quot;bbb&quot;];</span><br><span class="line">&#125;;</span><br><span class="line">Person.prototype &#x3D; &#123;</span><br><span class="line">  constructor : Person ,</span><br><span class="line">  sayName : function()&#123;</span><br><span class="line">    alert(this.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">var person1 &#x3D; new Person(&quot;1&quot;);</span><br><span class="line">var person2 &#x3D; new Person(&quot;2&quot;);</span><br><span class="line"></span><br><span class="line">person1.friends.push(&quot;ccc&quot;);</span><br><span class="line"></span><br><span class="line">alert(person1.friends);&#x2F;&#x2F;&quot;aaa,bbb,ccc&quot;</span><br><span class="line">alert(person2.friends);&#x2F;&#x2F;&quot;aaa,bbb&quot;</span><br><span class="line">alert(person1.friends &#x3D;&#x3D;&#x3D; person2.friends);&#x2F;&#x2F;false</span><br><span class="line">alert(person1.sayName &#x3D;&#x3D;&#x3D; person2.sayName);&#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
-
-
-</li>
+<li>如果说Cookie机制是通过检查客户身上的“通行证”来确定客户身份的话，那么Session机制就是通过检查服务器上的“客户明细表”来确认客户身份。Session相当于程序在服务器上建立的一份客户档案，客户来访的时候只需要查询客户档案表就可以了。</li>
+<li>Session机制决定了当前客户只会获取到自己的Session，而不会获取到别人的Session。各客户的Session也彼此独立，互不可见。</li>
+<li>Session的使用比Cookie方便，但是过多的Session存储在服务器内存中，会对服务器造成压力。</li>
 </ol>
-<h3 id="动态原型模式"><a href="#动态原型模式" class="headerlink" title="动态原型模式"></a>动态原型模式</h3><p>把所有信息封装在了构造函数中，而通过在构造函数中初始化原型（必要情况下），又保持了同时使用构造函数和原型的有点。换句话说，可以通过<strong>检查某个应该存在的方法是否有效，来决定是否需要初始化原型</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age)&#123;</span><br><span class="line">  &#x2F;&#x2F;属性</span><br><span class="line">  this.name &#x3D; name ;</span><br><span class="line">  this.age &#x3D; age ;</span><br><span class="line">  &#x2F;&#x2F;方法</span><br><span class="line">  if (typeof this.sayName !&#x3D; &quot;function&quot;)&#123;</span><br><span class="line">    Person.prototype.sayName &#x3D; function()&#123;</span><br><span class="line">      alert(this.name);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>可以用instanceof 操作符来确定它的类型。</p>
-</blockquote>
-<h3 id="寄生构造函数模式"><a href="#寄生构造函数模式" class="headerlink" title="寄生构造函数模式"></a>寄生构造函数模式</h3><p>在前几种模式不适用的情况下，可以用寄生构造函数模式。这种模式的基本思想是<strong>创建一个函数，该函数的作用仅仅是封装创建代码的对象，然后再返回新创建的对象</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function Person(name , age)&#123;</span><br><span class="line">  var o &#x3D; new Object();</span><br><span class="line">  o.name &#x3D; name ;</span><br><span class="line">  o.age &#x3D; age ;</span><br><span class="line">  o.sayName &#x3D; function()&#123;</span><br><span class="line">    alert(this.name);</span><br><span class="line">  &#125;;</span><br><span class="line">  return o ;</span><br><span class="line">&#125;</span><br><span class="line">var friend &#x3D; new Person(&quot;zy&quot;,100);</span><br><span class="line">friend.sayName();&#x2F;&#x2F;zy</span><br></pre></td></tr></table></figure>
-<p><strong>构造函数在不返回值的情况下，默认会返回新对象实例。而通过在构造函数的末尾添加一个return语句，可以重写调用构造函数时返回的值。</strong>   </p>
-<p>例如：需要创建一个具有额外方法的特殊数组对象，但是我们不能直接修改Array构造函数。</p>
-<blockquote>
-<p>由于返回的对象与构造函数或者与构造函数的原型属性没有关系，所以不能用instanceof 操作符来确定对象类型。</p>
-</blockquote>
-<h3 id="稳妥构造函数模式"><a href="#稳妥构造函数模式" class="headerlink" title="稳妥构造函数模式"></a>稳妥构造函数模式</h3><p>所谓稳妥对象，指的是没有公共属性，而且其方法也不引用this的对象。稳妥对象最适合用在一些安全的环境（这些环境中会禁止使用this和new），或者在防止数据被其他应用程序（如Mashup程序）改动时使用。<br>稳妥构造函数与寄生构造函数类似，但有两点不同：</p>
-<ul>
-<li>新创建的对象的实例方法不引用this</li>
-<li>不适用new操作符调用构造函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age)&#123;</span><br><span class="line">  &#x2F;&#x2F;创建要返回的对象</span><br><span class="line">  var o &#x3D; new Object();</span><br><span class="line">  &#x2F;&#x2F;可以在这里定义私有变量和函数</span><br><span class="line">  </span><br><span class="line">  &#x2F;&#x2F;添加方法 </span><br><span class="line">  o.sayName &#x3D; function()&#123;</span><br><span class="line">    alert(name);</span><br><span class="line">  &#125;</span><br><span class="line">  &#x2F;&#x2F;返回对象</span><br><span class="line">  return o ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var friend &#x3D; Person(&quot;zy&quot;,100);</span><br><span class="line">friend.sayName();&#x2F;&#x2F;zy</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注：这样变量friend种保存的是一个稳妥对象，而除了调用sayName方法外，没有别的方式可以访问到其数据成员，计师有其他代码会给这个对象添加方法或者数据成员，但也不可能有别的办法访问传入到构造函数中的原始数据。这种安全性使得它非常适合在某些安全执行环境中使用。</p>
-</blockquote>
-</li>
-</ul>
-<p>与寄生构造函数类似，用instanceof 操作符对这种对象也没有什么意义。</p>
+<h3 id="Session的生命周期"><a href="#Session的生命周期" class="headerlink" title="Session的生命周期"></a>Session的生命周期</h3><ol>
+<li>Session保存在服务器端。为了获得更高的存取速度，服务器一般把Session放在内存里。每个用户都会有一个独立的Session。如果Session内容过于复杂，当大量客户访问服务器时可能会导致内存溢出。因此，Session里的信息应该尽量精简。</li>
+<li>Session在用户第一次访问服务器的时候自动创建。。需要注意只有访问JSP、Servlet等程序时才会创建Session，只访问HTML、IMAGE等静态资源并不会创建Session。如果尚未生成Session，也可以使用request.getSession(true)强制生成Session。</li>
+<li>Session生成后，只要用户继续访问，服务器就会更新Session的最后访问时间，并维护该Session。用户每访问服务器一次，无论是否读写Session，服务器都认为该用户的Session“活跃（active）”了一次。</li>
+</ol>
+<h3 id="Session的有效期"><a href="#Session的有效期" class="headerlink" title="Session的有效期"></a>Session的有效期</h3><p>由于会有越来越多的用户访问服务器，因此Session也会越来越多。<strong>为防止内存溢出，服务器会把长时间内没有活跃的Session从内存删除。这个时间就是Session的超时时间。如果超过了超时时间没访问过服务器，Session就自动失效了。</strong></p>
+<h2 id="两者的区别"><a href="#两者的区别" class="headerlink" title="两者的区别"></a>两者的区别</h2><ol>
+<li>cookie数据存放在客户的浏览器上，session数据放在服务器上.客户端每次请求服务器的时候会发送 当前会话的session_id，服务器根据当前session_id判断相应的用户数据标志，以确定用户是否登录，或具有某种权限。</li>
+<li>cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗考虑到安全应当使用session。</li>
+<li>设置cookie时间可以使cookie过期。但是使用session-destory（），我们将会销毁会话。</li>
+<li>session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能考虑到减轻服务器性能方面，应当使用cookie。</li>
+<li>单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。(Session对象没有对存储的数据量的限制，其中可以保存更为复杂的数据类型)</li>
+<li>两者最大的区别在于生存周期，一个是IE启动到IE关闭.(浏览器页面一关 ,session就消失了)，一个是预先设置的生存周期，或永久的保存于本地的文件。(cookie)</li>
+<li>Session信息是存放在server端，但session id是存放在client cookie的，当然php的session存放方法是多样化的，这样就算禁用cookie一样可以跟踪.Cookie是完全保持在客户端.</li>
+</ol>
+<h2 id="值得注意的地方"><a href="#值得注意的地方" class="headerlink" title="值得注意的地方"></a>值得注意的地方</h2><ol>
+<li>cookie一定要设置失效时间,要不然浏览器关闭就消失了;</li>
+<li>浏览器 有禁止cookie功能 ,但一般用户都不会设置;</li>
+<li>cookie也分为永久和暂时存在的;</li>
+<li>虽然cookie不安全,但是可以加密 ;</li>
+<li>session很容易失效,用户体验很差;</li>
+</ol>
 
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/24/200424js%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Zhang Yin">
+      <meta itemprop="description" content="zoeee">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/24/200424js%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">200424js的基本数据结构</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-24 15:30:05" itemprop="dateCreated datePublished" datetime="2020-04-24T15:30:05+08:00">2020-04-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-25 11:30:59" itemprop="dateModified" datetime="2020-04-25T11:30:59+08:00">2020-04-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h4><p><strong>栈是一个线性结构.</strong><br><strong>栈的特点是只能在某一端添加或者删除数据,遵循先进后出的原则</strong></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/24/200424js%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/24/200424%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98(%E9%98%BF%E9%87%8C%E7%AF%87)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Zhang Yin">
+      <meta itemprop="description" content="zoeee">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZY">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/24/200424%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98(%E9%98%BF%E9%87%8C%E7%AF%87)/" class="post-title-link" itemprop="url">200424一些面试题(阿里篇)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-24 14:57:35" itemprop="dateCreated datePublished" datetime="2020-04-24T14:57:35+08:00">2020-04-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-06 10:06:11" itemprop="dateModified" datetime="2020-05-06T10:06:11+08:00">2020-05-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>根据网上一篇大厂的面试题总结(阿里篇)<a href="https://segmentfault.com/a/1190000020296556" target="_blank" rel="noopener">地址</a></strong></p>
+<h4 id="用js描述一棵树"><a href="#用js描述一棵树" class="headerlink" title="用js描述一棵树"></a>用js描述一棵树</h4>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/24/200424%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98(%E9%98%BF%E9%87%8C%E7%AF%87)/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1165,7 +1158,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1233,20 +1226,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1293,7 +1286,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共23.8k字</span>
+  <span class="post-count">博客全站共57.5k字</span>
 </div>
 
 <div class="copyright">

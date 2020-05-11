@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="JsArray concat()  连接两个或更多数组 join()  将数组以参数连接成字符串,传参空字符串,能变成纯字符串 pop()  删除,并返回最后一个元素 push()  向末尾添加元素,返回长度 reserve()   颠倒顺序  shift()  删除并返回第一个元素 slice()  返回已有的元素 sort()  根据传入的函数排序  ,return a-b 升序, b-a 降">
+<meta property="og:type" content="article">
+<meta property="og:title" content="200504前端常用的对象方法">
+<meta property="og:url" content="http://yoursite.com/2020/05/04/200504js%E5%B8%B8%E7%94%A8%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="ZY">
+<meta property="og:description" content="JsArray concat()  连接两个或更多数组 join()  将数组以参数连接成字符串,传参空字符串,能变成纯字符串 pop()  删除,并返回最后一个元素 push()  向末尾添加元素,返回长度 reserve()   颠倒顺序  shift()  删除并返回第一个元素 slice()  返回已有的元素 sort()  根据传入的函数排序  ,return a-b 升序, b-a 降">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-04T08:59:51.000Z">
+<meta property="article:modified_time" content="2020-05-04T11:21:30.544Z">
+<meta property="article:author" content="Zhang Yin">
+<meta property="article:tag" content="Js">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/05/04/200504js%E5%B8%B8%E7%94%A8%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>200504前端常用的对象方法 | ZY</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ZY</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">My Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/04/200504js%E5%B8%B8%E7%94%A8%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Zhang Yin">
+      <meta itemprop="description" content="zoeee">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZY">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          200504前端常用的对象方法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-04 16:59:51 / 修改时间：19:21:30" itemprop="dateCreated datePublished" datetime="2020-05-04T16:59:51+08:00">2020-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Js"><a href="#Js" class="headerlink" title="Js"></a>Js</h1><h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><ul>
+<li>concat()  连接两个或更多数组</li>
+<li>join()  将数组以参数连接成字符串,传参空字符串,能变成纯字符串</li>
+<li>pop()  删除,并返回最后一个元素</li>
+<li>push()  向末尾添加元素,返回长度</li>
+<li>reserve()   颠倒顺序 </li>
+<li>shift()  删除并返回第一个元素</li>
+<li>slice()  返回已有的元素</li>
+<li>sort()  根据传入的函数排序  ,return a-b 升序, b-a 降序</li>
+<li>splice()  删除元素,并向元素添加新元素</li>
+<li>unshift()  向开头添加一个或更多元素</li>
+<li>indexOf()  查找下标</li>
+</ul>
+<hr>
+<p>新增方法</p>
+<ul>
+<li>includes()  是否含有</li>
+<li>find()  找到第一个符合条件的,找不到返回undefined</li>
+<li>findIndex()  如上,找不到返回-1</li>
+<li>flat()  降维    参数为最多把X层的数组降维,Infinity</li>
+<li>from()  将类数组转化为数组</li>
+<li>fill()   填充</li>
+</ul>
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><ul>
+<li>charAt()  返回指定位置的字符</li>
+<li>concat()  连接字符串</li>
+<li>indexOf()  检索字符串中第一个符合条件的下标</li>
+<li>lastIndexOf()  从后开始找第一个</li>
+<li>includes()  是否含有</li>
+<li>replace()  替换</li>
+<li>match()  找到一个或多个正则匹配</li>
+<li>search()  找到匹配正则的值</li>
+<li>slice()  截取字符串,并返回被提取的部分</li>
+<li>substr()  按起始位置和长度截取字符串</li>
+<li>substring()  截取字符串,并返回被提取的部分 字符串专用,按小的那个数值为起始</li>
+<li>toLowerCase()/toUpperCase()  大小写</li>
+</ul>
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><ul>
+<li>create()  创建一个对象,Object.create(null) 能创建一个原型为空的对象</li>
+<li>defineProperty()  定义对象属性,可以通过劫持属性实现双向绑定</li>
+<li>keys()   遍历可枚举的属性</li>
+<li>values()  遍历可枚举的属性值</li>
+<li>getPrototypeOf()  获取指定对象的原型</li>
+<li>setPrototypeOf()  </li>
+<li>getOwnPropertyNames()  与keys相似，但包含遍历包含不可枚举属性</li>
+<li>getOwnPropertyDescriptor()  获取该属性的描述对象</li>
+<li>entries()  分割对象</li>
+<li>is()  它用来比较两个值是否严格相等，与严格比较运算符（===）的行为基本一致</li>
+<li>hasOwnProperty()  方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性</li>
+<li>isPrototypeOf()    用于测试一个对象是否存在于另一个对象的原型链上</li>
+<li>caller()  返回当前函数的调用者</li>
+</ul>
+<h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><ul>
+<li>random() 返回0-1的随机数</li>
+<li>round(x) 把数四舍五入为最接近的整数。</li>
+<li>floor(x) 向下取整</li>
+<li>ceil(x) 向上取整</li>
+</ul>
+<h2 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h2><ul>
+<li>Date的  是关于日期</li>
+<li>Time的 是关于时间</li>
+<li>toLocaleString() 根据本地时间格式，把 Date 对象转换为字符串。</li>
+</ul>
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><ul>
+<li>onblur()   失去焦点</li>
+<li>onclick()    单击</li>
+<li>ondblclick()   双击</li>
+<li>onchange()   改变</li>
+<li>onfocus()    获得焦点</li>
+<li>onload()    加载成功</li>
+<li>onerror()    加载失败</li>
+<li>onreset()    点击重置</li>
+<li>onsubmit()   点击提交</li>
+</ul>
+<h1 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h1><h2 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h2><blockquote>
+<p>浏览器中打开的窗口。并为每个框架创建一个额外的 window 对象。</p>
+</blockquote>
+<ul>
+<li>close() 关闭浏览器窗口</li>
+<li>confirm()    显示带有一段消息以及确认按钮和取消按钮的对话框。<h2 id="Navigator"><a href="#Navigator" class="headerlink" title="Navigator"></a>Navigator</h2><blockquote>
+<p>Navigator 对象包含有关浏览器的信息。</p>
+</blockquote>
+<h2 id="History"><a href="#History" class="headerlink" title="History"></a>History</h2></li>
+<li>back()    加载 history 列表中的前一个 URL。</li>
+<li>forward()    加载 history 列表中的下一个 URL。</li>
+<li>go()    加载 history 列表中的某个具体页面。<h2 id="Screen"><a href="#Screen" class="headerlink" title="Screen"></a>Screen</h2><blockquote>
+<p>Screen 对象包含有关客户端显示屏幕的信息。</p>
+</blockquote>
+<h2 id="Location"><a href="#Location" class="headerlink" title="Location"></a>Location</h2><blockquote>
+<p>Location 对象包含有关当前 URL 的信息。</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="Document-对象"><a href="#Document-对象" class="headerlink" title="Document 对象"></a>Document 对象</h2><blockquote>
+<p>每个载入浏览器的 HTML 文档都会成为 Document 对象。<br>Document 对象使我们可以从脚本中对 HTML 页面中的所有元素进行访问。</p>
+</blockquote>
+<h2 id="Element"><a href="#Element" class="headerlink" title="Element"></a>Element</h2><blockquote>
+<p>在 HTML DOM （文档对象模型）中，每个部分都是节点：</p>
+</blockquote>
+<ol>
+<li>文档本身是文档节点</li>
+<li>所有 HTML 元素是元素节点</li>
+<li>所有 HTML 属性是属性节点</li>
+<li>HTML 元素内的文本是文本节点</li>
+<li>注释是注释节点<h2 id="Attribute"><a href="#Attribute" class="headerlink" title="Attribute"></a>Attribute</h2><blockquote>
+<p>在 HTML DOM 中，Attr 对象表示 HTML 属性。HTML 属性始终属于 HTML 元素。</p>
+</blockquote>
+<h2 id="Event"><a href="#Event" class="headerlink" title="Event"></a>Event</h2><blockquote>
+<p>Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。<br>事件通常与函数结合使用，函数不会在事件发生前被执行！</p>
+</blockquote>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+
+      <div>
+        
+          <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------　　　　本文结束　<i class="fa fa-heart"></i>　感谢您的阅读　　　　-------------</div>
+    
+</div>
+        
+      </div>
+
+      
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Js/" rel="tag"># Js</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/04/200504%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="prev" title="200504排序算法">
+      <i class="fa fa-chevron-left"></i> 200504排序算法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/04/200504Vue%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98/" rel="next" title="200504Vue面试问题">
+      200504Vue面试问题 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Js"><span class="nav-number">1.</span> <span class="nav-text">Js</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array"><span class="nav-number">1.1.</span> <span class="nav-text">Array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">1.2.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object"><span class="nav-number">1.3.</span> <span class="nav-text">Object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Math"><span class="nav-number">1.4.</span> <span class="nav-text">Math</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Date"><span class="nav-number">1.5.</span> <span class="nav-text">Date</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Events"><span class="nav-number">1.6.</span> <span class="nav-text">Events</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BOM"><span class="nav-number">2.</span> <span class="nav-text">BOM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Window"><span class="nav-number">2.1.</span> <span class="nav-text">Window</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Navigator"><span class="nav-number">2.2.</span> <span class="nav-text">Navigator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#History"><span class="nav-number">2.3.</span> <span class="nav-text">History</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Screen"><span class="nav-number">2.4.</span> <span class="nav-text">Screen</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Location"><span class="nav-number">2.5.</span> <span class="nav-text">Location</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DOM"><span class="nav-number">3.</span> <span class="nav-text">DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Document-对象"><span class="nav-number">3.1.</span> <span class="nav-text">Document 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Element"><span class="nav-number">3.2.</span> <span class="nav-text">Element</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Attribute"><span class="nav-number">3.3.</span> <span class="nav-text">Attribute</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Event"><span class="nav-number">3.4.</span> <span class="nav-text">Event</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zhang Yin"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Zhang Yin</p>
+  <div class="site-description" itemprop="description">zoeee</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Zooeeee" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Zooeeee" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/594498431@qq.com" title="E-Mail → 594498431@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/zh-cn/docs/configuration" title="https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;docs&#x2F;configuration" rel="noopener" target="_blank">Hexo</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://theme-next.iissnan.com/getting-started.html" title="http:&#x2F;&#x2F;theme-next.iissnan.com&#x2F;getting-started.html" rel="noopener" target="_blank">Next</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共57.5k字</span>
+</div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang Yin</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"./live2d_models/haruna/33/model.2017.tomo-bukatsu.low.json"},"display":{"superSample":2,"width":250,"height":400,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":false},"react":{"opacityDefault":0.5,"opacityOnHover":0},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
