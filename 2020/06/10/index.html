@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="hello world npm electron -g npx electron -v 查看版本 新建一个项目 含有一个index.html和index.js js文件代码 12345678910111213141516let electron &#x3D; require(&amp;#x27;electron&amp;#x27;)let app &#x3D; electron.app &#x2F;&#x2F;引用applet BrowserWido">
+<meta property="og:type" content="article">
+<meta property="og:title" content="200610Electron初识">
+<meta property="og:url" content="http://example.com/2020/06/10/index.html">
+<meta property="og:site_name" content="ZY">
+<meta property="og:description" content="hello world npm electron -g npx electron -v 查看版本 新建一个项目 含有一个index.html和index.js js文件代码 12345678910111213141516let electron &#x3D; require(&amp;#x27;electron&amp;#x27;)let app &#x3D; electron.app &#x2F;&#x2F;引用applet BrowserWido">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-10T02:28:01.000Z">
+<meta property="article:modified_time" content="2020-06-12T06:01:57.798Z">
+<meta property="article:author" content="Zhang Yin">
+<meta property="article:tag" content="Electron">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2020/06/10/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2020/06/10/","path":"2020/06/10/","title":"200610Electron初识"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>200610Electron初识 | ZY</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZY</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">My Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hello-world"><span class="nav-number">1.</span> <span class="nav-text">hello world</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8node%E5%8A%9F%E8%83%BD"><span class="nav-number">2.</span> <span class="nav-text">使用node功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%8E%A7%E5%88%B6%E5%8F%B0"><span class="nav-number">3.</span> <span class="nav-text">默认打开控制台</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%93%E5%BC%80%E6%96%B0%E7%AA%97%E5%8F%A3"><span class="nav-number">4.</span> <span class="nav-text">打开新窗口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95"><span class="nav-number">5.</span> <span class="nav-text">导航菜单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95"><span class="nav-number">6.</span> <span class="nav-text">右键菜单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%B3%E8%BD%AC%E9%93%BE%E6%8E%A5"><span class="nav-number">7.</span> <span class="nav-text">打开浏览器跳转链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%90%E7%AA%97%E5%8F%A3"><span class="nav-number">8.</span> <span class="nav-text">子窗口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%92%E5%88%86%E4%B8%80%E4%B8%AA%E5%8F%AF%E8%A7%86%E5%8C%BA%E5%9F%9F-%E4%BD%9C%E4%B8%BAiframe%E6%89%93%E5%BC%80%E7%BD%91%E9%A1%B5"><span class="nav-number">8.1.</span> <span class="nav-text">划分一个可视区域 作为iframe打开网页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%BF%9B%E7%A8%8B-%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%E7%BD%91%E9%A1%B5"><span class="nav-number">8.2.</span> <span class="nav-text">新建一个进程,直接打开网页</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%90%E7%AA%97%E5%8F%A3%E4%BC%A0%E7%88%B6"><span class="nav-number">9.</span> <span class="nav-text">子窗口传父</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E8%AF%9D%E6%A1%86Dialog"><span class="nav-number">10.</span> <span class="nav-text">对话框Dialog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E4%BA%8B%E4%BB%B6"><span class="nav-number">11.</span> <span class="nav-text">网络连接事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA"><span class="nav-number">12.</span> <span class="nav-text">系统消息提示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">13.</span> <span class="nav-text">注册快捷键</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E5%88%B0%E5%89%AA%E5%88%87%E6%9D%BF"><span class="nav-number">14.</span> <span class="nav-text">复制到剪切板</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zhang Yin"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Zhang Yin</p>
+  <div class="site-description" itemprop="description">zoeee</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Zooeeee" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Zooeeee" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/594498431@qq.com" title="E-Mail → 594498431@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/zh-cn/docs/configuration" title="https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;docs&#x2F;configuration" rel="noopener" target="_blank">Hexo</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://theme-next.iissnan.com/getting-started.html" title="http:&#x2F;&#x2F;theme-next.iissnan.com&#x2F;getting-started.html" rel="noopener" target="_blank">Next</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/06/10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Zhang Yin">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZY">
+      <meta itemprop="description" content="zoeee">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="200610Electron初识 | ZY">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          200610Electron初识
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-06-10 10:28:01" itemprop="dateCreated datePublished" datetime="2020-06-10T10:28:01+08:00">2020-06-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-06-12 14:01:57" itemprop="dateModified" datetime="2020-06-12T14:01:57+08:00">2020-06-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <span id="more"></span>
+<h1 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h1><ol>
+<li>npm electron -g</li>
+<li>npx electron -v 查看版本</li>
+<li>新建一个项目</li>
+<li>含有一个index.html和index.js</li>
+<li>js文件代码 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> electron = <span class="built_in">require</span>(<span class="string">&#x27;electron&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> app = electron.<span class="property">app</span> <span class="comment">//引用app</span></span><br><span class="line"><span class="keyword">let</span> <span class="title class_">BrowserWidow</span> = electron.<span class="property">BrowserWindow</span>  <span class="comment">// 窗口引用</span></span><br><span class="line"><span class="keyword">let</span> mainWindow = <span class="literal">null</span>; <span class="comment">// 声明要打开的主窗口</span></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">on</span>(<span class="string">&#x27;ready&#x27;</span>,<span class="function">()=&gt;</span>&#123; <span class="comment">// 监听准备完成事件</span></span><br><span class="line">  mainWindow = <span class="keyword">new</span> <span class="title class_">BrowserWidow</span>(&#123;</span><br><span class="line">    <span class="attr">width</span>: <span class="number">300</span>,</span><br><span class="line">    <span class="attr">height</span>: <span class="number">300</span></span><br><span class="line">  &#125;);<span class="comment">// 设置窗口大小</span></span><br><span class="line">  mainWindow.<span class="title function_">loadFile</span>(<span class="string">&#x27;index.html&#x27;</span>) <span class="comment">// 加载入口html</span></span><br><span class="line">  mainWindow.<span class="title function_">on</span>(<span class="string">&#x27;close&#x27;</span>,<span class="function">()=&gt;</span>&#123;   <span class="comment">// 监听关闭事件,释放内存</span></span><br><span class="line">    mainWindow = <span class="literal">null</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>命令行: electron index.js</li>
+</ol>
+<h1 id="使用node功能"><a href="#使用node功能" class="headerlink" title="使用node功能"></a>使用node功能</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">on</span>(<span class="string">&#x27;ready&#x27;</span>,<span class="function">()=&gt;</span>&#123; <span class="comment">// 监听准备完成事件</span></span><br><span class="line">  mainWindow = <span class="keyword">new</span> <span class="title class_">BrowserWidow</span>(&#123;</span><br><span class="line">    <span class="attr">width</span>: <span class="number">800</span>,</span><br><span class="line">    <span class="attr">height</span>: <span class="number">800</span>,</span><br><span class="line">    <span class="attr">webPreferences</span>: &#123;<span class="attr">nodeIntegration</span>: <span class="literal">true</span>&#125; <span class="comment">// 允许使用node原生api</span></span><br><span class="line">  &#125;);<span class="comment">// 设置窗口大小</span></span><br><span class="line">  mainWindow.<span class="title function_">loadFile</span>(<span class="string">&#x27;index.html&#x27;</span>) <span class="comment">// 加载入口html</span></span><br><span class="line">  mainWindow.<span class="title function_">on</span>(<span class="string">&#x27;close&#x27;</span>,<span class="function">()=&gt;</span>&#123;   <span class="comment">// 监听关闭事件,释放内存</span></span><br><span class="line">    mainWindow = <span class="literal">null</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="默认打开控制台"><a href="#默认打开控制台" class="headerlink" title="默认打开控制台"></a>默认打开控制台</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 主进程 app.on中</span></span><br><span class="line"> mainWindow.<span class="property">webContents</span>.<span class="title function_">openDevTools</span>(&#123;<span class="attr">mode</span>:<span class="string">&#x27;right&#x27;</span>&#125;) <span class="comment">// 开启控制台  - 右侧</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="打开新窗口"><a href="#打开新窗口" class="headerlink" title="打开新窗口"></a>打开新窗口</h1><p>重要代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> browserWindow = <span class="built_in">require</span>(<span class="string">&#x27;electron&#x27;</span>).<span class="property">remote</span>.<span class="property">BrowserWindow</span></span><br></pre></td></tr></table></figure>
+<p>remote提供打开一个新窗口的方法<br>其余操作与主窗口相似</p>
+<h1 id="导航菜单"><a href="#导航菜单" class="headerlink" title="导航菜单"></a>导航菜单</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 主进程中</span></span><br><span class="line">app.<span class="title function_">on</span>(<span class="string">&#x27;ready&#x27;</span>,<span class="function">()=&gt;</span>&#123; <span class="comment">// 监听准备完成事件</span></span><br><span class="line">  mainWindow = <span class="keyword">new</span> <span class="title class_">BrowserWidow</span>(&#123;</span><br><span class="line">    <span class="attr">width</span>: <span class="number">800</span>,</span><br><span class="line">    <span class="attr">height</span>: <span class="number">800</span>,</span><br><span class="line">    <span class="attr">webPreferences</span>: &#123;<span class="attr">nodeIntegration</span>: <span class="literal">true</span>&#125;</span><br><span class="line">  &#125;);<span class="comment">// 设置窗口大小</span></span><br><span class="line">  <span class="comment">//!重点</span></span><br><span class="line">  <span class="built_in">require</span>(<span class="string">&#x27;./main/Menu.js&#x27;</span>)  <span class="comment">// 加载Menu.js中对于导航菜单的配置</span></span><br><span class="line">  mainWindow.<span class="title function_">loadFile</span>(<span class="string">&#x27;demo3.html&#x27;</span>) <span class="comment">// 加载入口html</span></span><br><span class="line">  mainWindow.<span class="title function_">on</span>(<span class="string">&#x27;close&#x27;</span>,<span class="function">()=&gt;</span>&#123;   <span class="comment">// 监听关闭事件,释放内存</span></span><br><span class="line">    mainWindow = <span class="literal">null</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// Menu.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Menu</span>, <span class="title class_">BrowserWindow</span> &#125; = <span class="built_in">require</span>(<span class="string">&#x27;electron&#x27;</span>) <span class="comment">// 引入api</span></span><br><span class="line"><span class="comment">// 配置</span></span><br><span class="line"><span class="keyword">const</span> template = [   </span><br><span class="line">  &#123;</span><br><span class="line">    label : <span class="string">&#x27;选项1&#x27;</span>,   <span class="comment">//  文字</span></span><br><span class="line">    <span class="attr">submenu</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">label</span>: <span class="string">&#x27;选项1-1&#x27;</span> ,</span><br><span class="line">        <span class="attr">accelerator</span>: <span class="string">&#x27;ctrl + n&#x27;</span>,  <span class="comment">// 快捷键</span></span><br><span class="line">        <span class="attr">click</span>: <span class="function">()=&gt;</span>&#123;   <span class="comment">// 绑定点击事件</span></span><br><span class="line">          <span class="keyword">let</span> newWin = <span class="keyword">new</span> <span class="title class_">BrowserWindow</span>(&#123;</span><br><span class="line">            <span class="attr">width</span>: <span class="number">300</span>,</span><br><span class="line">            <span class="attr">height</span>: <span class="number">300</span>,</span><br><span class="line">          &#125;);</span><br><span class="line">          newWin.<span class="title function_">loadFile</span>(<span class="string">&#x27;yellow.html&#x27;</span>)</span><br><span class="line">          newWin.<span class="title function_">on</span>(<span class="string">&#x27;close&#x27;</span>,<span class="function">()=&gt;</span>&#123;</span><br><span class="line">            newWin = <span class="literal">null</span>;</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">label</span>: <span class="string">&#x27;选项1-2&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    label : <span class="string">&#x27;选项2&#x27;</span>,</span><br><span class="line">    <span class="attr">submenu</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">label</span>: <span class="string">&#x27;选项2-1&#x27;</span> </span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">label</span>: <span class="string">&#x27;选项2-2&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> m = <span class="title class_">Menu</span>.<span class="title function_">buildFromTemplate</span>(template) <span class="comment">//构建菜单</span></span><br><span class="line"><span class="title class_">Menu</span>.<span class="title function_">setApplicationMenu</span>(m)   <span class="comment">// 设置菜单</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="右键菜单"><a href="#右键菜单" class="headerlink" title="右键菜单"></a>右键菜单</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 某一个渲染进程中</span></span><br><span class="line"><span class="keyword">const</span> &#123; remote &#125; = <span class="built_in">require</span>(<span class="string">&#x27;electron&#x27;</span>)</span><br><span class="line"><span class="comment">// 右键菜单</span></span><br><span class="line"><span class="keyword">let</span> rightTemplate = [</span><br><span class="line">  &#123; <span class="attr">label</span>: <span class="string">&#x27;复制&#x27;</span>,<span class="attr">accelerator</span>: <span class="string">&#x27;ctrl+c&#x27;</span>&#125;,</span><br><span class="line">  &#123; <span class="attr">label</span>: <span class="string">&#x27;粘贴&#x27;</span>,<span class="attr">accelerator</span>: <span class="string">&#x27;ctrl+v&#x27;</span>&#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;contextmenu&#x27;</span>,<span class="function">(<span class="params">e</span>)=&gt;</span>&#123; <span class="comment">// 绑定点击右键事件</span></span><br><span class="line">  e.<span class="title function_">preventDefault</span>(); <span class="comment">// 阻止默认事件</span></span><br><span class="line">  remote.<span class="property">Menu</span>.<span class="title function_">buildFromTemplate</span>(rightTemplate).<span class="title function_">popup</span>(&#123;</span><br><span class="line">    <span class="attr">window</span>: remote.<span class="title function_">getCurrentWindow</span>()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="打开浏览器跳转链接"><a href="#打开浏览器跳转链接" class="headerlink" title="打开浏览器跳转链接"></a>打开浏览器跳转链接</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// render进程</span></span><br><span class="line"><span class="keyword">const</span> &#123; shell &#125; = <span class="built_in">require</span>(<span class="string">&#x27;electron&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> aHref = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#aHref&#x27;</span>);</span><br><span class="line">aHref.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>,<span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">  e.<span class="title function_">preventDefault</span>();</span><br><span class="line">  <span class="keyword">let</span> href = aHref.<span class="title function_">getAttribute</span>(<span class="string">&#x27;href&#x27;</span>);</span><br><span class="line">  shell.<span class="title function_">openExternal</span>(href)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="子窗口"><a href="#子窗口" class="headerlink" title="子窗口"></a>子窗口</h1><h2 id="划分一个可视区域-作为iframe打开网页"><a href="#划分一个可视区域-作为iframe打开网页" class="headerlink" title="划分一个可视区域 作为iframe打开网页"></a>划分一个可视区域 作为iframe打开网页</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 主进程, app.on</span></span><br><span class="line"><span class="comment">// 子窗口网页</span></span><br><span class="line">  <span class="keyword">let</span> view = <span class="keyword">new</span> electron.<span class="title class_">BrowserView</span>();</span><br><span class="line">  mainWindow.<span class="title function_">setBrowserView</span>(view);</span><br><span class="line">  view.<span class="title function_">setBounds</span>(&#123;</span><br><span class="line">    <span class="attr">x</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">y</span>: <span class="number">50</span>,</span><br><span class="line">    <span class="attr">width</span>: <span class="number">600</span>,</span><br><span class="line">    <span class="attr">height</span>: <span class="number">600</span></span><br><span class="line">  &#125;);</span><br><span class="line">  view.<span class="property">webContents</span>.<span class="title function_">loadURL</span>(<span class="string">&#x27;http://www.baidu.com&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="新建一个进程-直接打开网页"><a href="#新建一个进程-直接打开网页" class="headerlink" title="新建一个进程,直接打开网页"></a>新建一个进程,直接打开网页</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 渲染进程  render</span></span><br><span class="line"><span class="keyword">let</span> mybtn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#mybtn&#x27;</span>);</span><br><span class="line">mybtn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">  e.<span class="title function_">preventDefault</span>();</span><br><span class="line">  <span class="variable language_">window</span>.<span class="title function_">open</span>(<span class="string">&#x27;http://www.baidu.com&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="子窗口传父"><a href="#子窗口传父" class="headerlink" title="子窗口传父"></a>子窗口传父</h1><ol>
+<li>子窗口通过window.opener.postMessage 方法传递信息,openr指的是打开该子窗口的父窗口</li>
+<li>父窗口监听message事件 获得信息<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 子窗口 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>我是子窗口<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;mybtn&quot;</span>&gt;</span>向父窗口传递信息<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> mybtn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#mybtn&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  mybtn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> text = <span class="string">&quot;我是子窗口传递的信息&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">window</span>.<span class="property">opener</span>.<span class="title function_">postMessage</span>(text);</span></span><br><span class="line"><span class="language-javascript">  &#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父窗口render</span></span><br><span class="line"><span class="keyword">let</span> mybtn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#mybtn&#x27;</span>);</span><br><span class="line">mybtn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">  e.<span class="title function_">preventDefault</span>();</span><br><span class="line">  <span class="variable language_">window</span>.<span class="title function_">open</span>(<span class="string">&#x27;./_popup_page.html&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// window监听message事件</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;message&#x27;</span>, <span class="function">(<span class="params">msg</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#mytext&#x27;</span>).<span class="property">innerHTML</span> = msg.<span class="property">data</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="对话框Dialog"><a href="#对话框Dialog" class="headerlink" title="对话框Dialog"></a>对话框Dialog</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;openBtn&quot;</span>&gt;</span>打开文件<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;saveBtn&quot;</span>&gt;</span>保存<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;msgBtn&quot;</span>&gt;</span>消息对话框<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">id</span>=<span class="string">&quot;img&quot;</span> <span class="attr">width</span>=<span class="string">&quot;300&quot;</span> <span class="attr">height</span>=<span class="string">&quot;300&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> &#123; dialog &#125; = <span class="built_in">require</span>(<span class="string">&#x27;electron&#x27;</span>).<span class="property">remote</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> openBtn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#openBtn&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  openBtn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    dialog.<span class="title function_">showOpenDialog</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">title</span>: <span class="string">&#x27;自定义对话框标题&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">defaultPath</span>: <span class="string">&#x27;1.jpg&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">filters</span>:[&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">name</span>: <span class="string">&#x27;img&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">extensions</span>: [<span class="string">&#x27;jpg&#x27;</span>],</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">buttonLabel</span>: <span class="string">&#x27;自定义按键标签&#x27;</span></span></span><br><span class="line"><span class="language-javascript">      &#125;]</span></span><br><span class="line"><span class="language-javascript">    &#125;).<span class="title function_">then</span>( <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#img&#x27;</span>).<span class="title function_">setAttribute</span>(<span class="string">&#x27;src&#x27;</span>,res.<span class="property">filePaths</span>[<span class="number">0</span>])</span></span><br><span class="line"><span class="language-javascript">    &#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(err))</span></span><br><span class="line"><span class="language-javascript">  &#125;)</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> saveBtn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#saveBtn&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  saveBtn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    dialog.<span class="title function_">showSaveDialog</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">title</span>:<span class="string">&#x27;保存&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">    &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span></span><br><span class="line"><span class="language-javascript">      fs.<span class="title function_">writeFileSync</span>(res.<span class="property">filePath</span>, <span class="string">&#x27;保存txt的内容&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    &#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(err))</span></span><br><span class="line"><span class="language-javascript">  &#125;)</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> msgBtn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#msgBtn&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  msgBtn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    dialog.<span class="title function_">showMessageBox</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">type</span>: <span class="string">&#x27;warning&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">title</span>: <span class="string">&#x27;消息对话框标题&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">message</span>: <span class="string">&#x27;描述&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">buttons</span>: [<span class="string">&#x27;按键1&#x27;</span>,<span class="string">&#x27;按键2&#x27;</span>]</span></span><br><span class="line"><span class="language-javascript">    &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;根据按键返回的res是按键的下标&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">  &#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="网络连接事件"><a href="#网络连接事件" class="headerlink" title="网络连接事件"></a>网络连接事件</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;online&#x27;</span>,<span class="function">()=&gt;</span>&#123;&#125;)</span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;offline&#x27;</span>,<span class="function">()=&gt;</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="系统消息提示"><a href="#系统消息提示" class="headerlink" title="系统消息提示"></a>系统消息提示</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;btn&quot;</span>&gt;</span>系统通知消息<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> &gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> option = &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">title</span>: <span class="string">&#x27;自定义标题&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">body</span>: <span class="string">&#x27;内容&#x27;</span></span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#btn&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>,<span class="function">()=&gt;</span>&#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">new</span> <span class="variable language_">window</span>.<span class="title class_">Notification</span>(option.<span class="property">title</span>,option)</span></span><br><span class="line"><span class="language-javascript">  &#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="注册快捷键"><a href="#注册快捷键" class="headerlink" title="注册快捷键"></a>注册快捷键</h1><p>在全局中注册,就要在主进程中写代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> globalShortcut = electron.<span class="property">globalShortcut</span>;</span><br><span class="line"><span class="comment">// app.on 中</span></span><br><span class="line"><span class="comment">// 注册</span></span><br><span class="line">globalShortcut.<span class="title function_">register</span>(<span class="string">&#x27;ctrl+e&#x27;</span>,<span class="function">()=&gt;</span>&#123;</span><br><span class="line">  <span class="comment">//具体代码</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//判断是否注册</span></span><br><span class="line">globalShortcut.<span class="title function_">isRegistered</span>(<span class="string">&#x27;ctrl+e&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注销,在app.on(&#x27;will-quit&#x27;)中</span></span><br><span class="line">app.<span class="title function_">on</span>(<span class="string">&#x27;will-quit&#x27;</span>,<span class="function">()=&gt;</span>&#123;</span><br><span class="line">  <span class="comment">// 注销某一个</span></span><br><span class="line">  globalShortcut.<span class="title function_">unregister</span>(<span class="string">&#x27;ctrl+e&#x27;</span>)</span><br><span class="line">  <span class="comment">// 注销全部</span></span><br><span class="line">  globalShortcut.<span class="title function_">unregisterAll</span>()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="复制到剪切板"><a href="#复制到剪切板" class="headerlink" title="复制到剪切板"></a>复制到剪切板</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  要复制的内容:<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;text&quot;</span>&gt;</span>dwdafraferasxdacvwfr<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;btn&quot;</span>&gt;</span>复制到剪切板<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> &#123;clipboard&#125; = <span class="built_in">require</span>(<span class="string">&#x27;electron&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> text = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#text&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#btn&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    clipboard.<span class="title function_">writeText</span>(text.<span class="property">innerHTML</span>)</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">alert</span>(<span class="string">&#x27;成功&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">  &#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Electron/" rel="tag"># Electron</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/05/21/" rel="prev" title="200521手写vue-admin简易版遇到的问题">
+                  <i class="fa fa-chevron-left"></i> 200521手写vue-admin简易版遇到的问题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/06/15/" rel="next" title="200615js中的正则表达式">
+                  200615js中的正则表达式 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang Yin</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"./live2d_models/haruna/33/model.2017.tomo-bukatsu.low.json"},"display":{"superSample":2,"width":250,"height":400,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false},"react":{"opacityDefault":0.5,"opacityOnHover":0},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

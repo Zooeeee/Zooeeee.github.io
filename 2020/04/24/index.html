@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="根据网上一篇大厂的面试题总结(阿里篇)地址 用js描述一棵树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="200424一些面试题(阿里篇)">
+<meta property="og:url" content="http://example.com/2020/04/24/index.html">
+<meta property="og:site_name" content="ZY">
+<meta property="og:description" content="根据网上一篇大厂的面试题总结(阿里篇)地址 用js描述一棵树">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-24T06:57:35.000Z">
+<meta property="article:modified_time" content="2020-05-13T06:31:17.955Z">
+<meta property="article:author" content="Zhang Yin">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2020/04/24/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2020/04/24/","path":"2020/04/24/","title":"200424一些面试题(阿里篇)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>200424一些面试题(阿里篇) | ZY</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZY</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">My Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8js%E6%8F%8F%E8%BF%B0%E4%B8%80%E6%A3%B5%E6%A0%91"><span class="nav-number">1.</span> <span class="nav-text">用js描述一棵树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86%E6%A0%91"><span class="nav-number">2.</span> <span class="nav-text">非递归遍历树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%A6%E8%BF%B0js-new%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">详述js new操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E6%A8%A1%E5%BC%8Fthis%E6%8C%87%E5%90%91"><span class="nav-number">4.</span> <span class="nav-text">方法调用模式this指向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFjs%E9%97%AD%E5%8C%85"><span class="nav-number">5.</span> <span class="nav-text">什么是js闭包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%B7%A8%E5%9F%9F%E8%AE%BF%E9%97%AE"><span class="nav-number">6.</span> <span class="nav-text">如何跨域访问</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#jsonp%E6%96%B9%E5%BC%8F"><span class="nav-number">6.1.</span> <span class="nav-text">jsonp方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B7%A8%E5%9F%9F%E8%B5%84%E6%BA%90%E5%85%B1%E4%BA%ABCORS"><span class="nav-number">6.2.</span> <span class="nav-text">跨域资源共享CORS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nginx%E4%BB%A3%E7%90%86%E8%B7%A8%E5%9F%9F"><span class="nav-number">6.3.</span> <span class="nav-text">nginx代理跨域</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vue%E7%9A%84%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E5%A6%82%E4%BD%95%E9%80%9A%E4%BF%A1"><span class="nav-number">7.</span> <span class="nav-text">vue的父子组件之间如何通信</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8css%E5%86%99%E6%97%A0%E9%99%90%E5%BE%AA%E7%8E%AF%E5%8A%A8%E7%94%BB"><span class="nav-number">8.</span> <span class="nav-text">用css写无限循环动画</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80"><span class="nav-number">9.</span> <span class="nav-text">如何响应式布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%B8%85%E9%99%A4float"><span class="nav-number">10.</span> <span class="nav-text">如何清除float</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%8B%E5%86%99jsonp"><span class="nav-number">11.</span> <span class="nav-text">手写jsonp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A6%81%E6%AD%A2%E8%B7%A8%E5%9F%9F"><span class="nav-number">12.</span> <span class="nav-text">为什么禁止跨域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="nav-number">13.</span> <span class="nav-text">OSI七层模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B-%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="nav-number">14.</span> <span class="nav-text">tcp三次握手 四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="nav-number">14.1.</span> <span class="nav-text">三次握手</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="nav-number">14.2.</span> <span class="nav-text">四次挥手</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E5%92%8C4%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-number">14.3.</span> <span class="nav-text">3和4的原因:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%9C%80%E5%90%8E%E8%BF%98%E8%A6%81%E7%AD%89%E5%BE%852MSL%EF%BC%9F"><span class="nav-number">14.4.</span> <span class="nav-text">客户端最后还要等待2MSL？:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Timeout%E4%B8%BA%E4%BD%95%E8%83%BD%E5%9C%A8%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%9A%84js%E9%87%8C%E5%BC%82%E6%AD%A5%E6%89%A7%E8%A1%8C"><span class="nav-number">15.</span> <span class="nav-text">Timeout为何能在单线程的js里异步执行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">16.</span> <span class="nav-text">进程和线程的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%97%E8%BD%AC%E4%B8%AD%E6%96%87%E7%9A%84%E7%A8%8B%E5%BA%8F"><span class="nav-number">17.</span> <span class="nav-text">写一个数字转中文的程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#js%E5%87%BD%E6%95%B0%E4%B8%AD%E5%A6%82%E4%BD%95%E7%BB%91%E5%AE%9Athis%E5%88%B0%E6%96%B0%E5%AF%B9%E8%B1%A1%E4%B8%8A"><span class="nav-number">18.</span> <span class="nav-text">js函数中如何绑定this到新对象上</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bind%E5%92%8Ccall%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-number">19.</span> <span class="nav-text">bind和call有什么区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%8B%E5%86%99%E5%BF%AB%E6%8E%92"><span class="nav-number">20.</span> <span class="nav-text">手写快排</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%B2%E4%B8%80%E4%B8%8Bhttp%E7%8A%B6%E6%80%81%E7%A0%81-%E5%85%B6%E4%B8%AD303-304%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88"><span class="nav-number">21.</span> <span class="nav-text">讲一下http状态码 其中303 304代表什么</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">21.1.</span> <span class="nav-text">常见的状态码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%BB%E9%94%81%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E5%9B%9B%E8%A6%81%E7%B4%A0"><span class="nav-number">22.</span> <span class="nav-text">死锁的原理和四要素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">23.</span> <span class="nav-text">cookie和session的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%BA%90%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">24.</span> <span class="nav-text">同源的定义</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zhang Yin"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Zhang Yin</p>
+  <div class="site-description" itemprop="description">zoeee</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Zooeeee" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Zooeeee" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/594498431@qq.com" title="E-Mail → 594498431@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/zh-cn/docs/configuration" title="https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;docs&#x2F;configuration" rel="noopener" target="_blank">Hexo</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://theme-next.iissnan.com/getting-started.html" title="http:&#x2F;&#x2F;theme-next.iissnan.com&#x2F;getting-started.html" rel="noopener" target="_blank">Next</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/04/24/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Zhang Yin">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZY">
+      <meta itemprop="description" content="zoeee">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="200424一些面试题(阿里篇) | ZY">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          200424一些面试题(阿里篇)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-04-24 14:57:35" itemprop="dateCreated datePublished" datetime="2020-04-24T14:57:35+08:00">2020-04-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-05-13 14:31:17" itemprop="dateModified" datetime="2020-05-13T14:31:17+08:00">2020-05-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><strong>根据网上一篇大厂的面试题总结(阿里篇)<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000020296556">地址</a></strong></p>
+<h4 id="用js描述一棵树"><a href="#用js描述一棵树" class="headerlink" title="用js描述一棵树"></a>用js描述一棵树</h4><span id="more"></span>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 首先我们定义一个Node的构造函数</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Node</span>(<span class="params">data</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">left</span> = <span class="literal">null</span>;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">right</span> = <span class="literal">null</span>;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">data</span> = data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 二叉树的创建</span></span><br><span class="line"><span class="comment">  * 我们规定用数字0表示为空节点</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">createTree</span> (data) &#123;</span><br><span class="line">  <span class="comment">// 取第一个值</span></span><br><span class="line">  <span class="keyword">let</span> dat = data.<span class="title function_">shift</span>();</span><br><span class="line">  <span class="keyword">let</span> p = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (dat != <span class="number">0</span>) &#123;</span><br><span class="line">    p = <span class="keyword">new</span> <span class="title class_">Node</span>(dat);</span><br><span class="line">    p.<span class="property">left</span> = <span class="title function_">createTree</span>(data);</span><br><span class="line">    p.<span class="property">right</span> = <span class="title function_">createTree</span>(data);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 构造一棵二叉树</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">5</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">7</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">root = <span class="title function_">createTree</span>(arr);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="非递归遍历树"><a href="#非递归遍历树" class="headerlink" title="非递归遍历树"></a>非递归遍历树</h4><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3eee17f3c6f4">地址</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  非递归前序遍历</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">prevTraverseUnRecursion</span> (root) &#123;</span><br><span class="line">  <span class="keyword">let</span> arr = [],node = <span class="literal">null</span>;</span><br><span class="line">  <span class="comment">// 这里arr的第一个值就是root的根节点</span></span><br><span class="line">  <span class="comment">// unshift-数组的开头添加一个值,并返回长度</span></span><br><span class="line">  arr.<span class="title function_">unshift</span>(root);</span><br><span class="line">  <span class="keyword">while</span> (arr.<span class="property">length</span> !== <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// 删除第一个元素</span></span><br><span class="line">    node = arr.<span class="title function_">shift</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(node.<span class="property">data</span>);</span><br><span class="line">    <span class="comment">// 这里先加右边的是因为待会shift取第一个,与这里加的顺序是反的</span></span><br><span class="line">    <span class="keyword">if</span> (node.<span class="property">right</span> !== <span class="literal">null</span>) &#123;</span><br><span class="line">      arr.<span class="title function_">unshift</span>(node.<span class="property">right</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (node.<span class="property">left</span> !== <span class="literal">null</span>) &#123;</span><br><span class="line">      arr.<span class="title function_">unshift</span>(node.<span class="property">left</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="详述js-new操作"><a href="#详述js-new操作" class="headerlink" title="详述js new操作"></a>详述js new操作</h4><p>new操作符新建了一个空对象，这个对象原型指向构造函数的prototype，执行构造函数后返回这个对象</p>
+<ol>
+<li>创建一个空的对象</li>
+<li>链接到原型</li>
+<li>绑定this指向，执行构造函数</li>
+<li>确保返回的是对象 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="title class_">Func</span> = <span class="keyword">function</span> (<span class="params">name,age</span>) &#123;</span><br><span class="line">   <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">   <span class="variable language_">this</span>.<span class="property">age</span> = age; </span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Func</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sayName</span>=<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">MyNew</span>(<span class="params">Func,...args</span>)&#123;</span><br><span class="line">    <span class="comment">// 新建一个原型为Func原型的对象</span></span><br><span class="line">    <span class="keyword">let</span> obj = <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="title class_">Func</span>.<span class="property"><span class="keyword">prototype</span></span>);</span><br><span class="line">    <span class="comment">// 执行构造函数,利用apply改变this指针指向obj,返回一个值</span></span><br><span class="line">    <span class="keyword">let</span> result = <span class="title class_">Func</span>.<span class="title function_">apply</span>(obj,...args)</span><br><span class="line">    <span class="comment">// 若该值是对象,则返回,若不是,返回执行过构造函数的obj</span></span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">typeof</span> result === <span class="string">&#x27;object&#x27;</span>) ? result : obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> child = <span class="title class_">MyNew</span>(<span class="title class_">Func</span>,[<span class="string">&#x27;zy&#x27;</span>,<span class="number">16</span>]);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(child);</span><br><span class="line">child.<span class="title function_">sayName</span>() <span class="comment">//zy</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(child <span class="keyword">instanceof</span>  <span class="title class_">Func</span>);   <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(child.<span class="title function_">hasOwnProperty</span>(<span class="string">&#x27;name&#x27;</span>)); <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(child.<span class="title function_">hasOwnProperty</span>(<span class="string">&#x27;age&#x27;</span>)); <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(child.<span class="title function_">hasOwnProperty</span>(<span class="string">&#x27;sayName&#x27;</span>)); <span class="comment">//false 方法在原型中</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="方法调用模式this指向"><a href="#方法调用模式this指向" class="headerlink" title="方法调用模式this指向"></a>方法调用模式this指向</h4><p><strong>在js中，this的含义比较多，在不同的情况下，代表的意义也不一样。总的来说有以下四种含义：</strong></p>
+<ol>
+<li>纯粹的函数调用:在这种模式下，this代表全局对象Global。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">x</span>=<span class="number">1</span>;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="variable language_">this</span>.<span class="property">x</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">test</span>();</span><br><span class="line"><span class="comment">//输出结果是1.</span></span><br></pre></td></tr></table></figure></li>
+<li>作为对象方法的调用:函数还可以作为某个对象的方法调用，这时this就指这个上级对象。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="variable language_">this</span>.<span class="property">x</span>);</span><br><span class="line">  &#125;</span><br><span class="line">   <span class="keyword">var</span> o=&#123;&#125;;</span><br><span class="line">    o.<span class="property">x</span>=<span class="number">1</span>;</span><br><span class="line">    o.<span class="property">m</span>=test;</span><br><span class="line">    o.<span class="title function_">m</span>();<span class="comment">//1</span></span><br></pre></td></tr></table></figure></li>
+<li>作为构造函数调用:所谓构造函数，就是通过这个函数生成一个新对象。这时，this就是指这个新对象。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x=<span class="number">2</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">test</span> () &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">x</span>=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> o=<span class="keyword">new</span> <span class="title function_">test</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(x); <span class="comment">//2</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(o.<span class="property">x</span>); <span class="comment">//1</span></span><br></pre></td></tr></table></figure></li>
+<li>apply :  apply()是函数对象的一个方法，它的作用是改变函数的调用对象，它的第一个参数就表示改变后的调用这个函数的对象。因此，this指的就是这第一个参数。<br>apply()的参数为空时，默认调用全局对象。因此运行结果是0，证明this指的是全局对象。如果写成这样：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 浏览器环境</span></span><br><span class="line"><span class="comment">// node下回找不到undefined</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">x</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> o=&#123;&#125;;</span><br><span class="line">o.<span class="property">x</span>=<span class="number">1</span>;</span><br><span class="line">o.<span class="property">m</span>=test;</span><br><span class="line">o.<span class="property">m</span>.<span class="title function_">apply</span>();<span class="comment">//0</span></span><br><span class="line">o.<span class="property">m</span>.<span class="title function_">apply</span>(o);<span class="comment">//1</span></span><br><span class="line"><span class="comment">//证明这时this代表的是对象o。</span></span><br></pre></td></tr></table></figure>
+<h4 id="什么是js闭包"><a href="#什么是js闭包" class="headerlink" title="什么是js闭包"></a>什么是js闭包</h4>闭包指的是：能够访问另一个函数作用域的变量的函数。<br>「函数」和「函数内部能访问到的变量」（也叫环境）的总和，就是一个闭包。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">outer</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">    <span class="keyword">var</span> inner = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        cosole.<span class="title function_">log</span>(a)</span><br><span class="line">    &#125;</span><br><span class="line">     retrun inner <span class="comment">//inner就是一个闭包函数，因为它能够访问到outer函数的作用域</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="如何跨域访问"><a href="#如何跨域访问" class="headerlink" title="如何跨域访问"></a>如何跨域访问</h4><p><strong>协议、域名、端口号都相同，只要有一个不相同，那么都是非同源。就连localhost=127.0.0.1 都不行</strong><br>限制情况:</p>
+<ol>
+<li>Cookie、LocalStorage 和 IndexDB 无法读取</li>
+<li>DOM 和 Js对象无法获得</li>
+<li>AJAX 请求不能发送<br>注意：对于像 img、iframe、script 等标签的 src 属性是特例，它们是可以访问非同源网站的资源的。</li>
+</ol>
+<p><em>这种标签是不会遇到’跨域’问题的，严格上来说，这不是跨域，跨域是指在脚本代码中向非同源域发送HTTP请求，这只是跨站资源请求</em></p>
+<h5 id="jsonp方式"><a href="#jsonp方式" class="headerlink" title="jsonp方式"></a>jsonp方式</h5><p>jsonp跨域是JavaScript设计模式中的一种代理模式。在<strong>html页面中通过相应的标签从不同域名下加载静态资源文件是被浏览器允许的（从js中调用不行</strong>），所以我们可以通过这个“漏洞”来进行跨域。一般，我们可以动态的创建script标签，再去请求一个带参网址来实现跨域通信。局限是只能get请求。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//原生的实现方式</span></span><br><span class="line"><span class="keyword">var</span> ajax = <span class="keyword">function</span>(<span class="params">params</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> callbackName = params.<span class="property">jsonp</span>;</span><br><span class="line">    <span class="variable language_">window</span>[callbackName] = <span class="keyword">function</span> (<span class="params">object</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;callback:&quot;</span>);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(object);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">var</span> script = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">    script.<span class="title function_">setAttribute</span>(<span class="string">&quot;type&quot;</span>,<span class="string">&quot;text/javascript&quot;</span>);</span><br><span class="line">    script.<span class="property">src</span> = params.<span class="property">url</span>+<span class="string">&#x27;?callback=&#x27;</span>+params.<span class="property">callback</span>;</span><br><span class="line">    <span class="keyword">var</span> head = <span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&#x27;head&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">    head.<span class="title function_">appendChild</span>(script);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">ajax</span>(&#123;</span><br><span class="line">    <span class="string">&quot;url&quot;</span>:<span class="string">&quot;http://localhost:3000/&quot;</span>,    <span class="comment">// 请求地址</span></span><br><span class="line">    <span class="string">&quot;callback&quot;</span>:<span class="string">&quot;success&quot;</span>,  <span class="comment">// 回调函数名为&quot;success&quot;，可以设置为合法的字符串</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//jquery实现方式</span></span><br><span class="line">$.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">    <span class="attr">url</span>:<span class="string">&#x27;http://www.xxx.com/login&#x27;</span>,</span><br><span class="line">    <span class="attr">type</span>:<span class="string">&#x27;GET&#x27;</span>,</span><br><span class="line">    <span class="attr">dataType</span>:<span class="string">&#x27;jsonp&#x27;</span>,<span class="comment">//请求方式为jsonp</span></span><br><span class="line">    <span class="attr">jsonpCallback</span>:<span class="string">&#x27;callback&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">callback</span>(<span class="params">res</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// express</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> data = &#123;</span><br><span class="line">        name : <span class="string">&#x27;zy&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    res.<span class="title function_">type</span>(<span class="string">&#x27;text/javascript&#x27;</span>)</span><br><span class="line">    <span class="comment">// 通过调用传过来的参数知道回调函数的名字,在发送请求让前端调用这个回调函数</span></span><br><span class="line">    res.<span class="title function_">send</span>(req.<span class="property">query</span>.<span class="property">callback</span>+<span class="string">&#x27;(&#x27;</span> +<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(data)+<span class="string">&#x27;)&#x27;</span>) </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>特别注意的是，上面代码里传入的callback参数是服务器传回数据后需要调用的方法，上面代码中方法是callback();<br>服务器端传回的数据格式应该是<br>callback(数据)<br>另外有时会出现406错误，这时候就需要在响应头中添加Access-Control-Allow-Origin,值为<em>，表示的是允许所有域名访问。<br>response.setHeader(“Access-Control-Allow-Origin”, “</em>“);<br>Jsonp很好用对吧，但只能get请求。</p>
+<h5 id="跨域资源共享CORS"><a href="#跨域资源共享CORS" class="headerlink" title="跨域资源共享CORS"></a>跨域资源共享CORS</h5><p>整个CORS通信过程，都是浏览器自动完成，不需要用户参与。对于开发者来说，CORS通信与同源的AJAX通信没有差别，代码完全一样。浏览器一旦发现AJAX请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉。 因此，实现CORS通信的关键<strong>是服务器</strong>。主要分为简单请求和非简单请求<br><em>请求方式为HEAD、POST 或者 GET,http头信息不超出以下字段：</em>就是简单请求.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Accept、Accept-Language </span><br><span class="line">Content-Language</span><br><span class="line">Last-Event-ID</span><br><span class="line">Content-Type(限于三个值：application/x-www-form-urlencoded、multipart/form-data、text/plain)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>简单请求<br>具体来说，就是在头信息之中，增加一个Origin字段。 下面是一个例子，浏览器发现这次跨源AJAX请求是简单请求，就自动在头信息之中，添加一个Origin字段。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">GET /cors HTTP/1.1</span><br><span class="line">Origin: http://api.bob.com</span><br><span class="line">Host: api.alice.com</span><br><span class="line">Accept-Language: en-US</span><br><span class="line">Connection: keep-alive</span><br><span class="line">User-Agent: Mozilla/5.0</span><br></pre></td></tr></table></figure></li>
+<li>非简单请求<br>非简单请求是那种对服务器有特殊要求的请求，比如请求方法是PUT或DELETE，或者Content-Type字段的类型是application/json。<br>非简单请求的CORS请求，会在正式通信之前，增加一次HTTP查询请求，称为”预检”请求（preflight）——浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些HTTP动词和头信息字段。只有得到肯定答复，浏览器才会发出正式的XMLHttpRequest请求，否则就报错。</li>
+</ol>
+<h5 id="nginx代理跨域"><a href="#nginx代理跨域" class="headerlink" title="nginx代理跨域"></a>nginx代理跨域</h5><p>跨域原理： 同源策略是浏览器的安全策略，不是HTTP协议的一部分。服务器端调用HTTP接口只是使用HTTP协议，不会执行JS脚本，不需要同源策略，也就不存在跨越问题。</p>
+<p>实现思路：通过nginx配置一个代理服务器（域名与domain1相同，端口不同）做跳板机，反向代理访问domain2接口，并且可以顺便修改cookie中domain信息，方便当前域cookie写入，实现跨域登录。</p>
+<h4 id="vue的父子组件之间如何通信"><a href="#vue的父子组件之间如何通信" class="headerlink" title="vue的父子组件之间如何通信"></a>vue的父子组件之间如何通信</h4><ol>
+<li>父传子:<br>父组件:在template中使用子组件时,动态绑定一个属性,例如’:data = this.data’.<br>子组件:在script中使用props:[‘data’],来接受这个数据</li>
+<li>子传父<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//子组件:</span><br><span class="line">&lt;input type=&quot;button&quot; @click = &quot;up()&quot;&gt;</span><br><span class="line">methods: &#123; up() &#123; this.$emit(&#x27;upup&#x27;,&#x27;hehe&#x27;); //主动触发upup方法，&#x27;hehe&#x27;为向父组件传递的数据 &#125; &#125; </span><br><span class="line">//父组件:</span><br><span class="line">&lt;div @upup = &quot;change(msg)&quot;&gt;</span><br><span class="line">methods: &#123; change(msg) &#123; this.msg = msg; &#125; &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="用css写无限循环动画"><a href="#用css写无限循环动画" class="headerlink" title="用css写无限循环动画"></a>用css写无限循环动画</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">animation-iteration-count</span>: infinite;</span><br><span class="line">//定义动画播放次数，infinite指定播放无限次数</span><br></pre></td></tr></table></figure>
+
+<h4 id="如何响应式布局"><a href="#如何响应式布局" class="headerlink" title="如何响应式布局"></a>如何响应式布局</h4><ol>
+<li>通过rem来实现响应式布局<ol>
+<li><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0,user-scaleable=no&quot;&gt;</code>先设定布局视口</li>
+<li>rem时根容器html的font-familiy大小,通常用vm设置<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* vm 把屏幕分成100份,屏幕款=100vw</span></span><br><span class="line"><span class="comment">iphone 6  375px  1vw = 3.75px</span></span><br><span class="line"><span class="comment">iphone 6  plus 414px  1vw = 4.14px</span></span><br><span class="line"><span class="comment">如果在iphone6下想得到100px,该设置多少vw呢</span></span><br><span class="line"><span class="comment">100/3.75 = 26.6666667 </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>:<span class="number">26.666667vw</span>&#125;</span><br></pre></td></tr></table></figure></li>
+<li>之后所有的单位从px转变为rem</li>
+</ol>
+</li>
+<li>通过media查询实现响应式布局<ol>
+<li><code>&lt;link res=&quot;stylesheet&quot; href=&quot;a.css&quot; media = &quot;all and (min-width:500px)&quot;&gt;</code></li>
+<li><code> @media all and (min-width:500px)&#123;&#125;</code></li>
+</ol>
+</li>
+</ol>
+<h4 id="如何清除float"><a href="#如何清除float" class="headerlink" title="如何清除float"></a>如何清除float</h4><ol>
+<li>空标签的clear<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.clear&#123;clear: both;&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;red&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;sienna&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;blue&quot;</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;clear&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>父级div定义 overflow: auto/hidden<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.over-flow&#123; overflow: auto; zoom: 1;&#125;/*zoom1; 是在处理兼容性问题*/</span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box over-flow&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;red&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;sienna&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;blue&quot;</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>使用伪元素来清除浮动(:after,注意：作用于浮动元素的父亲）,原理其实还是空标签的clear<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">.clearfix:after&#123;</span><br><span class="line">    content:&quot;&quot;;/*设置内容为空*/</span><br><span class="line">    height:0;/*高度为0*/</span><br><span class="line">    line-height:0;/*行高为0*/</span><br><span class="line">    display:block;/*将文本转为块级元素*/</span><br><span class="line">    visibility:hidden;/*将元素隐藏*/</span><br><span class="line">    clear:both;/*清除浮动*/</span><br><span class="line">&#125;</span><br><span class="line">.clearfix&#123;</span><br><span class="line">    zoom:1;/*为了兼容IE*/</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box clearfix&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;red&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;sienna&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;blue&quot;</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="手写jsonp"><a href="#手写jsonp" class="headerlink" title="手写jsonp"></a>手写jsonp</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ajax = <span class="keyword">function</span>(<span class="params">params</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> callbackName = params.<span class="property">jsonp</span>;</span><br><span class="line">    <span class="variable language_">window</span>[callbackName] = <span class="keyword">function</span> (<span class="params">json</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;callback:&quot;</span>);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(json);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">var</span> script = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">    script.<span class="title function_">setAttribute</span>(<span class="string">&quot;type&quot;</span>,<span class="string">&quot;text/javascript&quot;</span>);</span><br><span class="line">    script.<span class="property">src</span> = params.<span class="property">url</span>+params.<span class="property">jsonp</span>;</span><br><span class="line">    <span class="keyword">var</span> head = <span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&#x27;head&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">    head.<span class="title function_">appendChild</span>(script);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">ajax</span>(&#123;</span><br><span class="line">    <span class="string">&quot;url&quot;</span>:<span class="string">&quot;/userInvite/saveLog.do?regKey=eUa%252Fv70AeBC2QolRKlUNJA%253D%253D&amp;refererUrl=www.baidu.com&amp;guid=&amp;callback=&quot;</span>,    <span class="comment">// 请求地址</span></span><br><span class="line">    <span class="string">&quot;jsonp&quot;</span>:<span class="string">&quot;success_jsonpCallback&quot;</span>,  <span class="comment">// 回调函数名为&quot;success_jsonpCallback&quot;，可以设置为合法的字符串</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="为什么禁止跨域"><a href="#为什么禁止跨域" class="headerlink" title="为什么禁止跨域"></a>为什么禁止跨域</h4><p>跨域的访问会带来许多安全性的问题，比如，cookie一般用于状态控制，常用于存储登录的信息，如果允许跨域访问，那么别的网站只需要一段脚本就可以获取你的cookie，从而冒充你的身份去登录网站，造成非常大的安全问题，因此，现代浏览器均推行同源策略。</p>
+<h4 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h4><ul>
+<li>物理层  线</li>
+<li>数据链路  mac</li>
+<li>网络层    ip</li>
+<li>传输层   tcp udp</li>
+<li>会话层   进程</li>
+<li>表示层  :数据的表示 ,安全 ,压缩:jpeg,ASCII</li>
+<li>应用层  :http</li>
+</ul>
+<h4 id="tcp三次握手-四次挥手"><a href="#tcp三次握手-四次挥手" class="headerlink" title="tcp三次握手 四次挥手"></a>tcp三次握手 四次挥手</h4><h5 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h5><ol>
+<li>第一次握手：建立连接时，客户端发送syn包（syn=x）到服务器，并进入SYN_SENT状态，等待服务器确认；SYN：同步序列编号（Synchronize Sequence Numbers）。</li>
+<li>第二次握手：服务器收到syn包，必须确认客户的SYN（ack=x+1），同时自己也发送一个SYN包（syn=y），即<strong>SYN+ACK</strong>包，此时服务器进入SYN_RECV状态；</li>
+<li>第三次握手：客户端收到服务器的SYN+ACK包，向服务器发送确认包ACK(ack=y+1），此包发送完毕，客户端和服务器进入ESTABLISHED（TCP连接成功）状态，完成三次握手。</li>
+</ol>
+<h5 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h5><ol>
+<li>第一次挥手：客户端发出释放<strong>FIN=1</strong>，自己序列号seq=u，进入FIN-WAIT-1状态</li>
+<li>第二次挥手：服务器收到客户端的后，发出<strong>ACK=1</strong>确认标志和客户端的确认号ack=u+1，自己的序列号seq=v，进入CLOSE-WAIT状态</li>
+<li>第三次挥手：客户端收到服务器确认结果后，进入FIN-WAIT-2状态。此时服务器发送释放<strong>FIN=1信号</strong>，确认标志ACK=1，确认序号ack=u+1，自己序号seq=w，服务器进入LAST-ACK（最后确认态）</li>
+<li>第四次挥手：客户端收到回复后，发送确认<strong>ACK=1</strong>，ack=w+1，自己的seq=u+1，客户端进入TIME-WAIT（时间等待）。客户端经过2个最长报文段寿命后，客户端CLOSE；服务器收到确认后，立刻进入CLOSE状态。</li>
+</ol>
+<h5 id="3和4的原因"><a href="#3和4的原因" class="headerlink" title="3和4的原因:"></a>3和4的原因:</h5><ul>
+<li>三次握手时，服务器同时把ACK和SYN放在一起发送到了客户端那里</li>
+<li>四次挥手时，当收到对方的 FIN 报文时，仅仅表示对方不再发送数据了但是还能接收数据，己方是否现在关闭发送数据通道，需要上层应用来决定，因此，己方 ACK 和 FIN 一般都会分开发送。</li>
+</ul>
+<h5 id="客户端最后还要等待2MSL？"><a href="#客户端最后还要等待2MSL？" class="headerlink" title="客户端最后还要等待2MSL？:"></a>客户端最后还要等待2MSL？:</h5><p>客户端需要保证最后一次发送的ACK报文到服务器，如果服务器未收到，可以请求客户端重发，这样客户端还有时间再发，重启2MSL计时。</p>
+<h4 id="Timeout为何能在单线程的js里异步执行"><a href="#Timeout为何能在单线程的js里异步执行" class="headerlink" title="Timeout为何能在单线程的js里异步执行"></a>Timeout为何能在单线程的js里异步执行</h4><p>js代码执行遇到setTimeout(fn,millisec)时，会把fn这个函数放在任务队列中，当js引擎线程空闲时并达到millisec指定的时间时，才会把fn放到js引擎线程中执行。</p>
+<p>除了放置异步任务的事件，”任务队列”还可以放置定时事件。<br>setTimeout()接受两个参数，第一个是回调函数，第二个是推迟执行的毫秒数。<br>需要注意的是，setTimeout()只是将事件插入了”任务队列”，必须等到当前代码（执行栈）执行完，主线程才会去执行它指定的回调函数。要是当前代码耗时很长，有可能要等很久，所以并没有办法保证，回调函数一定会在setTimeout()指定的时间执行。</p>
+<p>综上所属<br>setTimeout是单线程，类似异步，但不是异步 。</p>
+<h4 id="进程和线程的区别"><a href="#进程和线程的区别" class="headerlink" title="进程和线程的区别"></a>进程和线程的区别</h4><ol>
+<li>根本区别：进程是<strong>操作系统资源分配</strong>的基本单位，而线程是<strong>任务调度和执行的</strong>基本单位</li>
+<li>在开销方面：每个进程都有独立的代码和数据空间（程序上下文），程序之间的切换会有较大的开销；线程可以看做轻量级的进程，同一类线程共享代码和数据空间，每个线程都有自己独立的运行栈和程序计数器（PC），线程之间切换的开销小。</li>
+<li>所处环境：在操作系统中能同时运行多个进程（程序）；而在同一个进程（程序）中有多个线程同时执行（通过CPU调度，在每个时间片中只有一个线程执行）</li>
+<li>内存分配方面：系统在运行的时候会为每个进程分配不同的内存空间；而对线程而言，除了CPU外，系统不会为线程分配内存（线程所使用的资源来自其所属进程的资源），线程组之间只能共享资源。</li>
+<li>包含关系：没有线程的进程可以看做是单线程的，如果一个进程内有多个线程，则执行过程不是一条线的，而是多条线（线程）共同完成的；线程是进程的一部分，所以线程也被称为轻权进程或者轻量级进程。</li>
+</ol>
+<h4 id="写一个数字转中文的程序"><a href="#写一个数字转中文的程序" class="headerlink" title="写一个数字转中文的程序"></a>写一个数字转中文的程序</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">NoToChinese</span>(<span class="params">num</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="regexp">/^\d*(\.\d*)?$/</span>.<span class="title function_">test</span>(num)) &#123;</span><br><span class="line">      <span class="title function_">alert</span>(<span class="string">&#x27;Number is wrong!&#x27;</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="string">&#x27;Number is wrong!&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> <span class="variable constant_">AA</span> = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="string">&#x27;零&#x27;</span>, <span class="string">&#x27;壹&#x27;</span>, <span class="string">&#x27;贰&#x27;</span>, <span class="string">&#x27;叁&#x27;</span>, <span class="string">&#x27;肆&#x27;</span>, <span class="string">&#x27;伍&#x27;</span>, <span class="string">&#x27;陆&#x27;</span>, <span class="string">&#x27;柒&#x27;</span>, <span class="string">&#x27;捌&#x27;</span>, <span class="string">&#x27;玖&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> <span class="variable constant_">BB</span> = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;拾&#x27;</span>, <span class="string">&#x27;佰&#x27;</span>, <span class="string">&#x27;仟&#x27;</span>, <span class="string">&#x27;萬&#x27;</span>, <span class="string">&#x27;亿&#x27;</span>, <span class="string">&#x27;点&#x27;</span>, <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> a = (<span class="string">&#x27;&#x27;</span> + num).<span class="title function_">replace</span>(<span class="regexp">/(^0*)/g</span>, <span class="string">&#x27;&#x27;</span>).<span class="title function_">split</span>(<span class="string">&#x27;.&#x27;</span>),</span><br><span class="line">    k = <span class="number">0</span>,</span><br><span class="line">    re = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = a[<span class="number">0</span>].<span class="property">length</span> - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">      <span class="keyword">switch</span> (k) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">          re = <span class="variable constant_">BB</span>[<span class="number">7</span>] + re;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">          <span class="keyword">if</span> (!<span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&#x27;0&#123;4&#125;\\d&#123;&#x27;</span> + (a[<span class="number">0</span>].<span class="property">length</span> - i - <span class="number">1</span>) + <span class="string">&#x27;&#125;$&#x27;</span>).<span class="title function_">test</span>(a[<span class="number">0</span>]))</span><br><span class="line">          re = <span class="variable constant_">BB</span>[<span class="number">4</span>] + re;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">8</span>:</span><br><span class="line">          re = <span class="variable constant_">BB</span>[<span class="number">5</span>] + re;</span><br><span class="line">          <span class="variable constant_">BB</span>[<span class="number">7</span>] = <span class="variable constant_">BB</span>[<span class="number">5</span>];</span><br><span class="line">          k = <span class="number">0</span>;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (k % <span class="number">4</span> == <span class="number">2</span> &amp;&amp; a[<span class="number">0</span>].<span class="title function_">charAt</span>(i + <span class="number">2</span>) != <span class="number">0</span> &amp;&amp; a[<span class="number">0</span>].<span class="title function_">charAt</span>(i + <span class="number">1</span>) == <span class="number">0</span>) re = <span class="variable constant_">AA</span>[<span class="number">0</span>] + re;</span><br><span class="line">      <span class="keyword">if</span> (a[<span class="number">0</span>].<span class="title function_">charAt</span>(i) != <span class="number">0</span>) re = <span class="variable constant_">AA</span>[a[<span class="number">0</span>].<span class="title function_">charAt</span>(i)] + <span class="variable constant_">BB</span>[k % <span class="number">4</span>] + re;</span><br><span class="line">      k++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (a.<span class="property">length</span> &gt; <span class="number">1</span>) <span class="comment">//加上小数部分(如果有小数部分) </span></span><br><span class="line">    &#123;</span><br><span class="line">      re += <span class="variable constant_">BB</span>[<span class="number">6</span>];</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; a[<span class="number">1</span>].<span class="property">length</span>; i++) re += <span class="variable constant_">AA</span>[a[<span class="number">1</span>].<span class="title function_">charAt</span>(i)];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> re;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="js函数中如何绑定this到新对象上"><a href="#js函数中如何绑定this到新对象上" class="headerlink" title="js函数中如何绑定this到新对象上"></a>js函数中如何绑定this到新对象上</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title class_">Func</span>=<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> func=<span class="keyword">new</span> <span class="title class_">Func</span> ();</span><br><span class="line"><span class="comment">//1 创建一个空的对象</span></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line"><span class="comment">//2 链接到原型</span></span><br><span class="line">obj.<span class="property">__proto__</span>= <span class="title class_">Func</span>.<span class="property"><span class="keyword">prototype</span></span>;</span><br><span class="line"><span class="comment">//3 绑定this指向，执行构造函数</span></span><br><span class="line"><span class="keyword">var</span> result =<span class="title class_">Func</span>.<span class="title function_">call</span>(obj);</span><br><span class="line"><span class="comment">//4 判断Func的返回值类型：如果是值类型，返回obj。如果是引用类型，就返回这个引用类型的对象</span></span><br><span class="line"><span class="keyword">if</span> (<span class="title function_">typeof</span>(result) == <span class="string">&quot;object&quot;</span>)&#123;</span><br><span class="line">  func=result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">  func=obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="bind和call有什么区别"><a href="#bind和call有什么区别" class="headerlink" title="bind和call有什么区别"></a>bind和call有什么区别</h4><ol>
+<li>apply的用法可以表示如下：<br>A.apply(B, [x, y, z]);<br>此方法可以改变函数A的this指向，使之指向函数B。第二个参数传的是一个函数参数列表的数组形式。</li>
+<li>call的用法和apply差不多，就只有传参方式不一样。类似于这样 :<br>A.call(B, x, y, z)<br>可以把多个参数分开来传，而不是像apply一样，需要把所有参数放到一个数组里边传进来。</li>
+<li>bind的传参方式和call一样，只不过它的不同之处是，apply和call方法调用之后会立即执行，而bind方法调用之后会返回一个新的函数，它并不会立即执行，需要我们手动执行。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;佚名&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> age = <span class="number">20</span>;</span><br><span class="line"><span class="comment">//global.name</span></span><br><span class="line"><span class="comment">//global.age</span></span><br><span class="line"><span class="keyword">var</span> p1 = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;张三&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">12</span>,</span><br><span class="line">    <span class="attr">func</span>: <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`姓名:<span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>,年龄:<span class="subst">$&#123;<span class="variable language_">this</span>.age&#125;</span>`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p2 = &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="string">&quot;李四&quot;</span>,</span><br><span class="line">	<span class="attr">age</span>: <span class="number">15</span></span><br><span class="line">&#125;</span><br><span class="line">p1.<span class="title function_">func</span>();  <span class="comment">//姓名:张三,年龄:12</span></span><br><span class="line">p1.<span class="property">func</span>.<span class="title function_">call</span>();  <span class="comment">//姓名:佚名,年龄:20</span></span><br><span class="line">p1.<span class="property">func</span>.<span class="title function_">apply</span>(p2);  <span class="comment">//姓名:李四,年龄:15</span></span><br><span class="line">p1.<span class="property">func</span>.<span class="title function_">bind</span>(p2)(); <span class="comment">//姓名:李四,年龄:15</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="手写快排"><a href="#手写快排" class="headerlink" title="手写快排"></a>手写快排</h4><ol>
+<li>从数组中取出一个数作为基准(pivot)。</li>
+<li>在原数组中进行移动，将大于基准的数放到基准右边，小于基准的数放到基准左边，在基准左右形成两个子数组。</li>
+<li>在左右子数组中反复执行步骤1、2，直到所有子数组只剩下一个数。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">quickSort</span>(<span class="params">arr</span>)&#123;</span><br><span class="line">    <span class="comment">//如果数组&lt;=1,则直接返回</span></span><br><span class="line">    <span class="keyword">if</span>(arr.<span class="property">length</span>&lt;=<span class="number">1</span>)&#123;<span class="keyword">return</span> arr;&#125;</span><br><span class="line">    <span class="keyword">var</span> pivotIndex=<span class="title class_">Math</span>.<span class="title function_">floor</span>(arr.<span class="property">length</span>/<span class="number">2</span>);</span><br><span class="line">    <span class="comment">//找基准，并把基准从原数组删除</span></span><br><span class="line">    <span class="keyword">var</span> pivot=arr.<span class="title function_">splice</span>(pivotIndex,<span class="number">1</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="comment">//定义左右数组</span></span><br><span class="line">    <span class="keyword">var</span> left=[];</span><br><span class="line">    <span class="keyword">var</span> right=[];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//比基准小的放在left，比基准大的放在right</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr.<span class="property">length</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[i]&lt;=pivot)&#123;</span><br><span class="line">            left.<span class="title function_">push</span>(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            right.<span class="title function_">push</span>(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//递归</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">quickSort</span>(left).<span class="title function_">concat</span>([pivot],<span class="title function_">quickSort</span>(right));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="讲一下http状态码-其中303-304代表什么"><a href="#讲一下http状态码-其中303-304代表什么" class="headerlink" title="讲一下http状态码 其中303 304代表什么"></a>讲一下http状态码 其中303 304代表什么</h4><p>当浏览者访问一个网页时，浏览者的浏览器会向网页所在服务器发出请求。当浏览器接收并显示网页前，此网页所在的服务器会返回一个包含HTTP状态码的信息头（server header）用以响应浏览器的请求。<br>HTTP状态码的英文为HTTP Status Code。<br>开头信息分类</p>
+<ol>
+<li>信息，服务器收到请求，需要请求者继续执行操作</li>
+<li>成功，操作被成功接收并处理</li>
+<li>重定向，需要进一步的操作以完成请求</li>
+<li>客户端错误，请求包含语法错误或无法完成请求</li>
+<li>服务器错误，服务器在处理请求的过程中发生了错误</li>
+</ol>
+<p>303 找其他的<br>304 未修改,让客户端去找缓存文件</p>
+<h5 id="常见的状态码"><a href="#常见的状态码" class="headerlink" title="常见的状态码"></a>常见的状态码</h5><ul>
+<li>200 请求成功</li>
+<li>202 请求被接受,但尚未完成处理,   阻塞等待</li>
+<li>204 服务器端实现了请求,但是没有返回新的消息</li>
+<li>301 请求到的资源都会重新分配一个永久的url,这样将来可以通过这个url来访问此资源</li>
+<li>302 请求到的资源在一个不同的url处 临时保存</li>
+<li>304 请求的资源未更新</li>
+<li>400 非法请求,通用状态</li>
+<li>401 未授权,未认证</li>
+<li>403 请求正确,但是服务器因为一些情况 不做处理</li>
+<li>404  找不到路径</li>
+<li>405 客户端使用了本资源不支持的方法,如只支持put却用了post</li>
+<li>409 你的操作会让服务器的资源处于一种不一致的状态,如重复的用户名</li>
+<li>410 知道曾经存在,但现在不在了</li>
+<li>500 服务器问题</li>
+<li>501 服务器无法识别,服务器不支持当前请求所需要的某个功能</li>
+<li>502 错误网关</li>
+<li>503 服务器过载或者维护</li>
+</ul>
+<h4 id="死锁的原理和四要素"><a href="#死锁的原理和四要素" class="headerlink" title="死锁的原理和四要素"></a>死锁的原理和四要素</h4><p>原理:当一组进程中的每个进程都在等待某个事件发生，而只有这组进程中的其他进程才能触发该事件，这就称这组进程发生了死锁。<br>本质:系统资源有限,进程推进顺序不合理。<br>四要素:</p>
+<ol>
+<li>资源互斥 : 某种资源一次只允许一个进程访问，即该资源一旦分配给某个进程，其他进程就不能再访问，直到该进程访问结束。</li>
+<li>占有且等待 : 一个进程本身占有资源（一种或多种），同时还有资源未得到满足，正在等待其他进程释放该资源。</li>
+<li>不可抢占 : 别人已经占有了某项资源，你不能因为自己也需要该资源，就去把别人的资源抢过来。</li>
+<li>循环等待 : 存在一个进程链，使得每个进程都占有下一个进程所需的至少一种资源。</li>
+</ol>
+<h4 id="cookie和session的区别"><a href="#cookie和session的区别" class="headerlink" title="cookie和session的区别"></a>cookie和session的区别</h4><ol>
+<li>cookie数据存放在客户的浏览器上，session数据放在服务器上.客户端每次请求服务器的时候会发送 当前会话的session_id，服务器根据当前session_id判断相应的用户数据标志，以确定用户是否登录，或具有某种权限。</li>
+<li>cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗考虑到安全应当使用session。</li>
+<li>设置cookie时间可以使cookie过期。但是使用session-destory（），我们将会销毁会话。</li>
+<li>session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能考虑到减轻服务器性能方面，应当使用cookie。</li>
+<li>单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。(Session对象没有对存储的数据量的限制，其中可以保存更为复杂的数据类型)</li>
+<li> 两者最大的区别在于生存周期，一个是IE启动到IE关闭.(浏览器页面一关 ,session就消失了)，一个是预先设置的生存周期，或永久的保存于本地的文件。(cookie)</li>
+<li> Session信息是存放在server端，但session id是存放在client cookie的，当然php的session存放方法是多样化的，这样就算禁用cookie一样可以跟踪.Cookie是完全保持在客户端.<h4 id="同源的定义"><a href="#同源的定义" class="headerlink" title="同源的定义"></a>同源的定义</h4>如果两个 URL 的 protocol、port (如果有指定的话)和 host 都相同的话，则这两个 URL 是同源。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag"># 面试</a>
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/04/22/" rel="prev" title="200422CSS新特性">
+                  <i class="fa fa-chevron-left"></i> 200422CSS新特性
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/04/24/" rel="next" title="200424js的基本数据结构">
+                  200424js的基本数据结构 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang Yin</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"./live2d_models/haruna/33/model.2017.tomo-bukatsu.low.json"},"display":{"superSample":2,"width":250,"height":400,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false},"react":{"opacityDefault":0.5,"opacityOnHover":0},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

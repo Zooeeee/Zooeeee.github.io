@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="根据网上一篇大厂的面试题总结地址">
+<meta property="og:type" content="article">
+<meta property="og:title" content="200515一些面试题(网易1)">
+<meta property="og:url" content="http://example.com/2020/05/15/index.html">
+<meta property="og:site_name" content="ZY">
+<meta property="og:description" content="根据网上一篇大厂的面试题总结地址">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-15T01:40:58.000Z">
+<meta property="article:modified_time" content="2020-05-14T07:56:53.483Z">
+<meta property="article:author" content="Zhang Yin">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2020/05/15/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2020/05/15/","path":"2020/05/15/","title":"200515一些面试题(网易1)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>200515一些面试题(网易1) | ZY</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZY</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">My Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9D%97%E7%8A%B6%E5%85%83%E7%B4%A0-%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0"><span class="nav-number">1.</span> <span class="nav-text">块状元素 行内元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9D%97%E7%8A%B6%E5%85%83%E7%B4%A0"><span class="nav-number">1.1.</span> <span class="nav-text">块状元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0"><span class="nav-number">1.2.</span> <span class="nav-text">行内元素</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E8%AF%AD%E4%B9%89%E5%8C%96%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">2.</span> <span class="nav-text">标签语义化是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#css%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8"><span class="nav-number">3.</span> <span class="nav-text">css清除浮动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A9%BA%E6%A0%87%E7%AD%BE-clear-both"><span class="nav-number">3.1.</span> <span class="nav-text">空标签 clear:both</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#overflow-hidden"><span class="nav-number">3.2.</span> <span class="nav-text">overflow:hidden</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%88%B6%E5%85%83%E7%B4%A0-after-content-%E2%80%99%E2%80%99-display-block-clear-both"><span class="nav-number">3.3.</span> <span class="nav-text">父元素:after {content:’’,display:block,clear:both}</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%9B%92%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">什么是盒模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#css%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">5.</span> <span class="nav-text">css优先级</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#position%E5%B1%9E%E6%80%A7"><span class="nav-number">6.</span> <span class="nav-text">position属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D%EF%BC%9F%EF%BC%88%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2%EF%BC%8Cflex%EF%BC%8Crem%EF%BC%89%E8%BF%98%E6%9C%89viewport"><span class="nav-number">7.</span> <span class="nav-text">移动端适配？（媒体查询，flex，rem）还有viewport</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2"><span class="nav-number">7.1.</span> <span class="nav-text">媒体查询</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#px-em-rem"><span class="nav-number">8.</span> <span class="nav-text">px em rem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%92%8C-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">9.</span> <span class="nav-text">&#x3D;&#x3D;和&#x3D;&#x3D;&#x3D;的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">10.</span> <span class="nav-text">原型和原型链是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%B7%B1%E6%8B%B7%E8%B4%9D"><span class="nav-number">11.</span> <span class="nav-text">什么是深拷贝</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%90%8C%E6%AD%A5-%E4%BB%80%E4%B9%88%E6%98%AF%E5%BC%82%E6%AD%A5"><span class="nav-number">12.</span> <span class="nav-text">什么是同步 什么是异步</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C10%E4%B8%AA%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1-%EF%BC%9F"><span class="nav-number">13.</span> <span class="nav-text">如何顺序执行10个异步任务 ？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#es6-proxy%E6%98%AF%E4%BB%80%E4%B9%88-%EF%BC%9F"><span class="nav-number">14.</span> <span class="nav-text">es6 proxy是什么 ？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">14.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-number">14.2.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%A6%E6%88%AA%E6%96%B9%E6%B3%95"><span class="nav-number">14.3.</span> <span class="nav-text">拦截方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#get"><span class="nav-number">14.3.1.</span> <span class="nav-text">get</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set"><span class="nav-number">14.3.2.</span> <span class="nav-text">set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#apply"><span class="nav-number">14.3.3.</span> <span class="nav-text">apply</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#construct"><span class="nav-number">14.3.4.</span> <span class="nav-text">construct</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#has"><span class="nav-number">14.3.5.</span> <span class="nav-text">has</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ownKeys"><span class="nav-number">14.3.6.</span> <span class="nav-text">ownKeys</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F"><span class="nav-number">15.</span> <span class="nav-text">对一个对象数组排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%B1%E5%BA%8F%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F"><span class="nav-number">16.</span> <span class="nav-text">乱序一维数组排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D"><span class="nav-number">17.</span> <span class="nav-text">数组去重</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8Cgit%E7%9A%84%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86"><span class="nav-number">18.</span> <span class="nav-text">如何进行git的分支管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%89%E5%93%AA%E4%BA%9B%E7%BC%93%E5%AD%98"><span class="nav-number">19.</span> <span class="nav-text">浏览器有哪些缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#http%E7%BC%93%E5%AD%98"><span class="nav-number">19.1.</span> <span class="nav-text">http缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#websql"><span class="nav-number">19.2.</span> <span class="nav-text">websql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#indexDB"><span class="nav-number">19.3.</span> <span class="nav-text">indexDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5"><span class="nav-number">19.3.1.</span> <span class="nav-text">几个概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie"><span class="nav-number">19.4.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#localstorage"><span class="nav-number">19.5.</span> <span class="nav-text">localstorage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sessionstorage"><span class="nav-number">19.6.</span> <span class="nav-text">sessionstorage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#application-cache"><span class="nav-number">19.7.</span> <span class="nav-text">application cache</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cacheStorage"><span class="nav-number">19.8.</span> <span class="nav-text">cacheStorage</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F"><span class="nav-number">20.</span> <span class="nav-text">什么是跨域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F"><span class="nav-number">21.</span> <span class="nav-text">如何解决跨域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8D%E8%80%83%E8%99%91%E8%BF%98%E6%9C%89%E5%88%AB%E7%9A%84%E5%8A%9E%E6%B3%95"><span class="nav-number">22.</span> <span class="nav-text">不考虑还有别的办法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E7%9A%84%E4%BC%98%E5%8C%96"><span class="nav-number">23.</span> <span class="nav-text">页面性能的优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%89%E5%85%A8%E5%A4%84%E7%90%86"><span class="nav-number">24.</span> <span class="nav-text">浏览器安全处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#xss-Cross-Site-Scripting-%E9%81%BF%E5%BC%80css-%E7%AE%80%E7%A7%B0xss"><span class="nav-number">24.1.</span> <span class="nav-text">xss Cross Site Scripting 避开css 简称xss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B3%A8%E5%85%A5"><span class="nav-number">24.2.</span> <span class="nav-text">数据库注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#csrf-ross%E2%80%94Site-Request-Forgery-%E8%B7%A8%E7%AB%99%E7%82%B9%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0"><span class="nav-number">24.3.</span> <span class="nav-text">csrf  ross—Site Request Forgery  跨站点请求伪造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E"><span class="nav-number">24.4.</span> <span class="nav-text">文件上传漏洞</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%89%E6%B2%A1%E6%9C%89%E7%9C%9F%E6%9C%BA%E6%B5%8F%E8%A7%88%E5%99%A8debug%E7%BB%8F%E9%AA%8C"><span class="nav-number">25.</span> <span class="nav-text">有没有真机浏览器debug经验</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zhang Yin"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Zhang Yin</p>
+  <div class="site-description" itemprop="description">zoeee</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Zooeeee" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Zooeeee" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/594498431@qq.com" title="E-Mail → 594498431@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/zh-cn/docs/configuration" title="https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;docs&#x2F;configuration" rel="noopener" target="_blank">Hexo</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://theme-next.iissnan.com/getting-started.html" title="http:&#x2F;&#x2F;theme-next.iissnan.com&#x2F;getting-started.html" rel="noopener" target="_blank">Next</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/05/15/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Zhang Yin">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZY">
+      <meta itemprop="description" content="zoeee">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="200515一些面试题(网易1) | ZY">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          200515一些面试题(网易1)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-05-15 09:40:58" itemprop="dateCreated datePublished" datetime="2020-05-15T09:40:58+08:00">2020-05-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-05-14 15:56:53" itemprop="dateModified" datetime="2020-05-14T15:56:53+08:00">2020-05-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><strong>根据网上一篇大厂的面试题总结<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000020296556">地址</a></strong></p>
+<span id="more"></span>
+<h1 id="块状元素-行内元素"><a href="#块状元素-行内元素" class="headerlink" title="块状元素 行内元素"></a>块状元素 行内元素</h1><h2 id="块状元素"><a href="#块状元素" class="headerlink" title="块状元素"></a>块状元素</h2><p>能自己单独成行的元素,能自己控制宽高<br>h1-h6,address,center,hr,ul,ol,li,dl,table,tr,td,form,div</p>
+<h2 id="行内元素"><a href="#行内元素" class="headerlink" title="行内元素"></a>行内元素</h2><p>用来修饰文本的元素,宽高由内容决定,如<br>b,strong,em,span,a,br,i,sub,del</p>
+<h1 id="标签语义化是什么"><a href="#标签语义化是什么" class="headerlink" title="标签语义化是什么"></a>标签语义化是什么</h1><blockquote>
+<p>语义化的标签，旨在让标签有自己的含义。<br>好处:</p>
+</blockquote>
+<ol>
+<li>代码结构清晰，方便阅读，有利于团队合作开发。</li>
+<li>方便其他设备解析（如屏幕阅读器、盲人阅读器、移动设备）以语义的方式来渲染网页。</li>
+<li>有利于搜索引擎优化（SEO）。</li>
+</ol>
+<h1 id="css清除浮动"><a href="#css清除浮动" class="headerlink" title="css清除浮动"></a>css清除浮动</h1><h2 id="空标签-clear-both"><a href="#空标签-clear-both" class="headerlink" title="空标签 clear:both"></a>空标签 clear:both</h2><h2 id="overflow-hidden"><a href="#overflow-hidden" class="headerlink" title="overflow:hidden"></a>overflow:hidden</h2><h2 id="父元素-after-content-’’-display-block-clear-both"><a href="#父元素-after-content-’’-display-block-clear-both" class="headerlink" title="父元素:after {content:’’,display:block,clear:both}"></a>父元素:after {content:’’,display:block,clear:both}</h2><h1 id="什么是盒模型"><a href="#什么是盒模型" class="headerlink" title="什么是盒模型"></a>什么是盒模型</h1><p>盒模型（内容（content）,内边距（padding）,边框（border）,外边距（margin））</p>
+<h1 id="css优先级"><a href="#css优先级" class="headerlink" title="css优先级"></a>css优先级</h1><p>!important &gt; 内联 &gt; #id &gt; .class = [attr] = :hover  &gt; tag = ::after &gt; *</p>
+<h1 id="position属性"><a href="#position属性" class="headerlink" title="position属性"></a>position属性</h1><ul>
+<li>relative  相对原位置</li>
+<li>fixed   相对屏幕</li>
+<li>static   默认值</li>
+<li>absolute   相对于上一个非static定位</li>
+<li>sticky   吸附</li>
+<li>inherit   继承父元素定位</li>
+</ul>
+<h1 id="移动端适配？（媒体查询，flex，rem）还有viewport"><a href="#移动端适配？（媒体查询，flex，rem）还有viewport" class="headerlink" title="移动端适配？（媒体查询，flex，rem）还有viewport"></a>移动端适配？（媒体查询，flex，rem）还有viewport</h1><blockquote>
+<meta name="viewport" content="width=device-width,initail-scale=1.0,user-scalable=no"></meta>
+</blockquote>
+<h2 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h2><ul>
+<li><p>flex<br>流式布局,百分比,</p>
+</li>
+<li><p>rem布局<br>ip6的屏宽是374px = 100vw<br>故  想得到 100px = 100vw/37.4 = 26.66667vw<br>将rem设置为26.666667vw,并将所有px换成vw</p>
+</li>
+<li><p>@media</p>
+<ul>
+<li><code>@media screen and (max-width: 300px)</code></li>
+<li><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;print.css&quot; media=&quot;print&quot;/&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="px-em-rem"><a href="#px-em-rem" class="headerlink" title="px em rem"></a>px em rem</h1><ul>
+<li>px 分辨率单位</li>
+<li>em 当前元素字体大小</li>
+<li>rem 根元素字体大小</li>
+</ul>
+<h1 id="和-的区别"><a href="#和-的区别" class="headerlink" title="==和===的区别"></a>==和===的区别</h1><p>== 会触发一次类型转换,将类型转化成相同后开始比较<br>=== 是严格比较</p>
+<h1 id="原型和原型链是什么"><a href="#原型和原型链是什么" class="headerlink" title="原型和原型链是什么"></a>原型和原型链是什么</h1><ol>
+<li>所有引用类型都有一个__proto__(隐式原型)属性，属性值是一个普通的对象</li>
+<li>所有函数都有一个prototype(原型)属性，属性值是一个普通的对象</li>
+<li>所有引用类型的__proto__属性指向它构造函数的prototype</li>
+</ol>
+<blockquote>
+<p>当访问一个对象的某个属性时，会先在这个对象本身属性上查找，如果没有找到，则会去它的__proto__隐式原型上查找，即它的构造函数的prototype，如果还没有找到就会再在构造函数的prototype的__proto__中查找，这样一层一层向上查找就会形成一个链式结构，我们称为原型链。</p>
+</blockquote>
+<h1 id="什么是深拷贝"><a href="#什么是深拷贝" class="headerlink" title="什么是深拷贝"></a>什么是深拷贝</h1><p>引用类型是引用的内存地址,如果只是简单的let a = obj,那么a和obj都指向的同一块内存区域,达不到拷贝的效果.</p>
+<h1 id="什么是同步-什么是异步"><a href="#什么是同步-什么是异步" class="headerlink" title="什么是同步 什么是异步"></a>什么是同步 什么是异步</h1><p>js中:</p>
+<blockquote>
+<p>同步任务是指在主线程上排队执行的任务，只有前一个任务执行完毕，才能继续执行下一个任务，当我们打开网站时，网站的渲染过程，比如元素的渲染，其实就是一个同步任务</p>
+</blockquote>
+<blockquote>
+<p>异步任务是指不进入主线程，而进入任务队列的任务，只有任务队列通知主线程，某个异步任务可以执行了，该任务才会进入主线程，当我们打开网站时，像图片的加载，音乐的加载，其实就是一个异步任务</p>
+</blockquote>
+<h1 id="如何顺序执行10个异步任务-？"><a href="#如何顺序执行10个异步任务-？" class="headerlink" title="如何顺序执行10个异步任务 ？"></a>如何顺序执行10个异步任务 ？</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">produceTask</span>(<span class="params">i</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`第<span class="subst">$&#123;i&#125;</span>个任务`</span>)</span><br><span class="line">    <span class="title function_">resolve</span>(i)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getTaskArr</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> res = [];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span> ; i &lt;= <span class="number">10</span> ; i++)&#123;</span><br><span class="line">    res.<span class="title function_">push</span>(<span class="title function_">produceTask</span>(i))</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Promise</span>.<span class="title function_">all</span>(<span class="title function_">getTaskArr</span>()).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">&#125;).<span class="title function_">catch</span>(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(error)      <span class="comment">// 失败了，打出 &#x27;失败&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="es6-proxy是什么-？"><a href="#es6-proxy是什么-？" class="headerlink" title="es6 proxy是什么 ？"></a>es6 proxy是什么 ？</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><blockquote>
+<p>proxy的中文意思是“代理”，这也很形象的说明了它的功能，就是所有对对象的操作，访问也好赋值也好都必须经过它的一层处理。</p>
+</blockquote>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p><code>let proxy = new Proxy(target, handler);</code><br>target: 表示所要拦截的目标对象（对象、数组、函数等都可以）<br>handler：也是一个对象，用来定制拦截行为<br>注：要想Proxy起作用，必须针对Proxy实例进行操作，而不是目标对象</p>
+<p>如果handler是个空对象，将没有任何拦截效果，访问proxy相当于访问target</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> proxy = <span class="keyword">new</span> <span class="title class_">Proxy</span>(obj, &#123;</span><br><span class="line">    <span class="attr">get</span>: <span class="function">(<span class="params">target, prop</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;取值啦&#x27;</span>);</span><br><span class="line">        <span class="keyword">return</span> target[prop];</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">set</span>: <span class="function">(<span class="params">target, prop, value</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;赋值啦&#x27;</span>);</span><br><span class="line">        target[prop] = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 要想Proxy起作用，必须针对Proxy实例进行操作，而不是目标对象</span></span><br><span class="line">proxy.<span class="property">a</span> = <span class="number">1</span></span><br><span class="line"><span class="comment">// 赋值啦</span></span><br><span class="line">obj.<span class="property">a</span> = <span class="number">2</span>;</span><br><span class="line">proxy.<span class="property">a</span>;</span><br><span class="line"><span class="comment">// 取值啦</span></span><br><span class="line">obj.<span class="property">a</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="拦截方法"><a href="#拦截方法" class="headerlink" title="拦截方法"></a>拦截方法</h2><h3 id="get"><a href="#get" class="headerlink" title="get"></a>get</h3><p>get(target, prop, receiver) 拦截对象属性的读取操作</p>
+<ul>
+<li>target： 目标对象</li>
+<li>prop：属性名</li>
+<li>receriver: proxy实例本身(可选参数)</li>
+</ul>
+<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><p>set(target, prop, value, receiver) 拦截属性的赋值操作</p>
+<ul>
+<li>target： 目标对象</li>
+<li>prop：属性名</li>
+<li>value: 属性值</li>
+<li>receriver: proxy实例本身（可选参数）</li>
+</ul>
+<h3 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h3><p>apply(target, object, args)：拦截 Proxy 实例作为函数调用的操作,比如proxy(…args)、proxy.call(object, …args)、proxy.apply(…)。</p>
+<ul>
+<li>target: 目标对象</li>
+<li>object：目标对象的上下文对象（this）</li>
+<li>args :目标对象的参数数组</li>
+</ul>
+<h3 id="construct"><a href="#construct" class="headerlink" title="construct"></a>construct</h3><p>construct(target, args): 拦截Proxy实例作为构造函数调用的操作，如new proxy(…args)。</p>
+<ul>
+<li>target：目标对象</li>
+<li>args：构造函数的参数对象</li>
+</ul>
+<p>construct必须返回一个对象，否则会报错</p>
+<h3 id="has"><a href="#has" class="headerlink" title="has"></a>has</h3><p>has(target, propKey), 拦截in运算符，例如propKey in proxy的操作，但是对for…in循环不生效。返回一个布尔值</p>
+<ul>
+<li>target：目标对象</li>
+<li>propKey：属性名<br>例，拦截特殊属性不被in操作符发现</li>
+</ul>
+<h3 id="ownKeys"><a href="#ownKeys" class="headerlink" title="ownKeys"></a>ownKeys</h3><p>ownKeys(target)：拦截以下操作：</p>
+<ul>
+<li>Object.getOwnPropertyNames(proxy)</li>
+<li>Object.getOwnPropertySymbols(proxy)</li>
+<li>Object.keys(proxy)</li>
+<li>for…in循环</li>
+</ul>
+<h1 id="对一个对象数组排序"><a href="#对一个对象数组排序" class="headerlink" title="对一个对象数组排序"></a>对一个对象数组排序</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [</span><br><span class="line">  &#123;</span><br><span class="line">    name : <span class="string">&#x27;zy&#x27;</span>,</span><br><span class="line">    age : <span class="number">16</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name : <span class="string">&#x27;abc&#x27;</span>,</span><br><span class="line">    age : <span class="number">23</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name : <span class="string">&#x27;ccc&#x27;</span>,</span><br><span class="line">    age : <span class="number">10</span></span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sortByProperty</span>(<span class="params">arr,prop</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.<span class="title function_">sort</span>(<span class="function">(<span class="params">a,b</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a[prop] - b[prop]</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">sortByProperty</span>(arr,<span class="string">&#x27;age&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<h1 id="乱序一维数组排序"><a href="#乱序一维数组排序" class="headerlink" title="乱序一维数组排序"></a>乱序一维数组排序</h1><ul>
+<li>若 a 小于 b，即 a - b 小于零，则返回一个小于零的值，数组将按照升序排列。</li>
+<li>若 a 等于 b，则返回 0。</li>
+<li>若 a 大于 b, 即 a - b 大于零，则返回一个大于零的值，数组将按照降序排列。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 乱序一维数组排序</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">56</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">62</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">62</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">8</span>]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">sort</span>(<span class="function">(<span class="params">a,b</span>)=&gt;</span>a-b))</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h1><p>set</p>
+<h1 id="如何进行git的分支管理"><a href="#如何进行git的分支管理" class="headerlink" title="如何进行git的分支管理"></a>如何进行git的分支管理</h1><ol>
+<li>git branch testing 创建分支</li>
+<li>git checkout testing 切换分支  = (  git checkout -b (branchname) )</li>
+<li>编写代码  (git add  git commit)</li>
+<li>git checkout master    切换主分支</li>
+<li>git merge testing  合并分支</li>
+</ol>
+<p><em>解决冲突</em></p>
+<ol>
+<li>git merge 显示冲突</li>
+<li>查看冲突文件</li>
+<li>解决冲突</li>
+<li>git add </li>
+<li>git commit -m</li>
+</ol>
+<h1 id="浏览器有哪些缓存"><a href="#浏览器有哪些缓存" class="headerlink" title="浏览器有哪些缓存"></a>浏览器有哪些缓存</h1><h2 id="http缓存"><a href="#http缓存" class="headerlink" title="http缓存"></a>http缓存</h2><ol>
+<li>判断expires，如果未过期，直接读取http缓存文件，不发http请求，否则进入下一步</li>
+<li>判断是否含有etag，有则带上if-none-match发送请求，未修改返回304，修改返回200，否则进入下一步</li>
+<li>判断是否含有last-modified，有则带上if-modified-since发送请求，无效返回200，有效返回304，否则直接向服务器请求</li>
+</ol>
+<h2 id="websql"><a href="#websql" class="headerlink" title="websql"></a>websql</h2><p>控制台=&gt; websql<br>核心方法:</p>
+<ol>
+<li>openDatabase：这个方法使用现有的数据库或者新建的数据库创建一个数据库对象。</li>
+<li>transaction：这个方法让我们能够控制一个事务，以及基于这种情况执行提交或者回滚。</li>
+<li>executeSql：这个方法用于执行实际的 SQL 查询。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;status&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> db = <span class="title function_">openDatabase</span>(<span class="string">&#x27;mydb&#x27;</span>, <span class="string">&#x27;1.0&#x27;</span>, <span class="string">&#x27;Test DB&#x27;</span>, <span class="number">2</span> * <span class="number">1024</span> * <span class="number">1024</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">db.<span class="title function_">transaction</span>(<span class="keyword">function</span> (<span class="params">tx</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">  tx.<span class="title function_">executeSql</span>(<span class="string">&#x27;CREATE TABLE IF NOT EXISTS LOGS (id unique, log)&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  tx.<span class="title function_">executeSql</span>(<span class="string">&#x27;INSERT INTO LOGS (id, log) VALUES (1, &quot;菜鸟教程&quot;)&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  tx.<span class="title function_">executeSql</span>(<span class="string">&#x27;INSERT INTO LOGS (id, log) VALUES (2, &quot;www.runoob.com&quot;)&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">&#125;);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">db.<span class="title function_">transaction</span>(<span class="keyword">function</span> (<span class="params">tx</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">  tx.<span class="title function_">executeSql</span>(<span class="string">&#x27;SELECT * FROM LOGS&#x27;</span>, [], <span class="keyword">function</span> (<span class="params">tx, results</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> len = results.<span class="property">rows</span>.<span class="property">length</span>, i;</span></span><br><span class="line"><span class="language-javascript">      msg = <span class="string">&quot;&lt;p&gt;查询记录条数: &quot;</span> + len + <span class="string">&quot;&lt;/p&gt;&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#status&#x27;</span>).<span class="property">innerHTML</span> +=  msg;</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">alert</span>(results.<span class="property">rows</span>.<span class="title function_">item</span>(i).<span class="property">log</span> );</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript">  &#125;, <span class="literal">null</span>);</span></span><br><span class="line"><span class="language-javascript">&#125;);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="indexDB"><a href="#indexDB" class="headerlink" title="indexDB"></a>indexDB</h2><blockquote>
+<p>IndexedDB是一种使用浏览器存储大量数据的方法，它创造的数据可以被查询，并且可以离线使用。<br>IndexedDB是WebSQL数据库的取代品，W3C组织在2010年11月18日废弃了webSql.IndexedDB和WebSQL的不同点在于WebSQL是关系型数据库（复杂）IndexedDB是key-value型数据库（简单好使）</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="几个概念"><a href="#几个概念" class="headerlink" title="几个概念"></a>几个概念</h3><ol>
+<li>IDBFactory：数据库工厂，负责打开或者创建数据库<ol>
+<li>IDBFactory.open 方法发送一个打开或者创建一个数据库的请求</li>
+<li>IDBFactory.deleteDatabase 方法： 发送一个删除数据库的请求</li>
+</ol>
+</li>
+<li>IDBDatabase: 数据库<ol>
+<li>IDBDatabase.close 方法关闭数据库。</li>
+<li>IDBDatabase.createObjectStore 方法创建 store，相当于表</li>
+<li>IDBDatabase.transaction 开启一个事务。</li>
+</ol>
+</li>
+<li>IDBIndex：数据库表的索引</li>
+<li>IDBObjectStore：数据库表</li>
+<li>IDBTransaction：事务</li>
+<li>IDBRequest：机会是所有 indexedDB 操作的返回值，indexedDB 操作请求<ol>
+<li>IDBRequest.result 结果</li>
+<li>IDBRequest.onerror 异常事件</li>
+<li>IDBRequest.onsuccess 成功的事件</li>
+</ol>
+</li>
+</ol>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><blockquote>
+<p>Cookie是由服务器端生成，发送给User-Agent（一般是浏览器），（服务器告诉浏览器设置一下cookie），浏览器自动会将Cookie以key/value保存到某个目录下的文本文件内，下次请求同一网站时也会自动发送该Cookie给服务器，即添加在请求头部（前提是浏览器设置为启用cookie）。<br>Cookie就是一个小型文件（浏览器对cookie的内存大小是有限制的——-用来记录一些信息）</p>
+</blockquote>
+<h2 id="localstorage"><a href="#localstorage" class="headerlink" title="localstorage"></a>localstorage</h2><blockquote>
+<p> localStorage的生命周期是永久性的。假若使用localStorage存储数据，即使关闭浏览器，也不会让数据消失，除非主动的去删除数据，</p>
+</blockquote>
+<h2 id="sessionstorage"><a href="#sessionstorage" class="headerlink" title="sessionstorage"></a>sessionstorage</h2><blockquote>
+<p>sessionStorage 用于临时保存同一窗口(或标签页)的数据，在关闭窗口或标签页之后将会删除这些数据。<br>提示: 如果你想在浏览器窗口关闭后还保留数据，可以使用 localStorage 属性， 该数据对象没有过期时间，今天、下周、明年都能用，除非你手动去删除。</p>
+</blockquote>
+<h2 id="application-cache"><a href="#application-cache" class="headerlink" title="application cache"></a>application cache</h2><ol>
+<li>离线浏览——用户在不能联网的时候依然能浏览整个站点</li>
+<li>高速——缓存资源是存储在本地的，因此能更快加载。</li>
+<li>更小的服务器负载——浏览器只需要从服务器端下载有改变的资源即可，相同资源不需要重复下载。<blockquote>
+<p>Application Cache(或 AppCache)让一个开发者可以指定浏览器需要保存哪个文件。当用户在离线情况下时，即使他们按了刷新按钮，你的应用也能正确加载和工作。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="cacheStorage"><a href="#cacheStorage" class="headerlink" title="cacheStorage"></a>cacheStorage</h2><p>CacheStorage和Cache，是两个与缓存有关的接口，用于管理当前网页/Web App的缓存；在使用Service Worker时基本都会用到。它们跟数据库有点类似，我们可以用mongodb来打个比喻：</p>
+<ol>
+<li>CacheStorage管理着所有的Cache，是整个缓存api的入口，类似mongo</li>
+<li>Cache是单个缓存库，通常一个app会有一个，类似mongo里的每个db</li>
+</ol>
+<h1 id="什么是跨域"><a href="#什么是跨域" class="headerlink" title="什么是跨域"></a>什么是跨域</h1><p>当一个请求url的协议、域名、端口三者之间任意一个与当前页面url不同即为跨域</p>
+<h1 id="如何解决跨域"><a href="#如何解决跨域" class="headerlink" title="如何解决跨域"></a>如何解决跨域</h1><p>jsonp，代理，白名单</p>
+<h1 id="不考虑还有别的办法"><a href="#不考虑还有别的办法" class="headerlink" title="不考虑还有别的办法"></a>不考虑还有别的办法</h1><p>本地存储，window.name，form.message</p>
+<h1 id="页面性能的优化"><a href="#页面性能的优化" class="headerlink" title="页面性能的优化"></a>页面性能的优化</h1><p>重绘，回流，防抖，节流,懒加载，预加载,还有base64，压缩，骨架屏</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot; /&gt;</span><br><span class="line">    &lt;link href=&quot;https://cdn.bootcss.com/weui/2.1.2/style/weui.min.css&quot; rel=&quot;stylesheet&quot; /&gt;</span><br><span class="line">    &lt;title&gt;Skeletons&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">      img &#123;</span><br><span class="line">        width: 100%;</span><br><span class="line">      &#125;</span><br><span class="line">      .media-box-img &#123;</span><br><span class="line">        width: 60px;</span><br><span class="line">        height: 60px;</span><br><span class="line">      &#125;</span><br><span class="line">      /* 阻止Skeletons点击事件 */</span><br><span class="line">      .pointer-stop &#123;</span><br><span class="line">        pointer-events: none;</span><br><span class="line">      &#125;</span><br><span class="line">      /* Skeletons效果 */</span><br><span class="line">      .skeletons &#123;</span><br><span class="line">        position: relative;</span><br><span class="line">        display: block;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">        height: 100%;</span><br><span class="line">        min-height: 20px;</span><br><span class="line">        background-color: #ededed;</span><br><span class="line">      &#125;</span><br><span class="line">      .skeletons:empty::after &#123;</span><br><span class="line">        display: block;</span><br><span class="line">        content: &#x27;&#x27;;</span><br><span class="line">        position: absolute;</span><br><span class="line">        width: 100%;</span><br><span class="line">        height: 100%;</span><br><span class="line">        -webkit-transform: translateX(-100%);</span><br><span class="line">        transform: translateX(-100%);</span><br><span class="line">        background: linear-gradient(90deg, transparent, rgba(216, 216, 216, 0.753), transparent);</span><br><span class="line">        -webkit-animation: loading 1.5s infinite;</span><br><span class="line">        animation: loading 1.5s infinite;</span><br><span class="line">      &#125;</span><br><span class="line">      @-webkit-keyframes loading &#123;</span><br><span class="line">        100% &#123;</span><br><span class="line">          -webkit-transform: translateX(100%);</span><br><span class="line">          transform: translateX(100%);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      @keyframes loading &#123;</span><br><span class="line">        100% &#123;</span><br><span class="line">          -webkit-transform: translateX(100%);</span><br><span class="line">          transform: translateX(100%);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;weui-panel weui-panel_access&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;weui-panel__hd&quot;&gt;</span><br><span class="line">        &lt;span class=&quot;weui-panel-title skeletons&quot;&gt;&lt;/span&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div class=&quot;weui-panel__bd&quot;&gt;</span><br><span class="line">        &lt;a href=&quot;javascript:void(0);&quot; class=&quot;weui-media-box weui-media-box_appmsg pointer-stop&quot;&gt;</span><br><span class="line">          &lt;div class=&quot;weui-media-box__hd&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;media-box-img skeletons&quot;&gt;&lt;/div&gt;</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">          &lt;div class=&quot;weui-media-box__bd&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;weui-media-box__title skeletons&quot;&gt;&lt;/div&gt;</span><br><span class="line">            &lt;p class=&quot;weui-media-box__desc&quot;&gt;</span><br><span class="line">              &lt;span class=&quot;media-box-desc skeletons&quot;&gt;&lt;/span&gt;</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">        &lt;/a&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      function renderCard() &#123;</span><br><span class="line">        var cardImage = document.querySelector(&#x27;.weui-panel-title&#x27;)</span><br><span class="line">        cardImage.textContent = &#x27;标题&#x27;</span><br><span class="line">        cardImage.classList.remove(&#x27;skeletons&#x27;)</span><br><span class="line">        var listData = [</span><br><span class="line">          &#123;</span><br><span class="line">            img:</span><br><span class="line">              &#x27;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==&#x27;,</span><br><span class="line">            desc: &#x27;内容内容内容内容&#x27;</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">        var html = &#x27;&#x27;</span><br><span class="line">        var cardImage1 = document.querySelectorAll(&#x27;.media-box-img&#x27;)</span><br><span class="line">        var cardImage2 = document.querySelectorAll(&#x27;.weui-media-box&#x27;)</span><br><span class="line">        var cardImage3 = document.querySelectorAll(&#x27;.weui-media-box__title&#x27;)</span><br><span class="line">        var cardImage4 = document.querySelectorAll(&#x27;.media-box-desc&#x27;)</span><br><span class="line">        for (var i = 0; i &lt; listData.length; i++) &#123;</span><br><span class="line">          cardImage2[i].classList.remove(&#x27;pointer-stop&#x27;)</span><br><span class="line">          cardImage1[i].classList.remove(&#x27;skeletons&#x27;)</span><br><span class="line">          cardImage3[i].classList.remove(&#x27;skeletons&#x27;)</span><br><span class="line">          cardImage4[i].classList.remove(&#x27;skeletons&#x27;)</span><br><span class="line">          cardImage1[i].innerHTML = &quot;&lt;img src=&#x27;&quot; + listData[i].img + &quot;&#x27; /&gt;&quot;</span><br><span class="line">          cardImage3[i].innerHTML = &#x27;一段标题&#x27;</span><br><span class="line">          cardImage4[i].innerHTML = &#x27;一段描述&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      setTimeout(function() &#123;</span><br><span class="line">        renderCard()</span><br><span class="line">      &#125;, 4000)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="浏览器安全处理"><a href="#浏览器安全处理" class="headerlink" title="浏览器安全处理"></a>浏览器安全处理</h1><h2 id="xss-Cross-Site-Scripting-避开css-简称xss"><a href="#xss-Cross-Site-Scripting-避开css-简称xss" class="headerlink" title="xss Cross Site Scripting 避开css 简称xss"></a>xss Cross Site Scripting 避开css 简称xss</h2><p>跨站脚本攻击是指恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页之时，嵌入其中Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。<br>xss漏洞通常是通过php的输出函数将javascript代码输出到html页面中，通过用户本地浏览器执行的，所以xss漏洞关键就是寻找参数未过滤的输出函数。</p>
+<h2 id="数据库注入"><a href="#数据库注入" class="headerlink" title="数据库注入"></a>数据库注入</h2><p>所谓SQL注入，就是通过把SQL命令插入到Web表单递交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。<br>我们永远不要信任用户的输入，我们必须认定用户输入的数据都是不安全的，我们都需要对用户输入的数据进行过滤处理。</p>
+<h2 id="csrf-ross—Site-Request-Forgery-跨站点请求伪造"><a href="#csrf-ross—Site-Request-Forgery-跨站点请求伪造" class="headerlink" title="csrf  ross—Site Request Forgery  跨站点请求伪造"></a>csrf  ross—Site Request Forgery  跨站点请求伪造</h2><p>其原理是攻击者构造网站后台某个功能接口的请求地址，诱导用户去点击或者用特殊方法让该请求地址自动加载。用户在登录状态下这个请求被服务端接收后会被误以为是用户合法的操作。对于 GET 形式的接口地址可轻易被攻击，对于 POST 形式的接口地址也不是百分百安全，攻击者可诱导用户进入带 Form 表单可用POST方式提交参数的页面。</p>
+<h2 id="文件上传漏洞"><a href="#文件上传漏洞" class="headerlink" title="文件上传漏洞"></a>文件上传漏洞</h2><p>文件上传漏洞是指由于程序员未对上传的文件进行严格的验证和过滤，而导致的用户可以越过其本身权限向服务器上上传可执行的动态脚本文件。这里上传的文件可以是木马，病毒，恶意脚本或者WebShell等。这种攻击方式是最为直接和有效的，“文件上传”本身没有问题，有问题的是文件上传后，服务器怎么处理、解释文件。如果服务器的处理逻辑做的不够安全，则会导致严重的后果。</p>
+<h1 id="有没有真机浏览器debug经验"><a href="#有没有真机浏览器debug经验" class="headerlink" title="有没有真机浏览器debug经验"></a>有没有真机浏览器debug经验</h1>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag"># 面试</a>
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/05/14/" rel="prev" title="200514一些面试题-阿里校招二面">
+                  <i class="fa fa-chevron-left"></i> 200514一些面试题-阿里校招二面
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/05/15/" rel="next" title="200515字节一面">
+                  200515字节一面 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang Yin</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"./live2d_models/haruna/33/model.2017.tomo-bukatsu.low.json"},"display":{"superSample":2,"width":250,"height":400,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false},"react":{"opacityDefault":0.5,"opacityOnHover":0},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

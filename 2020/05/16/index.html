@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="根据网上一篇大厂的面试题总结地址">
+<meta property="og:type" content="article">
+<meta property="og:title" content="200516字节二面">
+<meta property="og:url" content="http://example.com/2020/05/16/index.html">
+<meta property="og:site_name" content="ZY">
+<meta property="og:description" content="根据网上一篇大厂的面试题总结地址">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-16T04:29:34.000Z">
+<meta property="article:modified_time" content="2020-05-18T03:22:25.778Z">
+<meta property="article:author" content="Zhang Yin">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2020/05/16/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2020/05/16/","path":"2020/05/16/","title":"200516字节二面"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>200516字节二面 | ZY</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZY</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">My Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%A0%E7%9A%84php%E5%8C%85%E7%AE%A1%E7%90%86%E7%94%A8%E4%BB%80%E4%B9%88%E2%88%9A-composer"><span class="nav-number">1.</span> <span class="nav-text">你的php包管理用什么√ composer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#composer%E7%9A%84autoloader%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">composer的autoloader怎么实现的？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#php-fast-cgi%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%B9%B6%E5%8F%91%E7%AE%A1%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">php fast-cgi是什么？并发管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#php-set-cookie%E6%98%AF%E5%90%A6%E4%BC%9A%E6%94%B9%E5%8F%98-COOKIE%E6%95%B0%E7%BB%84%E2%88%9A%E4%B8%8D%E4%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">php set_cookie是否会改变$_COOKIE数组√不会</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%A0%E7%9A%84MYSQL-Procedure%E6%98%AF%E5%B9%B2%E4%BB%80%E4%B9%88%E7%9A%84%E2%88%9A%E5%87%BD%E6%95%B0%E4%BA%A4%E4%BA%92"><span class="nav-number">5.</span> <span class="nav-text">你的MYSQL Procedure是干什么的√函数交互</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E6%80%8E%E4%B9%88%E8%AE%BE%E7%BD%AEheader%E5%AD%97%E6%AE%B5%E2%88%9A"><span class="nav-number">6.</span> <span class="nav-text">跨域请求怎么设置header字段√</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue-Router%E5%8E%9F%E7%90%86%E2%88%9A"><span class="nav-number">7.</span> <span class="nav-text">Vue Router原理√</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HashHistory"><span class="nav-number">7.1.</span> <span class="nav-text">HashHistory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML5History"><span class="nav-number">7.2.</span> <span class="nav-text">HTML5History</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%BA%E5%88%AB"><span class="nav-number">7.3.</span> <span class="nav-text">区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VueX%E5%85%B7%E4%BD%93%E5%BA%94%E7%94%A8%E5%9C%A8%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF%E5%86%85%E2%88%9A"><span class="nav-number">8.</span> <span class="nav-text">VueX具体应用在哪些场景内√</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8%E8%BF%87%E5%93%AA%E4%BA%9BAjax%E7%BB%84%E4%BB%B6%E2%88%9A-Axios"><span class="nav-number">9.</span> <span class="nav-text">用过哪些Ajax组件√ Axios</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Axios%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E6%8B%A6%E6%88%AA%E2%88%9A"><span class="nav-number">10.</span> <span class="nav-text">Axios怎么实现拦截√</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#js%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E5%8F%8D%E5%90%91%E5%90%88%E5%B9%B6%E2%88%9A"><span class="nav-number">11.</span> <span class="nav-text">js二维数组反向合并√</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#js%E9%A9%BC%E5%B3%B0%E8%BD%AC%E6%8D%A2"><span class="nav-number">12.</span> <span class="nav-text">js驼峰转换</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zhang Yin"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Zhang Yin</p>
+  <div class="site-description" itemprop="description">zoeee</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Zooeeee" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Zooeeee" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/594498431@qq.com" title="E-Mail → 594498431@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/zh-cn/docs/configuration" title="https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;docs&#x2F;configuration" rel="noopener" target="_blank">Hexo</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://theme-next.iissnan.com/getting-started.html" title="http:&#x2F;&#x2F;theme-next.iissnan.com&#x2F;getting-started.html" rel="noopener" target="_blank">Next</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/05/16/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Zhang Yin">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZY">
+      <meta itemprop="description" content="zoeee">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="200516字节二面 | ZY">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          200516字节二面
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-05-16 12:29:34" itemprop="dateCreated datePublished" datetime="2020-05-16T12:29:34+08:00">2020-05-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-05-18 11:22:25" itemprop="dateModified" datetime="2020-05-18T11:22:25+08:00">2020-05-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><strong>根据网上一篇大厂的面试题总结<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000020296556">地址</a></strong></p>
+<span id="more"></span>
+<h1 id="你的php包管理用什么√-composer"><a href="#你的php包管理用什么√-composer" class="headerlink" title="你的php包管理用什么√ composer"></a>你的php包管理用什么√ composer</h1><h1 id="composer的autoloader怎么实现的？"><a href="#composer的autoloader怎么实现的？" class="headerlink" title="composer的autoloader怎么实现的？"></a>composer的autoloader怎么实现的？</h1><h1 id="php-fast-cgi是什么？并发管理"><a href="#php-fast-cgi是什么？并发管理" class="headerlink" title="php fast-cgi是什么？并发管理"></a>php fast-cgi是什么？并发管理</h1><h1 id="php-set-cookie是否会改变-COOKIE数组√不会"><a href="#php-set-cookie是否会改变-COOKIE数组√不会" class="headerlink" title="php set_cookie是否会改变$_COOKIE数组√不会"></a>php set_cookie是否会改变$_COOKIE数组√不会</h1><h1 id="你的MYSQL-Procedure是干什么的√函数交互"><a href="#你的MYSQL-Procedure是干什么的√函数交互" class="headerlink" title="你的MYSQL Procedure是干什么的√函数交互"></a>你的MYSQL Procedure是干什么的√函数交互</h1><h1 id="跨域请求怎么设置header字段√"><a href="#跨域请求怎么设置header字段√" class="headerlink" title="跨域请求怎么设置header字段√"></a>跨域请求怎么设置header字段√</h1><ol>
+<li>Origin: <a target="_blank" rel="noopener" href="http://foo.example/">http://foo.example</a>    表示请求从哪来</li>
+<li>response【必须】有<br>//表明允许跨域访问<br>Access-Control-Allow-Origin:上面origin的地址</li>
+<li>其他相关<br>:*<br>Access-Control-Allow-Methods:POST,GET<br>Access-Control-Allow-Credentials:true<br>Access-Control-Allow-Headers:Origin,Content-Type,Accept,token,X-Requested-With</li>
+</ol>
+<h1 id="Vue-Router原理√"><a href="#Vue-Router原理√" class="headerlink" title="Vue Router原理√"></a>Vue Router原理√</h1><blockquote>
+<p>更新视图但不重新请求页面”是前端路由原理的核心之一，目前在浏览器环境中这一功能的实现主要有两种方式</p>
+</blockquote>
+<ol>
+<li>hash —- 利用URL中的hash（“#”）</li>
+<li>利用History interface在 HTML5中新增的方法</li>
+<li>不在浏览器环境则是abstract (node)</li>
+</ol>
+<p><strong>当你选择mode类型之后，程序会根据你选择的mode 类型创建不同的history对象(HashHistory或HTML5History或AbstractHistory)</strong></p>
+<h2 id="HashHistory"><a href="#HashHistory" class="headerlink" title="HashHistory"></a>HashHistory</h2><ol>
+<li>HashHistory.push()     将新路由添加到浏览器访问历史的栈顶<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$router.<span class="title function_">push</span>() <span class="comment">//调用方法</span></span><br><span class="line"><span class="title class_">HashHistory</span>.<span class="title function_">push</span>() <span class="comment">//根据hash模式调用,设置hash并添加到浏览器历史记录（添加到栈顶）（window.location.hash= XXX）</span></span><br><span class="line"><span class="title class_">History</span>.<span class="title function_">transitionTo</span>() <span class="comment">//监测更新，更新则调用History.updateRoute()</span></span><br><span class="line"><span class="title class_">History</span>.<span class="title function_">updateRoute</span>() <span class="comment">//更新路由</span></span><br><span class="line">&#123;app.<span class="property">_route</span>= route&#125; <span class="comment">//替换当前app路由</span></span><br><span class="line">vm.<span class="title function_">render</span>() <span class="comment">//更新视图</span></span><br></pre></td></tr></table></figure></li>
+<li>HashHistory.replace()     替换掉当前的路由<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">replace (<span class="attr">location</span>: <span class="title class_">RawLocation</span>, onComplete?: <span class="title class_">Function</span>, onAbort?: <span class="title class_">Function</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">transitionTo</span>(location, <span class="function"><span class="params">route</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">replaceHash</span>(route.<span class="property">fullPath</span>)</span><br><span class="line">    onComplete &amp;&amp; <span class="title function_">onComplete</span>(route)</span><br><span class="line">  &#125;, onAbort)</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="keyword">function</span> <span class="title function_">replaceHash</span> (path) &#123;</span><br><span class="line">  <span class="keyword">const</span> i = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>.<span class="title function_">indexOf</span>(<span class="string">&#x27;#&#x27;</span>)</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">location</span>.<span class="title function_">replace</span>(</span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>.<span class="title function_">slice</span>(<span class="number">0</span>, i &gt;= <span class="number">0</span> ? i : <span class="number">0</span>) + <span class="string">&#x27;#&#x27;</span> + path</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="HTML5History"><a href="#HTML5History" class="headerlink" title="HTML5History"></a>HTML5History</h2><p>History interface是浏览器历史记录栈提供的接口，通过back(), forward(), go()等方法，我们可以读取浏览器历史记录栈的信息，进行各种跳转操作。<br>从HTML5开始，History interface有进一步修炼：pushState(), replaceState() 这下不仅是读取了，还可以对浏览器历史记录栈进行修改：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//stateObject: 当浏览器跳转到新的状态时，将触发popState事件，该事件将携带这个stateObject参数的副本</span></span><br><span class="line"><span class="comment">//title: 所添加记录的标题</span></span><br><span class="line"><span class="comment">//URL: 所添加记录的URL</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">history</span>.<span class="title function_">pushState</span>(stateObject, title, <span class="variable constant_">URL</span>)<span class="variable language_">window</span>.<span class="property">history</span>.<span class="title function_">replaceState</span>(stateObject, title, <span class="variable constant_">URL</span>)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>push<br>与hash模式类似，只是将window.hash改为history.pushState</li>
+<li>replace<br>与hash模式类似，只是将window.replace改为history.replaceState</li>
+<li>监听地址变化<br>在HTML5History的构造函数中监听popState（window.onpopstate）</li>
+</ol>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ol>
+<li>pushState设置的新URL可以是与当前URL同源的任意URL；而hash只可修改#后面的部分，故只可设置与当前同文档的URL</li>
+<li>pushState通过stateObject可以添加任意类型的数据到记录中；而hash只可添加短字符串</li>
+<li>pushState可额外设置title属性供后续使用</li>
+<li>history模式则会将URL修改得就和正常请求后端的URL一样,如后端没有配置对应/user/id的路由处理，则会返回404错误</li>
+</ol>
+<h1 id="VueX具体应用在哪些场景内√"><a href="#VueX具体应用在哪些场景内√" class="headerlink" title="VueX具体应用在哪些场景内√"></a>VueX具体应用在哪些场景内√</h1><ol>
+<li>需要动态的注册响应式数据；</li>
+<li>需要命名空间namespace 来管理组织我们的数据；</li>
+<li>多个组件共享一个状态数据 </li>
+<li>希望通过插件，来更改记录；方便调试</li>
+</ol>
+<h1 id="用过哪些Ajax组件√-Axios"><a href="#用过哪些Ajax组件√-Axios" class="headerlink" title="用过哪些Ajax组件√ Axios"></a>用过哪些Ajax组件√ Axios</h1><h1 id="Axios怎么实现拦截√"><a href="#Axios怎么实现拦截√" class="headerlink" title="Axios怎么实现拦截√"></a>Axios怎么实现拦截√</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**axios封装</span></span><br><span class="line"><span class="comment"> * 请求拦截、相应拦截、错误统一处理</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span>;<span class="keyword">import</span> <span class="variable constant_">QS</span> <span class="keyword">from</span> <span class="string">&#x27;qs&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Toast</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;vant&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;../store/index&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 环境的切换</span></span><br><span class="line"><span class="keyword">if</span> (process.<span class="property">env</span>.<span class="property">NODE_ENV</span> == <span class="string">&#x27;development&#x27;</span>) &#123;    </span><br><span class="line">    axios.<span class="property">defaults</span>.<span class="property">baseURL</span> = <span class="string">&#x27;/api&#x27;</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (process.<span class="property">env</span>.<span class="property">NODE_ENV</span> == <span class="string">&#x27;debug&#x27;</span>) &#123;    </span><br><span class="line">    axios.<span class="property">defaults</span>.<span class="property">baseURL</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (process.<span class="property">env</span>.<span class="property">NODE_ENV</span> == <span class="string">&#x27;production&#x27;</span>) &#123;    </span><br><span class="line">    axios.<span class="property">defaults</span>.<span class="property">baseURL</span> = <span class="string">&#x27;http://api.123dailu.com/&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 请求超时时间</span></span><br><span class="line">axios.<span class="property">defaults</span>.<span class="property">timeout</span> = <span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// post请求头</span></span><br><span class="line">axios.<span class="property">defaults</span>.<span class="property">headers</span>.<span class="property">post</span>[<span class="string">&#x27;Content-Type&#x27;</span>] = <span class="string">&#x27;application/x-www-form-urlencoded;charset=UTF-8&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 请求拦截器</span></span><br><span class="line">axios.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(    </span><br><span class="line">    <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 每次发送请求之前判断是否存在token，如果存在，则统一在http请求的header都加上token，不用每次请求都手动添加了</span></span><br><span class="line">        <span class="comment">// 即使本地存在token，也有可能token是过期的，所以在响应拦截器中要对返回状态进行判断</span></span><br><span class="line">        <span class="keyword">const</span> token = store.<span class="property">state</span>.<span class="property">token</span>;        </span><br><span class="line">        token &amp;&amp; (config.<span class="property">headers</span>.<span class="property">Authorization</span> = token);        </span><br><span class="line">        <span class="keyword">return</span> config;    </span><br><span class="line">    &#125;,    </span><br><span class="line">    <span class="function"><span class="params">error</span> =&gt;</span> &#123;        </span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">error</span>(error);    </span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 响应拦截器</span></span><br><span class="line">axios.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(    </span><br><span class="line">    <span class="function"><span class="params">response</span> =&gt;</span> &#123;        </span><br><span class="line">        <span class="keyword">if</span> (response.<span class="property">status</span> === <span class="number">200</span>) &#123;            </span><br><span class="line">            <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(response);        </span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;            </span><br><span class="line">            <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(response);        </span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 服务器状态码不是200的情况    </span></span><br><span class="line">    <span class="function"><span class="params">error</span> =&gt;</span> &#123;        </span><br><span class="line">        <span class="keyword">if</span> (error.<span class="property">response</span>.<span class="property">status</span>) &#123;            </span><br><span class="line">            <span class="keyword">switch</span> (error.<span class="property">response</span>.<span class="property">status</span>) &#123;                </span><br><span class="line">                <span class="comment">// 401: 未登录                </span></span><br><span class="line">                <span class="comment">// 未登录则跳转登录页面，并携带当前页面的路径                </span></span><br><span class="line">                <span class="comment">// 在登录成功后返回当前页面，这一步需要在登录页操作。                </span></span><br><span class="line">                <span class="keyword">case</span> <span class="number">401</span>:                    </span><br><span class="line">                    router.<span class="title function_">replace</span>(&#123;                        </span><br><span class="line">                        <span class="attr">path</span>: <span class="string">&#x27;/login&#x27;</span>,                        </span><br><span class="line">                        <span class="attr">query</span>: &#123; <span class="attr">redirect</span>: router.<span class="property">currentRoute</span>.<span class="property">fullPath</span> &#125; </span><br><span class="line">                    &#125;);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="comment">// 403 token过期                </span></span><br><span class="line">                <span class="comment">// 登录过期对用户进行提示                </span></span><br><span class="line">                <span class="comment">// 清除本地token和清空vuex中token对象                </span></span><br><span class="line">                <span class="comment">// 跳转登录页面                </span></span><br><span class="line">                <span class="keyword">case</span> <span class="number">403</span>:                     </span><br><span class="line">                    <span class="title class_">Toast</span>(&#123;                        </span><br><span class="line">                        <span class="attr">message</span>: <span class="string">&#x27;登录过期，请重新登录&#x27;</span>,                        </span><br><span class="line">                        <span class="attr">duration</span>: <span class="number">1000</span>,                        </span><br><span class="line">                        <span class="attr">forbidClick</span>: <span class="literal">true</span>                    </span><br><span class="line">                    &#125;);                    </span><br><span class="line">                    <span class="comment">// 清除token                    </span></span><br><span class="line">                    <span class="variable language_">localStorage</span>.<span class="title function_">removeItem</span>(<span class="string">&#x27;token&#x27;</span>);                    </span><br><span class="line">                    store.<span class="title function_">commit</span>(<span class="string">&#x27;loginSuccess&#x27;</span>, <span class="literal">null</span>);                    </span><br><span class="line">                    <span class="comment">// 跳转登录页面，并将要浏览的页面fullPath传过去，登录成功后跳转需要访问的页面</span></span><br><span class="line">                    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;                        </span><br><span class="line">                        router.<span class="title function_">replace</span>(&#123;                            </span><br><span class="line">                            <span class="attr">path</span>: <span class="string">&#x27;/login&#x27;</span>,                            </span><br><span class="line">                            <span class="attr">query</span>: &#123; </span><br><span class="line">                                <span class="attr">redirect</span>: router.<span class="property">currentRoute</span>.<span class="property">fullPath</span> </span><br><span class="line">                            &#125;                        </span><br><span class="line">                        &#125;);                    </span><br><span class="line">                    &#125;, <span class="number">1000</span>);                    </span><br><span class="line">                    <span class="keyword">break</span>; </span><br><span class="line">                <span class="comment">// 404请求不存在                </span></span><br><span class="line">                <span class="keyword">case</span> <span class="number">404</span>:                    </span><br><span class="line">                    <span class="title class_">Toast</span>(&#123;                        </span><br><span class="line">                        <span class="attr">message</span>: <span class="string">&#x27;网络请求不存在&#x27;</span>,                        </span><br><span class="line">                        <span class="attr">duration</span>: <span class="number">1500</span>,                        </span><br><span class="line">                        <span class="attr">forbidClick</span>: <span class="literal">true</span>                    </span><br><span class="line">                    &#125;);                    </span><br><span class="line">                <span class="keyword">break</span>;                </span><br><span class="line">                <span class="comment">// 其他错误，直接抛出错误提示                </span></span><br><span class="line">                <span class="attr">default</span>:                    </span><br><span class="line">                    <span class="title class_">Toast</span>(&#123;                        </span><br><span class="line">                        <span class="attr">message</span>: error.<span class="property">response</span>.<span class="property">data</span>.<span class="property">message</span>,                        </span><br><span class="line">                        <span class="attr">duration</span>: <span class="number">1500</span>,                        </span><br><span class="line">                        <span class="attr">forbidClick</span>: <span class="literal">true</span>                    </span><br><span class="line">                    &#125;);            </span><br><span class="line">            &#125;            </span><br><span class="line">            <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error.<span class="property">response</span>);        </span><br><span class="line">        &#125;       </span><br><span class="line">    &#125;</span><br><span class="line">);</span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * get方法，对应get请求 </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">String</span>&#125; url [请求的url地址] </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">Object</span>&#125; params [请求时携带的参数] </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">get</span> =(<span class="params">url, ...params</span>)=&gt;&#123;    </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span>&#123;        </span><br><span class="line">        axios.<span class="title function_">get</span>(url, &#123;            </span><br><span class="line">            <span class="attr">params</span>: params        </span><br><span class="line">        &#125;)        </span><br><span class="line">        .<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;            </span><br><span class="line">            <span class="title function_">resolve</span>(res.<span class="property">data</span>);        </span><br><span class="line">        &#125;)        </span><br><span class="line">        .<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> &#123;            </span><br><span class="line">            <span class="title function_">reject</span>(err.<span class="property">data</span>)        </span><br><span class="line">        &#125;)    </span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * post方法，对应post请求 </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">String</span>&#125; url [请求的url地址] </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">Object</span>&#125; params [请求时携带的参数] </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">post</span> = (<span class="params">url,... params</span>) =&gt;&#123;    </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;         </span><br><span class="line">        axios.<span class="title function_">post</span>(url, <span class="variable constant_">QS</span>.<span class="title function_">stringify</span>(...params))        </span><br><span class="line">        .<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;            </span><br><span class="line">            <span class="title function_">resolve</span>(res.<span class="property">data</span>);        </span><br><span class="line">        &#125;)        </span><br><span class="line">        .<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> &#123;            </span><br><span class="line">            <span class="title function_">reject</span>(err.<span class="property">data</span>)        </span><br><span class="line">        &#125;)    </span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="js二维数组反向合并√"><a href="#js二维数组反向合并√" class="headerlink" title="js二维数组反向合并√"></a>js二维数组反向合并√</h1><blockquote>
+<p>输入：[1, 2, [3, 4], 5, 6, [7, 8], 9]<br>输出: [[3, 4, 1, 2, 5, 6][7, 8 ,9]]</p>
+</blockquote>
+<h1 id="js驼峰转换"><a href="#js驼峰转换" class="headerlink" title="js驼峰转换"></a>js驼峰转换</h1><blockquote>
+<p>输入：contentType<br>输出：content_type<br><strong>正则表达式</strong></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag"># 面试</a>
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/05/15/" rel="prev" title="200515TypeScript">
+                  <i class="fa fa-chevron-left"></i> 200515TypeScript
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/05/18/" rel="next" title="200518面试碰见的问题">
+                  200518面试碰见的问题 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang Yin</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"./live2d_models/haruna/33/model.2017.tomo-bukatsu.low.json"},"display":{"superSample":2,"width":250,"height":400,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false},"react":{"opacityDefault":0.5,"opacityOnHover":0},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

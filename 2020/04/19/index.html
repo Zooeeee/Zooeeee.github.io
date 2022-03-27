@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="边框实现三角形把div的width和height置为0,利用四分之一的border来做成三角形的效果,另外三个三角形通过将颜色置为透明实现 12345678910111213141516div&amp;#123;  width:0px;  height: 0px;  border-top-color: transparent;  border-top-style: solid;  border-top-w">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一些基础知识1">
+<meta property="og:url" content="http://example.com/2020/04/19/index.html">
+<meta property="og:site_name" content="ZY">
+<meta property="og:description" content="边框实现三角形把div的width和height置为0,利用四分之一的border来做成三角形的效果,另外三个三角形通过将颜色置为透明实现 12345678910111213141516div&amp;#123;  width:0px;  height: 0px;  border-top-color: transparent;  border-top-style: solid;  border-top-w">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-19T11:22:44.000Z">
+<meta property="article:modified_time" content="2020-04-22T14:20:23.293Z">
+<meta property="article:author" content="Zhang Yin">
+<meta property="article:tag" content="html">
+<meta property="article:tag" content="css">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2020/04/19/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2020/04/19/","path":"2020/04/19/","title":"一些基础知识1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>一些基础知识1 | ZY</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZY</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">My Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%B9%E6%A1%86%E5%AE%9E%E7%8E%B0%E4%B8%89%E8%A7%92%E5%BD%A2"><span class="nav-number">1.</span> <span class="nav-text">边框实现三角形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E6%A0%B7%E5%BC%8F%E5%B1%9E%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">文本样式属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">一些选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#box-sizing"><span class="nav-number">4.</span> <span class="nav-text">box-sizing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#marigin%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">marigin的一些问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E5%88%86%E7%B1%BB"><span class="nav-number">6.</span> <span class="nav-text">标签分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9A%90%E8%97%8F"><span class="nav-number">7.</span> <span class="nav-text">隐藏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BA%A2%E5%87%BA%E9%9A%90%E8%97%8Foverflow"><span class="nav-number">8.</span> <span class="nav-text">溢出隐藏overflow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%8F%E6%98%8E%E5%BA%A6%E4%B8%8E%E6%89%8B%E5%8A%BF"><span class="nav-number">9.</span> <span class="nav-text">透明度与手势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#float"><span class="nav-number">10.</span> <span class="nav-text">float</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8"><span class="nav-number">11.</span> <span class="nav-text">清除浮动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D-position"><span class="nav-number">12.</span> <span class="nav-text">定位:position</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E6%A0%87%E7%AD%BE-%E6%9C%89%E5%88%A9%E4%BA%8E%E8%A2%AB%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%8F%91%E7%8E%B0-%E6%98%AF%E5%90%A6%E5%85%B7%E5%A4%87%E8%AF%AD%E4%B9%89%E5%8C%96"><span class="nav-number">13.</span> <span class="nav-text">引用标签,有利于被搜索引擎发现,是否具备语义化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#H5%E6%96%B0%E6%A0%87%E7%AD%BE"><span class="nav-number">14.</span> <span class="nav-text">H5新标签</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zhang Yin"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Zhang Yin</p>
+  <div class="site-description" itemprop="description">zoeee</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Zooeeee" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Zooeeee" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/594498431@qq.com" title="E-Mail → 594498431@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/zh-cn/docs/configuration" title="https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;docs&#x2F;configuration" rel="noopener" target="_blank">Hexo</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://theme-next.iissnan.com/getting-started.html" title="http:&#x2F;&#x2F;theme-next.iissnan.com&#x2F;getting-started.html" rel="noopener" target="_blank">Next</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/04/19/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Zhang Yin">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZY">
+      <meta itemprop="description" content="zoeee">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="一些基础知识1 | ZY">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一些基础知识1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-04-19 19:22:44" itemprop="dateCreated datePublished" datetime="2020-04-19T19:22:44+08:00">2020-04-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-04-22 22:20:23" itemprop="dateModified" datetime="2020-04-22T22:20:23+08:00">2020-04-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/css/" itemprop="url" rel="index"><span itemprop="name">css</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h4 id="边框实现三角形"><a href="#边框实现三角形" class="headerlink" title="边框实现三角形"></a>边框实现三角形</h4><p>把div的width和height置为0,利用四分之一的border来做成三角形的效果,另外三个三角形通过将颜色置为透明实现</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">0px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0px</span>;</span><br><span class="line">  <span class="attribute">border-top-color</span>: transparent;</span><br><span class="line">  <span class="attribute">border-top-style</span>: solid;</span><br><span class="line">  <span class="attribute">border-top-width</span>: <span class="number">30px</span>;</span><br><span class="line">  <span class="attribute">border-left-color</span>: transparent;</span><br><span class="line">  <span class="attribute">border-left-style</span>: solid;</span><br><span class="line">  <span class="attribute">border-left-width</span>: <span class="number">30px</span>;</span><br><span class="line">  <span class="attribute">border-right-color</span>: transparent;</span><br><span class="line">  <span class="attribute">border-right-style</span>: solid;</span><br><span class="line">  <span class="attribute">border-right-width</span>: <span class="number">30px</span>;</span><br><span class="line">  <span class="attribute">border-bottom-color</span>: red;</span><br><span class="line">  <span class="attribute">border-bottom-style</span>: solid;</span><br><span class="line">  <span class="attribute">border-bottom-width</span>: <span class="number">30px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span> 
+<h4 id="文本样式属性"><a href="#文本样式属性" class="headerlink" title="文本样式属性"></a>文本样式属性</h4><ul>
+<li>text-decoration:underline,live-throught,overline   下划线,删除线,上划线</li>
+<li>text-transform: 文本大小写</li>
+<li>text-indent: 首航缩进,一般使用em单位(1em=1font-size)</li>
+<li>line-height: 行高=上边距+下边距+字体大小,默认行高不是固定值,取值有 number(px) || scale(比例值 文字大小)</li>
+<li>letter-spacing,word-spacing:后者只能应用与英文,前者是字符,后者是单词</li>
+<li>强制折行:word-break || word-wrap :前者表现更强烈,后者可能会产生空白<h4 id="一些选择器"><a href="#一些选择器" class="headerlink" title="一些选择器"></a>一些选择器</h4></li>
+<li>后代选择器: M N{}</li>
+<li>父子选择器: M&gt;N{}</li>
+<li>兄弟选择器: M~N{}</li>
+<li>相邻选择器: M+N{}</li>
+<li>属性选择器: M[attr] {}</li>
+<li>完全匹配: =:</li>
+<li>部分匹配: *=</li>
+<li>起始匹配: ^=</li>
+<li>结束匹配: $=</li>
+<li>伪类选择器:  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:nth-of-type</span>()&#123;&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:nth-child</span>()&#123;&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:first</span>-of-type()&#123;&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:first</span>-child()&#123;&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:last-of-type</span>()&#123;&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:last-child</span>()&#123;&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:only-of-type</span>()&#123;&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:only-child</span>()&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="box-sizing"><a href="#box-sizing" class="headerlink" title="box-sizing"></a>box-sizing</h4>取值为 content-box || border-box<br>content-box是默认<br>border-box下,width和height是整个盒子的宽高<br>主要运用于不计算具体的px,和width:100% 下 的问题</li>
+</ul>
+<h4 id="marigin的一些问题"><a href="#marigin的一些问题" class="headerlink" title="marigin的一些问题"></a>marigin的一些问题</h4><ul>
+<li>相邻元素有上下margin的时候,会取较大值最为叠加的值.</li>
+<li>margin的传递问题只会出现在嵌套的结构中,且只会出现在margin-top的传递中<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#box1</span>&#123;<span class="attribute">width</span>:<span class="number">200px</span>;<span class="attribute">height</span>:<span class="number">200px</span>;bacground:red;&#125;</span><br><span class="line"><span class="selector-id">#box2</span>&#123;<span class="attribute">width</span>:<span class="number">200px</span>;<span class="attribute">height</span>:<span class="number">200px</span>;bacground:red;<span class="attribute">margin-top</span>:<span class="number">100px</span>;&#125;</span><br></pre></td></tr></table></figure>
+解决办法:BFC规范,给父容器加边框,margin换成padding</li>
+<li>marigin-left/right:auto 可以实现左右居中,但上下不行</li>
+<li>height 和 width 不写时,会自动计算容器大小. </li>
+</ul>
+<h4 id="标签分类"><a href="#标签分类" class="headerlink" title="标签分类"></a>标签分类</h4><ol>
+<li>按类型(布局一般用块,修饰文本一般用内联)</li>
+</ol>
+<ul>
+<li>block: div,p,ul,li,h1…<ul>
+<li>独占一行</li>
+<li>支持所有样式</li>
+<li>不写宽的时候,宽和父元素相同</li>
+<li>所占区域是一个矩形</li>
+</ul>
+</li>
+<li>inline: span,a,em,strong,img(特例,是替换元素)<ul>
+<li>不转行,放在一起</li>
+<li>有些样式不支持,如:width,height,一些方向上的margin和padding</li>
+<li>不写宽的时候,宽由内容决定</li>
+<li>所占区域不一定是矩形</li>
+<li>内联标签之间会有空隙,是换行产生的</li>
+</ul>
+</li>
+<li>inline-block: input, select<ul>
+<li>挨在一起,但是支持宽高</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>按内容</li>
+</ol>
+<ul>
+<li>Flow: 流内容</li>
+<li>Metedata: 源数据</li>
+<li>Sectioning: 分区</li>
+<li>Heading: 标题</li>
+<li>Phrasing: 措辞</li>
+<li>Embedded: 嵌入的</li>
+<li>Interactive: 互动的</li>
+</ul>
+<ol start="3">
+<li>按显示</li>
+</ol>
+<ul>
+<li>替换元素: 如img,浏览器根据元素的标签和属性,来决定元素的显示内容</li>
+<li>非替换元素: 浏览器直接显示出来</li>
+</ul>
+<h4 id="隐藏"><a href="#隐藏" class="headerlink" title="隐藏"></a>隐藏</h4><ol>
+<li>display: none 不占空间的隐藏</li>
+<li>visibility: hidden 占空间的隐藏</li>
+</ol>
+<h4 id="溢出隐藏overflow"><a href="#溢出隐藏overflow" class="headerlink" title="溢出隐藏overflow"></a>溢出隐藏overflow</h4><ol>
+<li>hidden 隐藏</li>
+<li>scorll 滚动条</li>
+<li>auto 多了就滚动,少了就没有</li>
+<li>overflow-x.overflow-y  针对两个轴</li>
+</ol>
+<h4 id="透明度与手势"><a href="#透明度与手势" class="headerlink" title="透明度与手势"></a>透明度与手势</h4><p>opacity: 0~1   透明到不透明 会影响整体,<br>也可以在rgba(255,255,255,x)  x为透明度 ,只会影响背景<br>cursor: 手势,指针,可以用url自定义手势图片</p>
+<h4 id="float"><a href="#float" class="headerlink" title="float"></a>float</h4><p><strong>脱离文档流,沿着父容器靠左或者靠右进行排列,类似于图层的概念,提升半层</strong></p>
+<ul>
+<li>只会影响后面的元素,不影响之前的元素</li>
+<li>提升半层,用于图文混排效果</li>
+<li>浮动元素的默认宽,是根据内容决定的,而不是父容器</li>
+<li>默认折行,在父元素中放不下,会换行</li>
+<li>一般给块级元素添加,内联也可以</li>
+</ul>
+<h4 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h4><ul>
+<li>上下排列:clear属性,left||right||both</li>
+<li>嵌套排列<ul>
+<li>固定宽高:不推荐,不能把高度固定死,不适合做自适应</li>
+<li>父元素浮动,不推荐,因为父元素浮动会影响到后面的元素</li>
+<li>display:inline-block BFC规范,不推荐,父元素会影响后面的元素</li>
+<li>设置空标签,通过clear清除浮动,不推荐,会多一个标签</li>
+<li>overflow:hidden BFC规范,如果有子元素溢出,那么会受到影响</li>
+<li>after伪类,推荐,是空标签的加强版,目前各大公司的做法(content出来的是行内元素,clear不起作用,需要转化成block)<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">父元素<span class="selector-pseudo">:after</span>&#123;<span class="attribute">content</span>:<span class="string">&#x27;&#x27;</span>;</span><br><span class="line">      <span class="attribute">clear</span>:both;</span><br><span class="line">      <span class="attribute">display</span>:block;&#125; </span><br></pre></td></tr></table></figure>
+<h4 id="定位-position"><a href="#定位-position" class="headerlink" title="定位:position"></a>定位:position</h4></li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>static</li>
+<li>relative 相对定位<ol>
+<li>如果没有定位偏移量,对元素本身没有任何影响</li>
+<li>不使元素脱离文档流</li>
+<li>不影响其他元素布局</li>
+<li>left,top,right,bottom是相对于自身元素进行偏移的</li>
+</ol>
+</li>
+<li>absolute 绝对定位<ol>
+<li>使元素完全脱离文档流</li>
+<li>使内联元素支持宽高(具备块特性)</li>
+<li>使块元素默认宽根据内容决定(具备内联特性)</li>
+<li>如果有定位祖先元素,相对于祖先元素发生偏移</li>
+<li>如果没有祖先元素,相对于整个文档发生偏移(绝对,相对,固定)</li>
+<li>找最近的有position的祖先元素</li>
+</ol>
+</li>
+<li>fixed 固定定位<ol>
+<li>使元素完全脱离文档流</li>
+<li>使内联元素支持宽高(具备块特性)</li>
+<li>使块元素默认宽根据内容决定(具备内联特性)</li>
+<li>相对于整个浏览器窗口进行偏移,不受滚动条影响</li>
+</ol>
+</li>
+<li>sticky 粘性定位 做吸附功能<br>在指定的位置,进行粘性操作</li>
+<li>z-index 层级,图层<br>层级默认是0,根据大小进行覆盖,在嵌套中只比较相同层级. </li>
+</ol>
+<h4 id="引用标签-有利于被搜索引擎发现-是否具备语义化"><a href="#引用标签-有利于被搜索引擎发现-是否具备语义化" class="headerlink" title="引用标签,有利于被搜索引擎发现,是否具备语义化"></a>引用标签,有利于被搜索引擎发现,是否具备语义化</h4><ul>
+<li>blockquote  引用大段的段落解释</li>
+<li>q 引用小段的段落解释</li>
+<li>abbr 缩写,或者首字母缩写</li>
+<li>address 引用文档地址信息</li>
+<li>cite 引用著作标题</li>
+</ul>
+<h4 id="H5新标签"><a href="#H5新标签" class="headerlink" title="H5新标签"></a>H5新标签</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">&lt;article&gt;标签定义外部的内容。比如来自一个外部的新闻提供者的一篇新的文章，或者来自 blog 的文本，或者是来自论坛的文本。亦或是来自其他外部源内容。</span><br><span class="line">HTML5:&lt;article&gt;&lt;/article&gt;</span><br><span class="line">HTML4:&lt;div&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;aside&gt;标签定义 article 以外的内容。aside 的内容应该与 article 的内容相关。</span><br><span class="line">HTML5:&lt;aside&gt;Aside 的内容是独立的内容，但应与文档内容相关。&lt;/aside&gt;</span><br><span class="line">HTML4:&lt;div&gt;Aside 的内容是独立的内容，但应与文档内容相关。&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;audio&gt; 标签定义声音，比如音乐或其他音频流。</span><br><span class="line">HTML5:&lt;audio src=&quot;someaudio.wav&quot;&gt;您的浏览器不支持 audio 标签。&lt;/audio&gt;</span><br><span class="line">HTML4:&lt;object type=&quot;application/ogg&quot; data=&quot;someaudio.wav&quot;&gt;&lt;param name=&quot;src&quot; value=&quot;someaudio.wav&quot;&gt;&lt;/object&gt;</span><br><span class="line"></span><br><span class="line">&lt;canvas&gt; 标签定义图形，比如图表和其他图像。这个 HTML 元素是为了客户端矢量图形而设计的。它自己没有行为，但却把一个绘图 API 展现给客户端 JavaScript 以使脚本能够把想绘制的东西都绘制到一块画布上。</span><br><span class="line">HTML5:&lt;canvas id=&quot;myCanvas&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">HTML4:&lt;object data=&quot;inc/hdr.svg&quot; type=&quot;image/svg+xml&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;&lt;/object&gt;</span><br><span class="line"></span><br><span class="line">&lt;command&gt; 标签定义命令按钮，比如单选按钮、复选框或按钮。</span><br><span class="line">HTML5: &lt;command οnclick=cut()&quot; label=&quot;cut&quot;&gt;</span><br><span class="line">HTML4: none</span><br><span class="line"></span><br><span class="line">&lt;datalist&gt; 标签定义可选数据的列表。与 input 元素配合使用，就可以制作出输入值的下拉列表。</span><br><span class="line">HTML5: &lt;datalist&gt;&lt;/datalist&gt;</span><br><span class="line">HTML4: see combobox.</span><br><span class="line"></span><br><span class="line">&lt;details&gt; 标签定义元素的细节，用户可进行查看，或通过点击进行隐藏。与 &lt;legend&gt; 一起使用，来制作 detail 的标题。该标题对用户是可见的，当在其上点击时可打开或关闭 detail。</span><br><span class="line">HTML5: &lt;details&gt;&lt;/details&gt;</span><br><span class="line">HTML4: &lt;dl style=&quot;display:hidden&quot;&gt;&lt;/dl&gt;</span><br><span class="line"></span><br><span class="line">&lt;embed&gt; 标签定义嵌入的内容，比如插件。</span><br><span class="line">HTML5: &lt;embed src=&quot;horse.wav&quot; /&gt;</span><br><span class="line">HTML4: &lt;object data=&quot;flash.swf&quot;  type=&quot;application/x-shockwave-flash&quot;&gt;&lt;/object&gt;</span><br><span class="line"></span><br><span class="line">&lt;figcaption&gt; 标签定义 figure 元素的标题。”figcaption” 元素应该被置于 “figure” 元素的第一个或最后一个子元素的位置。</span><br><span class="line">HTML5: &lt;figure&gt;&lt;figcaption&gt;PRC&lt;/figcaption&gt;&lt;/figure&gt;</span><br><span class="line">HTML4: none</span><br><span class="line"></span><br><span class="line">&lt;figure&gt; 标签用于对元素进行组合。使用 &lt;figcaption&gt; 元素为元素组添加标题。</span><br><span class="line">HTML5: &lt;figure&gt;&lt;figcaption&gt;PRC&lt;/figcaption&gt;&lt;p&gt;The People&#x27;s Republic of China was born in 1949...&lt;/p&gt;&lt;/figure&gt;</span><br><span class="line">HTML4: &lt;dl&gt;&lt;h1&gt;PRC&lt;/h1&gt;&lt;p&gt;The People&#x27;s Republic of China was born in 1949...&lt;/p&gt;&lt;/dl&gt;</span><br><span class="line"></span><br><span class="line">&lt;footer&gt; 标签定义 section 或 document 的页脚。典型地，它会包含创作者的姓名、文档的创作日期以及/或者联系信息。</span><br><span class="line">HTML5: &lt;footer&gt;&lt;/footer&gt;</span><br><span class="line">HTML4: &lt;div&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;header&gt; 标签定义 section 或 document 的页眉。</span><br><span class="line">HTML5: &lt;header&gt;&lt;/header&gt;</span><br><span class="line">HTML4: &lt;div&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;hgroup&gt; 标签用于对网页或区段（section）的标题进行组合。</span><br><span class="line">HTML5: &lt;hgroup&gt;&lt;/hgroup&gt;</span><br><span class="line">HTML4: &lt;div&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;keygen&gt; 标签定义生成密钥。</span><br><span class="line">HTML5: &lt;keygen&gt;</span><br><span class="line">HTML4: none</span><br><span class="line"></span><br><span class="line">&lt;mark&gt;主要用来在视觉上向用户呈现那些需要突出的文字。&lt;mark&gt;标签的一个比较典型的应用就是在搜索结果中向用户高亮显示搜索关键词。</span><br><span class="line">HTML5: &lt;mark&gt;&lt;/mark&gt;</span><br><span class="line">HTML4: &lt;span&gt;&lt;/span&gt;</span><br><span class="line"></span><br><span class="line">&lt;meter&gt; 标签定义度量衡。仅用于已知最大和最小值的度量。必须定义度量的范围，既可以在元素的文本中，也可以在 min/max 属性中定义。</span><br><span class="line">HTML5: &lt;meter&gt;&lt;/meter&gt;</span><br><span class="line">HTML4: none</span><br><span class="line"></span><br><span class="line">&lt;nav&gt; 标签定义导航链接的部分。</span><br><span class="line">HTML5: &lt;nav&gt;&lt;/nav&gt;</span><br><span class="line">HTML4:&lt;ul&gt;&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;output&gt; 标签定义不同类型的输出，比如脚本的输出。</span><br><span class="line">HTML5: &lt;output&gt;&lt;/output&gt;</span><br><span class="line">HTML4: &lt;span&gt;&lt;/span&gt;</span><br><span class="line"></span><br><span class="line">&lt;progress&gt; 标签运行中的进程。可以使用 &lt;progress&gt; 标签来显示 JavaScript 中耗费时间的函数的进程。</span><br><span class="line">HTML5: &lt;progress&gt;&lt;/progress&gt;</span><br><span class="line">HTML4: none</span><br><span class="line"></span><br><span class="line">&lt;rp&gt; 标签在 ruby 注释中使用，以定义不支持 ruby 元素的浏览器所显示的内容。</span><br><span class="line">HTML5: &lt;ruby&gt;漢 &lt;rt&gt;&lt;rp&gt;(&lt;/rp&gt;ㄏㄢˋ&lt;rp&gt;)&lt;/rp&gt;&lt;/rt&gt;&lt;/ruby&gt;</span><br><span class="line">HTML4: none</span><br><span class="line"></span><br><span class="line">&lt;rt&gt; 标签定义字符（中文注音或字符）的解释或发音。</span><br><span class="line">HTML5: &lt;ruby&gt;漢 &lt;rt&gt; ㄏㄢˋ &lt;/rt&gt;&lt;/ruby&gt;</span><br><span class="line">HTML4: none</span><br><span class="line"></span><br><span class="line">&lt;ruby&gt; 标签定义 ruby 注释（中文注音或字符）。</span><br><span class="line">HTML5: &lt;ruby&gt;漢 &lt;rt&gt;&lt;rp&gt;(&lt;/rp&gt;ㄏㄢˋ&lt;rp&gt;)&lt;/rp&gt;&lt;/rt&gt;&lt;/ruby&gt;</span><br><span class="line">HTML4: none</span><br><span class="line"></span><br><span class="line">&lt;section&gt; 标签定义文档中的节（section、区段）。比如章节、页眉、页脚或文档中的其他部分。</span><br><span class="line">HTML5: &lt;section&gt;&lt;/section&gt;</span><br><span class="line">HTML4: &lt;div&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;source&gt; 标签为媒介元素（比如 &lt;video&gt; 和 &lt;audio&gt;）定义媒介资源。</span><br><span class="line">HTML5: &lt;source&gt;</span><br><span class="line">HTML4: &lt;param&gt;</span><br><span class="line"></span><br><span class="line">&lt;summary&gt; 标签包含 details 元素的标题，”details” 元素用于描述有关文档或文档片段的详细信息。”summary” 元素应该是 “details” 元素的第一个子元素。</span><br><span class="line">HTML5: &lt;details&gt;&lt;summary&gt;HTML 5&lt;/summary&gt;This document teaches you everything you have to learn about HTML 5.&lt;/details&gt;</span><br><span class="line">HTML4: none</span><br><span class="line"></span><br><span class="line">&lt;time&gt; 标签定义日期或时间，或者两者。</span><br><span class="line">HTML5: &lt;time&gt;&lt;/time&gt;</span><br><span class="line">HTML4: &lt;span&gt;&lt;/span&gt;</span><br><span class="line"></span><br><span class="line">&lt;video&gt; 标签定义视频，比如电影片段或其他视频流。</span><br><span class="line">HTML5: &lt;video src=&quot;movie.ogg&quot; controls=&quot;controls&quot;&gt;您的浏览器不支持 video 标签。&lt;/video&gt;</span><br><span class="line">HTML4:&lt;object type=&quot;video/ogg&quot; data=&quot;movie.ogv&quot;&gt;&lt;param name=&quot;src&quot; value=&quot;movie.ogv&quot;&gt;&lt;/object&gt;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/html/" rel="tag"># html</a>
+              <a href="/tags/css/" rel="tag"># css</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/04/18/" rel="prev" title="js高级程序设计第十一天">
+                  <i class="fa fa-chevron-left"></i> js高级程序设计第十一天
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/04/20/" rel="next" title="200420一些基础知识2">
+                  200420一些基础知识2 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang Yin</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"./live2d_models/haruna/33/model.2017.tomo-bukatsu.low.json"},"display":{"superSample":2,"width":250,"height":400,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false},"react":{"opacityDefault":0.5,"opacityOnHover":0},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

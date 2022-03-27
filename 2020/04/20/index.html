@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="触发BFC规范(让具备BFC特性的容器看作一个独立的容器,容器里的元素不会影响外面的元素) 浮动元素(float除了none以外的值) 绝对定位元素 position(absolute,flex) display为inline-block,table-cells,flex overflow除了visible以外的值(hidden,auto,scroll)  可以解决的问题  解决margin叠加问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="200420一些基础知识2">
+<meta property="og:url" content="http://example.com/2020/04/20/index.html">
+<meta property="og:site_name" content="ZY">
+<meta property="og:description" content="触发BFC规范(让具备BFC特性的容器看作一个独立的容器,容器里的元素不会影响外面的元素) 浮动元素(float除了none以外的值) 绝对定位元素 position(absolute,flex) display为inline-block,table-cells,flex overflow除了visible以外的值(hidden,auto,scroll)  可以解决的问题  解决margin叠加问">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-20T02:16:37.000Z">
+<meta property="article:modified_time" content="2020-04-22T14:19:25.498Z">
+<meta property="article:author" content="Zhang Yin">
+<meta property="article:tag" content="html">
+<meta property="article:tag" content="css">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2020/04/20/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2020/04/20/","path":"2020/04/20/","title":"200420一些基础知识2"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>200420一些基础知识2 | ZY</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZY</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">My Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A6%E5%8F%91BFC%E8%A7%84%E8%8C%83-%E8%AE%A9%E5%85%B7%E5%A4%87BFC%E7%89%B9%E6%80%A7%E7%9A%84%E5%AE%B9%E5%99%A8%E7%9C%8B%E4%BD%9C%E4%B8%80%E4%B8%AA%E7%8B%AC%E7%AB%8B%E7%9A%84%E5%AE%B9%E5%99%A8-%E5%AE%B9%E5%99%A8%E9%87%8C%E7%9A%84%E5%85%83%E7%B4%A0%E4%B8%8D%E4%BC%9A%E5%BD%B1%E5%93%8D%E5%A4%96%E9%9D%A2%E7%9A%84%E5%85%83%E7%B4%A0"><span class="nav-number">1.</span> <span class="nav-text">触发BFC规范(让具备BFC特性的容器看作一个独立的容器,容器里的元素不会影响外面的元素)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%89%8D%E7%BC%80"><span class="nav-number">2.</span> <span class="nav-text">浏览器前缀</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transition-%E8%BF%87%E6%B8%A1"><span class="nav-number">3.</span> <span class="nav-text">transition 过渡</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transform-%E5%8F%98%E5%BD%A2"><span class="nav-number">4.</span> <span class="nav-text">transform 变形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transform%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">5.</span> <span class="nav-text">transform注意事项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#animation%E5%8A%A8%E7%94%BB-%E5%85%B3%E9%94%AE%E5%B8%A7"><span class="nav-number">6.</span> <span class="nav-text">animation动画(关键帧)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0loading%E6%95%88%E6%9E%9C"><span class="nav-number">7.</span> <span class="nav-text">实现loading效果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E7%94%BB%E6%89%A9%E5%B1%95%E8%AF%AD%E6%B3%95"><span class="nav-number">8.</span> <span class="nav-text">动画扩展语法</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zhang Yin"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Zhang Yin</p>
+  <div class="site-description" itemprop="description">zoeee</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Zooeeee" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Zooeeee" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/594498431@qq.com" title="E-Mail → 594498431@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/zh-cn/docs/configuration" title="https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;docs&#x2F;configuration" rel="noopener" target="_blank">Hexo</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://theme-next.iissnan.com/getting-started.html" title="http:&#x2F;&#x2F;theme-next.iissnan.com&#x2F;getting-started.html" rel="noopener" target="_blank">Next</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/04/20/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Zhang Yin">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZY">
+      <meta itemprop="description" content="zoeee">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="200420一些基础知识2 | ZY">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          200420一些基础知识2
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-04-20 10:16:37" itemprop="dateCreated datePublished" datetime="2020-04-20T10:16:37+08:00">2020-04-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-04-22 22:19:25" itemprop="dateModified" datetime="2020-04-22T22:19:25+08:00">2020-04-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/css/" itemprop="url" rel="index"><span itemprop="name">css</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h4 id="触发BFC规范-让具备BFC特性的容器看作一个独立的容器-容器里的元素不会影响外面的元素"><a href="#触发BFC规范-让具备BFC特性的容器看作一个独立的容器-容器里的元素不会影响外面的元素" class="headerlink" title="触发BFC规范(让具备BFC特性的容器看作一个独立的容器,容器里的元素不会影响外面的元素)"></a>触发BFC规范(让具备BFC特性的容器看作一个独立的容器,容器里的元素不会影响外面的元素)</h4><ul>
+<li>浮动元素(float除了none以外的值)</li>
+<li>绝对定位元素 position(absolute,flex)</li>
+<li>display为inline-block,table-cells,flex</li>
+<li>overflow除了visible以外的值(hidden,auto,scroll)</li>
+</ul>
+<p><strong>可以解决的问题</strong></p>
+<ul>
+<li>解决margin叠加问题</li>
+<li>解决margin传递问题</li>
+<li>解决浮动问题</li>
+<li>解决覆盖问题   <span id="more"></span>  
+<h4 id="浏览器前缀"><a href="#浏览器前缀" class="headerlink" title="浏览器前缀"></a>浏览器前缀</h4></li>
+<li><em>CSS3去兼容不同的浏览器,针对旧的浏览器做兼容,新浏览器基本不用添加前缀</em>*    </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">浏览器</th>
+<th align="center">内核</th>
+<th align="center">前缀</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">IE</td>
+<td align="center">Trident</td>
+<td align="center">-ms-</td>
+</tr>
+<tr>
+<td align="center">Firefox</td>
+<td align="center">Gecko</td>
+<td align="center">-moz-</td>
+</tr>
+<tr>
+<td align="center">Opera</td>
+<td align="center">Presto</td>
+<td align="center">-o-</td>
+</tr>
+<tr>
+<td align="center">Chrome</td>
+<td align="center">Webkit</td>
+<td align="center">-webkit-</td>
+</tr>
+<tr>
+<td align="center">Safari</td>
+<td align="center">Webkit</td>
+<td align="center">-webkit-</td>
+</tr>
+<tr>
+<td align="center">Chrome,Safari</td>
+<td align="center">Blink</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h4 id="transition-过渡"><a href="#transition-过渡" class="headerlink" title="transition 过渡"></a>transition 过渡</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//过渡的属性,持续时间,延迟时间,过渡方式</span><br><span class="line"><span class="attribute">transition-property</span>: all;   </span><br><span class="line"><span class="attribute">transition-duration</span>: <span class="number">2s</span>;</span><br><span class="line"><span class="attribute">transition-delay</span>: <span class="number">1s</span>;</span><br><span class="line"><span class="attribute">transition-timing-function</span>: <span class="built_in">cubic-bezier</span>(<span class="number">0.075</span>, <span class="number">0.82</span>, <span class="number">0.165</span>, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p>** cubic-bezier.com中可以生成速率参数**<br>最好不要放到:hover中</p>
+<h4 id="transform-变形"><a href="#transform-变形" class="headerlink" title="transform 变形"></a>transform 变形</h4><ul>
+<li>translate 位移<ul>
+<li>x,y是2d,z是3d</li>
+</ul>
+</li>
+<li>scale 缩放<ul>
+<li>x,y是2d,z是3d</li>
+</ul>
+</li>
+<li>rotate 旋转<ul>
+<li>x,y是3D,z是2D,因为是根据轴旋转</li>
+<li>deg,角度单位. rad,弧度单位</li>
+<li>rotate和rotateZ是等价关系</li>
+</ul>
+</li>
+<li>skew 斜切<ul>
+<li>只有xy,单位是角度</li>
+</ul>
+</li>
+</ul>
+<h4 id="transform注意事项"><a href="#transform注意事项" class="headerlink" title="transform注意事项"></a>transform注意事项</h4><ol>
+<li>变形操作不会影响到其他元素</li>
+<li>只能添加给块元素</li>
+<li>复合写法,可以添加多个变形操作</li>
+<li>transform-origin:基点  </li>
+</ol>
+<p><strong>执行时有顺序的,先做后面的,再做前面的</strong><br><em>translate会被scale,rotate,skew影响</em></p>
+<h4 id="animation动画-关键帧"><a href="#animation动画-关键帧" class="headerlink" title="animation动画(关键帧)"></a>animation动画(关键帧)</h4><ul>
+<li><p>animation-name  设置动画名字,于外面的@keyframes对应</p>
+</li>
+<li><p>animation-duration 动画持续时间</p>
+</li>
+<li><p>animation-delay 动画延迟时间</p>
+</li>
+<li><p>animation-iteration-count 动画重复次数,默认值是1,infinite 是无限</p>
+</li>
+<li><p>animation-timing-function 动画的运动形式</p>
+</li>
+<li><p>keyframes: from-&gt;0%,to-&gt;100%;</p>
+</li>
+<li><p>动画结束后会回到起始位置</p>
+</li>
+</ul>
+<h4 id="实现loading效果"><a href="#实现loading效果" class="headerlink" title="实现loading效果"></a>实现loading效果</h4><p>主要思路</p>
+<ol>
+<li>做一个四个角有四个圆点的div</li>
+<li>做第二个四个角有四个圆点的div</li>
+<li>重合在一起,并且将第二个旋转45度</li>
+<li>先给所有的点做出呼吸灯的效果</li>
+<li>给八个点按照相同的时间间隔加上动画延迟<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">     <span class="selector-class">.loading</span>&#123;<span class="attribute">width</span>: <span class="number">40px</span>;<span class="attribute">height</span>: <span class="number">40px</span>; <span class="attribute">position</span>: relative;&#125;</span></span><br><span class="line"><span class="language-css">     <span class="selector-class">.loading</span> <span class="selector-class">.box1</span>,<span class="selector-class">.loading</span> <span class="selector-class">.box2</span> &#123;<span class="attribute">width</span>: <span class="number">100%</span>; <span class="attribute">height</span>: <span class="number">100%</span>; <span class="attribute">position</span>: absolute;&#125;</span></span><br><span class="line"><span class="language-css">     <span class="selector-class">.loading</span> <span class="selector-class">.box2</span>&#123;<span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>);&#125;</span></span><br><span class="line"><span class="language-css">     <span class="selector-class">.loading</span> <span class="selector-class">.box1</span> <span class="selector-tag">div</span>,<span class="selector-class">.loading</span> <span class="selector-class">.box2</span> <span class="selector-tag">div</span></span></span><br><span class="line"><span class="language-css">     &#123;<span class="attribute">width</span>: <span class="number">10px</span>;<span class="attribute">height</span>: <span class="number">10px</span>;<span class="attribute">background-color</span>: blue;<span class="attribute">border-radius</span>: <span class="number">50%</span>;<span class="attribute">animation</span>: loading <span class="number">1.4s</span> infinite linear &#125;</span></span><br><span class="line"><span class="language-css">     <span class="selector-class">.loading</span> <span class="selector-class">.box1</span> <span class="selector-pseudo">:nth-child</span>(<span class="number">1</span>), <span class="selector-class">.loading</span> <span class="selector-class">.box2</span> <span class="selector-pseudo">:nth-child</span>(<span class="number">1</span>)</span></span><br><span class="line"><span class="language-css">     &#123;<span class="attribute">position</span>: absolute;<span class="attribute">left</span>: <span class="number">0</span>;<span class="attribute">top</span>: <span class="number">0</span>;&#125;</span></span><br><span class="line"><span class="language-css">     <span class="selector-class">.loading</span> <span class="selector-class">.box1</span> <span class="selector-pseudo">:nth-child</span>(<span class="number">2</span>), <span class="selector-class">.loading</span> <span class="selector-class">.box2</span> <span class="selector-pseudo">:nth-child</span>(<span class="number">2</span>)</span></span><br><span class="line"><span class="language-css">     &#123;<span class="attribute">position</span>: absolute;<span class="attribute">right</span>: <span class="number">0</span>;<span class="attribute">top</span>: <span class="number">0</span>;&#125;</span></span><br><span class="line"><span class="language-css">     <span class="selector-class">.loading</span> <span class="selector-class">.box1</span> <span class="selector-pseudo">:nth-child</span>(<span class="number">3</span>), <span class="selector-class">.loading</span> <span class="selector-class">.box2</span> <span class="selector-pseudo">:nth-child</span>(<span class="number">3</span>)</span></span><br><span class="line"><span class="language-css">     &#123;<span class="attribute">position</span>: absolute;<span class="attribute">right</span>: <span class="number">0</span>;<span class="attribute">bottom</span>: <span class="number">0</span>;&#125;</span></span><br><span class="line"><span class="language-css">     <span class="selector-class">.loading</span> <span class="selector-class">.box1</span> <span class="selector-pseudo">:nth-child</span>(<span class="number">4</span>), <span class="selector-class">.loading</span> <span class="selector-class">.box2</span> <span class="selector-pseudo">:nth-child</span>(<span class="number">4</span>)</span></span><br><span class="line"><span class="language-css">     &#123;<span class="attribute">position</span>: absolute;<span class="attribute">left</span>:<span class="number">0</span> ; <span class="attribute">bottom</span>: <span class="number">0</span>;&#125;</span></span><br><span class="line"><span class="language-css">     <span class="keyword">@keyframes</span> loading &#123;</span></span><br><span class="line"><span class="language-css">       <span class="number">0%</span>&#123;<span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1</span>);&#125;</span></span><br><span class="line"><span class="language-css">       <span class="number">50%</span>&#123;<span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">0.5</span>);&#125;</span></span><br><span class="line"><span class="language-css">       <span class="number">100%</span>&#123;<span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1</span>);&#125;</span></span><br><span class="line"><span class="language-css">     &#125;</span></span><br><span class="line"><span class="language-css">     <span class="selector-class">.loading</span> <span class="selector-class">.box1</span> <span class="selector-pseudo">:nth-child</span>(<span class="number">1</span>)&#123;<span class="attribute">animation-delay</span>: <span class="number">0</span>;&#125;</span></span><br><span class="line"><span class="language-css">     <span class="selector-class">.loading</span> <span class="selector-class">.box2</span> <span class="selector-pseudo">:nth-child</span>(<span class="number">1</span>)&#123;<span class="attribute">animation-delay</span>: .<span class="number">2s</span>;&#125;</span></span><br><span class="line"><span class="language-css">     <span class="selector-class">.loading</span> <span class="selector-class">.box1</span> <span class="selector-pseudo">:nth-child</span>(<span class="number">2</span>)&#123;<span class="attribute">animation-delay</span>: .<span class="number">4s</span>;&#125;</span></span><br><span class="line"><span class="language-css">     <span class="selector-class">.loading</span> <span class="selector-class">.box2</span> <span class="selector-pseudo">:nth-child</span>(<span class="number">2</span>)&#123;<span class="attribute">animation-delay</span>: .<span class="number">6s</span>;&#125;</span></span><br><span class="line"><span class="language-css">     <span class="selector-class">.loading</span> <span class="selector-class">.box1</span> <span class="selector-pseudo">:nth-child</span>(<span class="number">3</span>)&#123;<span class="attribute">animation-delay</span>: .<span class="number">8s</span>;&#125;</span></span><br><span class="line"><span class="language-css">     <span class="selector-class">.loading</span> <span class="selector-class">.box2</span> <span class="selector-pseudo">:nth-child</span>(<span class="number">3</span>)&#123;<span class="attribute">animation-delay</span>: <span class="number">1.0s</span>;&#125;</span></span><br><span class="line"><span class="language-css">     <span class="selector-class">.loading</span> <span class="selector-class">.box1</span> <span class="selector-pseudo">:nth-child</span>(<span class="number">4</span>)&#123;<span class="attribute">animation-delay</span>: <span class="number">1.2s</span>;&#125;</span></span><br><span class="line"><span class="language-css">     <span class="selector-class">.loading</span> <span class="selector-class">.box2</span> <span class="selector-pseudo">:nth-child</span>(<span class="number">4</span>)&#123;<span class="attribute">animation-delay</span>: <span class="number">1.4s</span>;&#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">   </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;loading&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box1&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box2&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="动画扩展语法"><a href="#动画扩展语法" class="headerlink" title="动画扩展语法"></a>动画扩展语法</h4><ul>
+<li>animation-fill-mode :规定动画播放之前或之后,其动画效果是否可见<ul>
+<li>none 默认值,在运动结束之后回到初始位置,在延迟效果下,让0%在延迟后生效</li>
+<li>backwards , 在延迟的情况下,让0%在延迟前生效</li>
+<li>forwards 在运动结束的之后,停到结束位置</li>
+<li>both:同时生效</li>
+</ul>
+</li>
+<li>animation-direction :属性定义是否应该轮流反向播放动画<ul>
+<li>alternate: 一次正向(0%-100%),一次反向(100%-0%)</li>
+<li>reserve: 永远反向(100%-0%)</li>
+<li>normal: 默认值,永远正向(0%-100%)</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/html/" rel="tag"># html</a>
+              <a href="/tags/css/" rel="tag"># css</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/04/19/" rel="prev" title="一些基础知识1">
+                  <i class="fa fa-chevron-left"></i> 一些基础知识1
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/04/21/" rel="next" title="200421一些基础知识3">
+                  200421一些基础知识3 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang Yin</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"./live2d_models/haruna/33/model.2017.tomo-bukatsu.low.json"},"display":{"superSample":2,"width":250,"height":400,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false},"react":{"opacityDefault":0.5,"opacityOnHover":0},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
