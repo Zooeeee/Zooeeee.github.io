@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -222,6 +222,98 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/05/14/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Zhang Yin">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZY">
+      <meta itemprop="description" content="zoeee">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZY">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/05/14/" class="post-title-link" itemprop="url">200514一些面试题-阿里校招二面</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-05-14 15:44:46" itemprop="dateCreated datePublished" datetime="2020-05-14T15:44:46+08:00">2020-05-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-05-15 10:11:42" itemprop="dateModified" datetime="2020-05-15T10:11:42+08:00">2020-05-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong>根据网上一篇大厂的面试题总结<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000020296556">地址</a></strong></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/14/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -496,7 +588,7 @@
 </ul>
 <h1 id="entry-和-output"><a href="#entry-和-output" class="headerlink" title="entry 和 output"></a>entry 和 output</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="attr">entry</span>: &#123;</span><br><span class="line">        <span class="attr">home</span>: <span class="string">&#x27;./src/home.js&#x27;</span>,</span><br><span class="line">        <span class="attr">about</span>: <span class="string">&#x27;./src/about.js&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">output</span>: &#123;</span><br><span class="line">        <span class="attr">path</span>: path.<span class="title function_">resolve</span>(__dirname,<span class="string">&quot;dist&quot;</span>),</span><br><span class="line">        <span class="attr">filename</span>: <span class="string">&#x27;[name].js&#x27;</span></span><br><span class="line">        <span class="comment">// 生成作用于整个的hash  且 截断</span></span><br><span class="line">        <span class="comment">//  filename: &#x27;[name].[hash:8].js&#x27;</span></span><br><span class="line">        <span class="comment">// 根据模块生成单独的hash</span></span><br><span class="line">        <span class="comment">// filename: &#x27;[name].[chunkhash:8].js&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="改变config文件的路径"><a href="#改变config文件的路径" class="headerlink" title="改变config文件的路径"></a>改变config文件的路径</h1><p>这时候要注意 生成路径的改变     path: path.resolve(__dirname,”dist”)<br>命令:<br>webpack –mode  xxx   –config ./config/webpack.config.js</p>
+<h1 id="改变config文件的路径"><a href="#改变config文件的路径" class="headerlink" title="改变config文件的路径"></a>改变config文件的路径</h1><p>这时候要注意 生成路径的改变     path: path.resolve(__dirname,”dist”)<br>命令:<br>webpack –mode  xxx   –config .&#x2F;config&#x2F;webpack.config.js</p>
 <h1 id="plugin"><a href="#plugin" class="headerlink" title="plugin"></a>plugin</h1><h2 id="Html-Webpack-Plugin"><a href="#Html-Webpack-Plugin" class="headerlink" title="Html-Webpack-Plugin"></a>Html-Webpack-Plugin</h2><p>模板html插件,可以自动更新引入js路径(即使哈希值改变)</p>
 <h2 id="MiniCssExtractPlugin"><a href="#MiniCssExtractPlugin" class="headerlink" title="MiniCssExtractPlugin"></a>MiniCssExtractPlugin</h2><p>webpack4中将css独立打包的插件,123中使用ExtractTextWebpackPlugin</p>
 <h1 id="loader"><a href="#loader" class="headerlink" title="loader"></a>loader</h1><blockquote>
@@ -669,7 +761,7 @@
 </li>
 <li><p>react-dom.js   渲染页面中的dom,依赖于核心文件.(web用,还有一个native)</p>
 </li>
-<li><p>babel.js ES6=&gt;ES5 还有jsx=&gt;js</p>
+<li><p>babel.js ES6&#x3D;&gt;ES5 还有jsx&#x3D;&gt;js</p>
 </li>
 <li><p>npm i react –save</p>
 </li>
@@ -682,10 +774,11 @@
 <h1 id="创建元素"><a href="#创建元素" class="headerlink" title="创建元素"></a>创建元素</h1><h2 id="函数式"><a href="#函数式" class="headerlink" title="函数式"></a>函数式</h2><blockquote>
 <p>ReactDom.render 接受参数,第一个是要渲染的内容,第二个是要渲染的元素</p>
 </blockquote>
-<ol>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">app</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;props.title&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">ReactDom</span>.<span class="title function_">render</span>(</span><br><span class="line">    <span class="title function_">app</span>(&#123;<span class="attr">title</span>:<span class="string">&#x27;123&#x27;</span>&#125;),</span><br><span class="line">    <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#root&#x27;</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">App</span> = (<span class="params">props</span>) =&gt;&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;props.title&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">ReactDom</span>.<span class="title function_">render</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">App</span> <span class="attr">title</span>=<span class="string">&quot;123&quot;</span> /&gt;</span></span>,</span><br><span class="line">    <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#root&#x27;</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
-</ol>
+<p>1. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">app</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;props.title&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">ReactDom</span>.<span class="title function_">render</span>(</span><br><span class="line">    <span class="title function_">app</span>(&#123;<span class="attr">title</span>:<span class="string">&#x27;123&#x27;</span>&#125;),</span><br><span class="line">    <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#root&#x27;</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>2. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">App</span> = (<span class="params">props</span>) =&gt;&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;props.title&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">ReactDom</span>.<span class="title function_">render</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">App</span> <span class="attr">title</span>=<span class="string">&quot;123&quot;</span> /&gt;</span></span>,</span><br><span class="line">    <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#root&#x27;</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
 <h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123;render&#125; <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span>&#123;</span><br><span class="line">    <span class="title function_">render</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;this.props.title&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">render</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">App</span> <span class="attr">title</span>=<span class="string">&quot;类组件&quot;</span>/&gt;</span></span>,</span><br><span class="line">    <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#root&#x27;</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>render是 react dom提供的一个方法,这个方法通常只会用一次</p>
@@ -852,7 +945,7 @@
     <div class="post-body" itemprop="articleBody">
           <h1 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h1><ul>
 <li>.nuxt    nuxt渲染出的页面,一般不看,build临时生成的</li>
-<li>assets     静态资源目录 less/sass/js</li>
+<li>assets     静态资源目录 less&#x2F;sass&#x2F;js</li>
 <li>components    组件</li>
 <li>layout    用作布局</li>
 <li>middlerware    中间件</li>
@@ -953,14 +1046,14 @@
 <ol>
 <li>chrome V8 runtime</li>
 <li>数据驱动</li>
-<li>非阻塞I/O(input/output)</li>
+<li>非阻塞I&#x2F;O(input&#x2F;output)</li>
 <li>单线程</li>
 </ol>
 <p>优点:</p>
 <ol>
 <li>高并发特别好</li>
-<li>适合I/O密集型应用。<blockquote>
-<p>什么是io?答:正常情况下I/O的的操作都是阻塞的(ajax同步):网络请求,数据库处理,文件的读写</p>
+<li>适合I&#x2F;O密集型应用。<blockquote>
+<p>什么是io?答:正常情况下I&#x2F;O的的操作都是阻塞的(ajax同步):网络请求,数据库处理,文件的读写</p>
 </blockquote>
 </li>
 </ol>
@@ -971,13 +1064,13 @@
 </ol>
 <p>解决方案:</p>
 <ol>
-<li>如何解决CPU密集型？<br>原因，由于JavaScript单线程的原因，如果有长时间运行的计算（比如大循环），将会导致CPU时间片不能释放，使得后续I/O无法发起。<br>解决方案：分解大型运算任务为多个小任务，使得运算能够适时释放，不阻塞I/O调用的发起。</li>
+<li>如何解决CPU密集型？<br>原因，由于JavaScript单线程的原因，如果有长时间运行的计算（比如大循环），将会导致CPU时间片不能释放，使得后续I&#x2F;O无法发起。<br>解决方案：分解大型运算任务为多个小任务，使得运算能够适时释放，不阻塞I&#x2F;O调用的发起。</li>
 <li>单进程、单线程解决方案<br>Nnigx反向代理，负载均衡，开多个进程，绑定多个端口；<br>开多个进程监听同一个端口，使用cluster模块。</li>
 </ol>
 <h1 id="内置的模块"><a href="#内置的模块" class="headerlink" title="内置的模块"></a>内置的模块</h1><h2 id="fs-文件操作系统"><a href="#fs-文件操作系统" class="headerlink" title="fs 文件操作系统"></a>fs 文件操作系统</h2><blockquote>
 <p>回调函数的第一个参数都是err 这样有利于错误处理</p>
 </blockquote>
-<p>const fs = require(‘fs’);</p>
+<p>const fs &#x3D; require(‘fs’);</p>
 <ul>
 <li>readdir</li>
 <li>mkdir</li>
@@ -998,7 +1091,7 @@
 <li>unescape 解除</li>
 </ul>
 <h1 id="爬虫案例"><a href="#爬虫案例" class="headerlink" title="爬虫案例"></a>爬虫案例</h1><ol>
-<li>获取目标网站   http/https模块获取html字符串</li>
+<li>获取目标网站   http&#x2F;https模块获取html字符串</li>
 <li>分析网站内容   cheerio 分析标签</li>
 <li>获取有效信息 下载或者其他操作</li>
 </ol>
@@ -1116,7 +1209,7 @@
 <p>特点：hash虽然在URL中，但不被包括在HTTP请求中；用来指导浏览器动作，对服务端安全无用，hash不会重加载页面。<br>hash 模式下，仅 hash 符号之前的内容会被包含在请求中，如 <a target="_blank" rel="noopener" href="http://www.xxx.com,因此对于后端来说,即使没有做到对路由的全覆盖,也不会返回/">http://www.xxx.com，因此对于后端来说，即使没有做到对路由的全覆盖，也不会返回</a> 404 错误。</p>
 </blockquote>
 <h2 id="history模式"><a href="#history模式" class="headerlink" title="history模式"></a>history模式</h2><blockquote>
-<p>history采用HTML5的新特性；且提供了两个新方法：pushState（），replaceState（）可以对浏览器历史记录栈进行修改，以及popState事件的监听到状态变更。<br>history 模式下，前端的 URL 必须和实际向后端发起请求的 URL 一致，如 <a target="_blank" rel="noopener" href="http://www.xxx.com/items/id%E3%80%82%E5%90%8E%E7%AB%AF%E5%A6%82%E6%9E%9C%E7%BC%BA%E5%B0%91%E5%AF%B9">http://www.xxx.com/items/id。后端如果缺少对</a> /items/id 的路由处理，将返回 404 错误</p>
+<p>history采用HTML5的新特性；且提供了两个新方法：pushState（），replaceState（）可以对浏览器历史记录栈进行修改，以及popState事件的监听到状态变更。<br>history 模式下，前端的 URL 必须和实际向后端发起请求的 URL 一致，如 <a target="_blank" rel="noopener" href="http://www.xxx.com/items/id%E3%80%82%E5%90%8E%E7%AB%AF%E5%A6%82%E6%9E%9C%E7%BC%BA%E5%B0%91%E5%AF%B9">http://www.xxx.com/items/id。后端如果缺少对</a> &#x2F;items&#x2F;id 的路由处理，将返回 404 错误</p>
 </blockquote>
 <h1 id="vue路由的钩子函数"><a href="#vue路由的钩子函数" class="headerlink" title="vue路由的钩子函数"></a>vue路由的钩子函数</h1><p>首页可以控制导航跳转，beforeEach，afterEach等，一般用于页面title的修改。一些需要登录才能调整页面的重定向功能。</p>
 <p>beforeEach主要有3个参数to，from，next：<br>to：route即将进入的目标路由对象，<br>from：route当前导航正要离开的路由<br>next：function一定要调用该方法resolve这个钩子。执行效果依赖next方法的调用参数。可以控制网页的跳转。</p>
@@ -1147,7 +1240,7 @@
 <p>单个的路由钩子函数：beforeEnter</p>
 <p>组件内的路由钩子函数：beforeRouteEnter、beforeRouteLeave、beforeRouteUpdate</p>
 <h1 id="一句话回答的问题"><a href="#一句话回答的问题" class="headerlink" title="一句话回答的问题"></a>一句话回答的问题</h1><h2 id="css只在当前组件起作用"><a href="#css只在当前组件起作用" class="headerlink" title="css只在当前组件起作用"></a>css只在当前组件起作用</h2><p>答：在style标签中写入scoped即可 例如：<style scoped></style></p>
-<h2 id="v-if-和-v-show-区别"><a href="#v-if-和-v-show-区别" class="headerlink" title="v-if 和 v-show 区别"></a>v-if 和 v-show 区别</h2><p>v-if按照条件是否渲染，v-show是display的block或none；<br>v-if 造成切换性能损耗,v-show造成创建损耗<br>如果一个组件经常消失/出现,用v-show<br>反之用v-if,因为可以不创建,减少损耗</p>
+<h2 id="v-if-和-v-show-区别"><a href="#v-if-和-v-show-区别" class="headerlink" title="v-if 和 v-show 区别"></a>v-if 和 v-show 区别</h2><p>v-if按照条件是否渲染，v-show是display的block或none；<br>v-if 造成切换性能损耗,v-show造成创建损耗<br>如果一个组件经常消失&#x2F;出现,用v-show<br>反之用v-if,因为可以不创建,减少损耗</p>
 <h2 id="route-和-router的区别"><a href="#route-和-router的区别" class="headerlink" title="route 和 router的区别"></a>route 和 router的区别</h2><p>route是路由信息对象,包括path,params,hash,query,name,fullPath<br>router是路由实例对象,包括路由的跳转,钩子函数等</p>
 <h2 id="vue-js的两个核心是什么？"><a href="#vue-js的两个核心是什么？" class="headerlink" title="vue.js的两个核心是什么？"></a>vue.js的两个核心是什么？</h2><p>数据驱动、组件系统</p>
 <h2 id="vue几种常用的指令"><a href="#vue几种常用的指令" class="headerlink" title="vue几种常用的指令"></a>vue几种常用的指令</h2><p>v-for 、 v-if 、v-bind、v-on、v-show、v-else</p>
@@ -1164,7 +1257,7 @@
 <li>相较于methods，不管依赖的数据变不变，methods都会重新计算，但是依赖数据不变的时候computed从缓存中获取，不会重新计算。</li>
 </ol>
 <h2 id="vue等单页面应用及其优缺点"><a href="#vue等单页面应用及其优缺点" class="headerlink" title="vue等单页面应用及其优缺点"></a>vue等单页面应用及其优缺点</h2><p>优点：Vue 的目标是通过尽可能简单的 API 实现响应的数据绑定和组合的视图组件，核心是一个响应的数据绑定系统。MVVM、数据驱动、组件化、轻量、简洁、高效、快速、模块友好。<br>缺点：不支持低版本的浏览器，最低只支持到IE9；不利于SEO的优化（如果要支持SEO，建议通过服务端来进行渲染组件）；第一次加载首页耗时相对长一些；不可以使用浏览器的导航按钮需要自行实现前进、后退。</p>
-<h2 id="怎么定义-vue-router-的动态路由-怎么获取传过来的值"><a href="#怎么定义-vue-router-的动态路由-怎么获取传过来的值" class="headerlink" title="怎么定义 vue-router 的动态路由? 怎么获取传过来的值"></a>怎么定义 vue-router 的动态路由? 怎么获取传过来的值</h2><p>在 router 目录下的 index.js 文件中，对 path 属性加上 /:id，使用 router 对象的 params.id 获取。</p>
+<h2 id="怎么定义-vue-router-的动态路由-怎么获取传过来的值"><a href="#怎么定义-vue-router-的动态路由-怎么获取传过来的值" class="headerlink" title="怎么定义 vue-router 的动态路由? 怎么获取传过来的值"></a>怎么定义 vue-router 的动态路由? 怎么获取传过来的值</h2><p>在 router 目录下的 index.js 文件中，对 path 属性加上 &#x2F;:id，使用 router 对象的 params.id 获取。</p>
 
       
     </div>
@@ -1278,7 +1371,7 @@
 <li>slice()  截取字符串,并返回被提取的部分</li>
 <li>substr()  按起始位置和长度截取字符串</li>
 <li>substring()  截取字符串,并返回被提取的部分 字符串专用,按小的那个数值为起始</li>
-<li>toLowerCase()/toUpperCase()  大小写</li>
+<li>toLowerCase()&#x2F;toUpperCase()  大小写</li>
 </ul>
 <h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><ul>
 <li>create()  创建一个对象,Object.create(null) 能创建一个原型为空的对象</li>
@@ -1290,7 +1383,7 @@
 <li>getOwnPropertyNames()  与keys相似，但包含遍历包含不可枚举属性</li>
 <li>getOwnPropertyDescriptor()  获取该属性的描述对象</li>
 <li>entries()  分割对象</li>
-<li>is()  它用来比较两个值是否严格相等，与严格比较运算符（===）的行为基本一致</li>
+<li>is()  它用来比较两个值是否严格相等，与严格比较运算符（&#x3D;&#x3D;&#x3D;）的行为基本一致</li>
 <li>hasOwnProperty()  方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性</li>
 <li>isPrototypeOf()    用于测试一个对象是否存在于另一个对象的原型链上</li>
 <li>caller()  返回当前函数的调用者</li>
@@ -1488,134 +1581,6 @@
 <li><a target="_blank" rel="noopener" href="https://upload-images.jianshu.io/upload_images/1940317-9c37b4be1b7c96d1.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/950/format/webp">演示地址</a></li>
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">HeapSort</span>(<span class="params">array</span>) &#123;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">swap</span>(<span class="params">i,j</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> temp = array[i];</span><br><span class="line">        array[i] = array[j];</span><br><span class="line">        array[j] = temp; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">MaxHeap</span>(<span class="params">start, end</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> dad = start;</span><br><span class="line">        <span class="keyword">var</span> son = dad * <span class="number">2</span> + <span class="number">1</span>;<span class="comment">//子节点中的左节点</span></span><br><span class="line">        <span class="keyword">if</span> (son &gt;= end)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> (son + <span class="number">1</span> &lt; end &amp;&amp; array[son] &lt; array[son + <span class="number">1</span>])<span class="comment">//比较左右节点的值，选择大的那个</span></span><br><span class="line">            son++;</span><br><span class="line">        <span class="keyword">if</span> (array[dad] &lt;= array[son]) &#123;<span class="comment">//如果父节点小于子节点时，交换父子内容再继续子节点和孙节点比较</span></span><br><span class="line">            <span class="title function_">swap</span>(dad, son);</span><br><span class="line">            <span class="title class_">MaxHeap</span>(son, end);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> len = array.<span class="property">length</span>;</span><br><span class="line">    <span class="comment">//从最后一个父节点开始创建最大堆</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="title class_">Math</span>.<span class="title function_">floor</span>(len / <span class="number">2</span>) - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(array);</span><br><span class="line">        <span class="title class_">MaxHeap</span>(i,len);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(array);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;----------------------------------&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//将最大的交换到最后一个位置；在调整最大堆，直至调整到第一个</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = len - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="title function_">swap</span>(<span class="number">0</span>,i);</span><br><span class="line">        <span class="title class_">MaxHeap</span>(<span class="number">0</span>,i);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(array);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;----------------------------&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> array;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/05/03/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Zhang Yin">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZY">
-      <meta itemprop="description" content="zoeee">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZY">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/05/03/" class="post-title-link" itemprop="url">200503前端性能优化</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2020-05-03 12:07:22 / 修改时间：12:26:58" itemprop="dateCreated datePublished" datetime="2020-05-03T12:07:22+08:00">2020-05-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="页面重构怎么操作？"><a href="#页面重构怎么操作？" class="headerlink" title="页面重构怎么操作？"></a>页面重构怎么操作？</h1><blockquote>
-<p>在不改变外部行为的前提下，简化结构、添加可读性，而在网站前端保持一致的行为。<br>也就是说是在不改变UI的情况下，对网站进行优化，在扩展的同时保持一致的UI。</p>
-</blockquote>
-<ol>
-<li><p>表格(table)布局改为DIV+CSS(table代码冗余,且不好控制样式,为了将样式于数据展示分离,最好用div)<br>使网站前端兼容于现代浏览器(针对于不合规范的CSS、如对IE6有效的)<br>对于移动平台的优化<br>针对于SEO进行优化<br>深层次的网站重构应该考虑的方面</p>
-</li>
-<li><p>减少代码间的耦合<br>让代码保持弹性<br>严格按规范编写代码<br>设计可扩展的API<br>代替旧有的框架、语言(如VB)<br>增强用户体验<br>通常来说对于速度的优化也包含在重构中</p>
-</li>
-<li><p>压缩JS、CSS、image等前端资源(通常是由服务器来解决)<br>程序的性能优化(如数据读写)<br>采用CDN来加速资源加载<br>对于JS DOM的优化<br>HTTP服务器的文件缓存</p>
-</li>
-</ol>
-<h1 id="前端性能优化的方法？"><a href="#前端性能优化的方法？" class="headerlink" title="前端性能优化的方法？"></a>前端性能优化的方法？</h1><ol>
-<li>减少http请求次数：CSS Sprites, JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。</li>
-<li>前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数</li>
-<li> 用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能。</li>
-<li> 当需要设置的样式很多时设置className而不是直接操作style。</li>
-<li> 少用全局变量、缓存DOM节点查找的结果。减少IO读取操作</li>
-<li> 避免使用CSS Expression（css表达式)又称Dynamic properties(动态属性)。</li>
-<li> 图片预加载，将样式表放在顶部，将脚本放在底部 加上时间戳。</li>
-<li> 避免在页面的主体布局中使用table，table要等其中的内容完全下载之后才会显示出来，显示比div+css布局慢。</li>
-</ol>
-<h1 id="优化思路"><a href="#优化思路" class="headerlink" title="优化思路"></a>优化思路</h1><p>在不影响功能和体验的情况下，</p>
-<ol>
-<li>能在浏览器执行的不要在服务端执行，</li>
-<li>能在缓存服务器上直接返回的不要到应用服务器，</li>
-<li>程序能直接取得的结果不要到外部取得，</li>
-<li>本机内能取得的数据不要到远程取，</li>
-<li>内存能取到的不要到磁盘取，</li>
-<li>缓存中有的不要去数据库查询。</li>
-<li>减少数据库操作指减少更新次数、缓存结果减少查询次数、将数据库执行的操作尽可能的让你的程序完成（例如join查询），减少磁盘IO指尽量不使用文件系统作为缓存、减少读写文件次数等。</li>
-<li>程序优化永远要优化慢的部分，换语言是无法“优化”的。</li>
-</ol>
-<h1 id="页面从输入-URL-到页面加载显示完成"><a href="#页面从输入-URL-到页面加载显示完成" class="headerlink" title="页面从输入 URL 到页面加载显示完成"></a>页面从输入 URL 到页面加载显示完成</h1><h2 id="详细版"><a href="#详细版" class="headerlink" title="详细版"></a>详细版</h2><ol>
-<li>浏览器会开启一个线程来处理这个请求，对 URL 分析判断如果是 http 协议就按照 Web 方式来处理;</li>
-<li>调用浏览器内核中的对应方法，比如 WebView 中的 loadUrl 方法;</li>
-<li>通过DNS解析获取网址的IP地址，设置 UA 等信息发出第二个GET请求;</li>
-<li>进行HTTP协议会话，客户端发送报头(请求报头);</li>
-<li>进入到web服务器上的 Web Server，如 Apache、Tomcat、Node.JS 等服务器;</li>
-<li>进入部署好的后端应用，如 PHP、Java、JavaScript、Python 等，找到对应的请求处理;</li>
-<li>处理结束回馈报头，此处如果浏览器访问过，缓存上有对应资源，会与服务器最后修改时间对比，一致则返回304;</li>
-<li>浏览器开始下载html文档(响应报头，状态码200)，同时使用缓存;</li>
-<li>文档树建立，根据标记请求所需指定MIME类型的文件（比如css、js）,同时设置了cookie;</li>
-<li>页面开始渲染DOM，JS根据DOM API操作DOM,执行事件绑定等，页面显示完成。</li>
-</ol>
-<h2 id="简略版"><a href="#简略版" class="headerlink" title="简略版"></a>简略版</h2><ol>
-<li>浏览器根据请求的URL交给DNS域名解析，找到真实IP，向服务器发起请求；</li>
-<li>服务器交给后台处理完成后返回数据，浏览器接收文件（HTML、JS、CSS、图象等）；</li>
-<li>浏览器对加载到的资源（HTML、JS、CSS等）进行语法解析，建立相应的内部数据结构（如HTML的DOM）；</li>
-<li>载入解析到的资源文件，渲染页面，完成。</li>
-</ol>
-
       
     </div>
 

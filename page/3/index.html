@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -249,6 +249,134 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/05/03/" class="post-title-link" itemprop="url">200503前端性能优化</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-05-03 12:07:22 / 修改时间：12:26:58" itemprop="dateCreated datePublished" datetime="2020-05-03T12:07:22+08:00">2020-05-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="页面重构怎么操作？"><a href="#页面重构怎么操作？" class="headerlink" title="页面重构怎么操作？"></a>页面重构怎么操作？</h1><blockquote>
+<p>在不改变外部行为的前提下，简化结构、添加可读性，而在网站前端保持一致的行为。<br>也就是说是在不改变UI的情况下，对网站进行优化，在扩展的同时保持一致的UI。</p>
+</blockquote>
+<ol>
+<li><p>表格(table)布局改为DIV+CSS(table代码冗余,且不好控制样式,为了将样式于数据展示分离,最好用div)<br>使网站前端兼容于现代浏览器(针对于不合规范的CSS、如对IE6有效的)<br>对于移动平台的优化<br>针对于SEO进行优化<br>深层次的网站重构应该考虑的方面</p>
+</li>
+<li><p>减少代码间的耦合<br>让代码保持弹性<br>严格按规范编写代码<br>设计可扩展的API<br>代替旧有的框架、语言(如VB)<br>增强用户体验<br>通常来说对于速度的优化也包含在重构中</p>
+</li>
+<li><p>压缩JS、CSS、image等前端资源(通常是由服务器来解决)<br>程序的性能优化(如数据读写)<br>采用CDN来加速资源加载<br>对于JS DOM的优化<br>HTTP服务器的文件缓存</p>
+</li>
+</ol>
+<h1 id="前端性能优化的方法？"><a href="#前端性能优化的方法？" class="headerlink" title="前端性能优化的方法？"></a>前端性能优化的方法？</h1><ol>
+<li>减少http请求次数：CSS Sprites, JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。</li>
+<li>前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数</li>
+<li>用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能。</li>
+<li>当需要设置的样式很多时设置className而不是直接操作style。</li>
+<li>少用全局变量、缓存DOM节点查找的结果。减少IO读取操作</li>
+<li>避免使用CSS Expression（css表达式)又称Dynamic properties(动态属性)。</li>
+<li>图片预加载，将样式表放在顶部，将脚本放在底部 加上时间戳。</li>
+<li>避免在页面的主体布局中使用table，table要等其中的内容完全下载之后才会显示出来，显示比div+css布局慢。</li>
+</ol>
+<h1 id="优化思路"><a href="#优化思路" class="headerlink" title="优化思路"></a>优化思路</h1><p>在不影响功能和体验的情况下，</p>
+<ol>
+<li>能在浏览器执行的不要在服务端执行，</li>
+<li>能在缓存服务器上直接返回的不要到应用服务器，</li>
+<li>程序能直接取得的结果不要到外部取得，</li>
+<li>本机内能取得的数据不要到远程取，</li>
+<li>内存能取到的不要到磁盘取，</li>
+<li>缓存中有的不要去数据库查询。</li>
+<li>减少数据库操作指减少更新次数、缓存结果减少查询次数、将数据库执行的操作尽可能的让你的程序完成（例如join查询），减少磁盘IO指尽量不使用文件系统作为缓存、减少读写文件次数等。</li>
+<li>程序优化永远要优化慢的部分，换语言是无法“优化”的。</li>
+</ol>
+<h1 id="页面从输入-URL-到页面加载显示完成"><a href="#页面从输入-URL-到页面加载显示完成" class="headerlink" title="页面从输入 URL 到页面加载显示完成"></a>页面从输入 URL 到页面加载显示完成</h1><h2 id="详细版"><a href="#详细版" class="headerlink" title="详细版"></a>详细版</h2><ol>
+<li>浏览器会开启一个线程来处理这个请求，对 URL 分析判断如果是 http 协议就按照 Web 方式来处理;</li>
+<li>调用浏览器内核中的对应方法，比如 WebView 中的 loadUrl 方法;</li>
+<li>通过DNS解析获取网址的IP地址，设置 UA 等信息发出第二个GET请求;</li>
+<li>进行HTTP协议会话，客户端发送报头(请求报头);</li>
+<li>进入到web服务器上的 Web Server，如 Apache、Tomcat、Node.JS 等服务器;</li>
+<li>进入部署好的后端应用，如 PHP、Java、JavaScript、Python 等，找到对应的请求处理;</li>
+<li>处理结束回馈报头，此处如果浏览器访问过，缓存上有对应资源，会与服务器最后修改时间对比，一致则返回304;</li>
+<li>浏览器开始下载html文档(响应报头，状态码200)，同时使用缓存;</li>
+<li>文档树建立，根据标记请求所需指定MIME类型的文件（比如css、js）,同时设置了cookie;</li>
+<li>页面开始渲染DOM，JS根据DOM API操作DOM,执行事件绑定等，页面显示完成。</li>
+</ol>
+<h2 id="简略版"><a href="#简略版" class="headerlink" title="简略版"></a>简略版</h2><ol>
+<li>浏览器根据请求的URL交给DNS域名解析，找到真实IP，向服务器发起请求；</li>
+<li>服务器交给后台处理完成后返回数据，浏览器接收文件（HTML、JS、CSS、图象等）；</li>
+<li>浏览器对加载到的资源（HTML、JS、CSS等）进行语法解析，建立相应的内部数据结构（如HTML的DOM）；</li>
+<li>载入解析到的资源文件，渲染页面，完成。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/05/03/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Zhang Yin">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZY">
+      <meta itemprop="description" content="zoeee">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZY">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
           <a href="/2020/05/03/" class="post-title-link" itemprop="url">200503html懒加载和预加载</a>
         </h2>
 
@@ -301,7 +429,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">img</span>  <span class="attr">src</span>=<span class="string">&quot;1.jpg&quot;</span>  <span class="attr">data-src</span>=<span class="string">&quot;http://120.79.183.71/img/home/1.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">img</span>  <span class="attr">src</span>=<span class="string">&quot;1.jpg&quot;</span>  <span class="attr">data-src</span>=<span class="string">&quot;http://120.79.183.71/img/home/2.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">img</span>  <span class="attr">src</span>=<span class="string">&quot;1.jpg&quot;</span>  <span class="attr">data-src</span>=<span class="string">&quot;http://120.79.183.71/img/home/3.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">img</span>  <span class="attr">src</span>=<span class="string">&quot;1.jpg&quot;</span>    <span class="attr">data-src</span>=<span class="string">&quot;http://120.79.183.71/img/home/4.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">img</span>  <span class="attr">src</span>=<span class="string">&quot;1.jpg&quot;</span>  <span class="attr">data-src</span>=<span class="string">&quot;http://120.79.183.71/img/home/5.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">img</span>  <span class="attr">src</span>=<span class="string">&quot;1.jpg&quot;</span>  <span class="attr">data-src</span>=<span class="string">&quot;http://120.79.183.71/img/avatar/a.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>此处的data-* 是一种定义标签自定义属性的属性名称,在js获取dom节点后可以通过dataset.* 来获取</p>
 </li>
-<li><p>如何判断图片进入可视区域是关键。<br><img src="/2020/05/03/20190524164645631.png"><br>如上图所示，让在浏览器可视区域的图片显示，可视区域外的不显示，所以当图片距离顶部的距离top-height等于可视区域h和滚动区域高度s之和时说明图片马上就要进入可视区了，就是说当top-height&lt;=s+h时，图片在可视区。</p>
+<li><p>如何判断图片进入可视区域是关键。<br><img src="/2020/05/03/20190524164645631.png"><br>如上图所示，让在浏览器可视区域的图片显示，可视区域外的不显示，所以当图片距离顶部的距离top-height等于可视区域h和滚动区域高度s之和时说明图片马上就要进入可视区了，就是说当top-height&lt;&#x3D;s+h时，图片在可视区。</p>
 </li>
 <li><p>具体代码</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> lazyLoad = <span class="keyword">function</span>(<span class="params">imgs</span>)&#123;</span><br><span class="line">  imgs.<span class="title function_">forEach</span>(<span class="function">(<span class="params">img,index</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// img.offsetTop 某个元素离顶点的距离</span></span><br><span class="line">      <span class="comment">//  window.innerHeight 可视化的高度</span></span><br><span class="line">      <span class="comment">// document.documentElement.scrollTop 滚动高度</span></span><br><span class="line">      <span class="keyword">if</span> (img.<span class="property">offsetTop</span> &lt;= <span class="variable language_">window</span>.<span class="property">innerHeight</span>+<span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">scrollTop</span>) &#123;</span><br><span class="line">        <span class="comment">// 一般会有延时</span></span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> temp = <span class="keyword">new</span> <span class="title class_">Image</span>();</span><br><span class="line">            <span class="comment">// 这样就只会发送一次网络请求</span></span><br><span class="line">            temp.<span class="property">src</span> = img.<span class="property">dataset</span>.<span class="property">src</span>;</span><br><span class="line">            temp.<span class="property">onload</span> = <span class="function">()=&gt;</span>&#123;</span><br><span class="line">            img.<span class="property">src</span> = temp.<span class="property">src</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="number">500</span>);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">window</span>.<span class="property">onscroll</span> = <span class="function">()=&gt;</span>&#123;</span><br><span class="line">  <span class="title function_">lazyLoad</span>(<span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;img&#x27;</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 初始化 执行一次</span></span><br><span class="line"><span class="title function_">lazyLoad</span>(<span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;img&#x27;</span>));</span><br><span class="line"> </span><br></pre></td></tr></table></figure></li>
@@ -406,7 +534,7 @@
 </blockquote>
 <ul>
 <li>各种类型的值（包括object）都可以作为key</li>
-<li>Map支持迭代，直接使用for…of来遍历，而不需要像对象一样先获取key再遍历，typeof obj[Symbol.iterator] === function</li>
+<li>Map支持迭代，直接使用for…of来遍历，而不需要像对象一样先获取key再遍历，typeof obj[Symbol.iterator] &#x3D;&#x3D;&#x3D; function</li>
 <li>Map在遇到频繁删除添加和键值对的场景下，有更好的性能表现</li>
 <li>Map用迭代的方式遍历key时，得到的key的顺序与key添加到Map时的顺序相同</li>
 </ul>
@@ -1098,8 +1226,8 @@
 <li>设置cookie时间可以使cookie过期。但是使用session-destory（），我们将会销毁会话。</li>
 <li>session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能考虑到减轻服务器性能方面，应当使用cookie。</li>
 <li>单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。(Session对象没有对存储的数据量的限制，其中可以保存更为复杂的数据类型)</li>
-<li> 两者最大的区别在于生存周期，一个是IE启动到IE关闭.(浏览器页面一关 ,session就消失了)，一个是预先设置的生存周期，或永久的保存于本地的文件。(cookie)</li>
-<li> Session信息是存放在server端，但session id是存放在client cookie的，当然php的session存放方法是多样化的，这样就算禁用cookie一样可以跟踪.Cookie是完全保持在客户端.</li>
+<li>两者最大的区别在于生存周期，一个是IE启动到IE关闭.(浏览器页面一关 ,session就消失了)，一个是预先设置的生存周期，或永久的保存于本地的文件。(cookie)</li>
+<li>Session信息是存放在server端，但session id是存放在client cookie的，当然php的session存放方法是多样化的，这样就算禁用cookie一样可以跟踪.Cookie是完全保持在客户端.</li>
 </ol>
 <h2 id="值得注意的地方"><a href="#值得注意的地方" class="headerlink" title="值得注意的地方"></a>值得注意的地方</h2><ol>
 <li>cookie一定要设置失效时间,要不然浏览器关闭就消失了;</li>
@@ -1193,99 +1321,6 @@
     
     <div class="post-body" itemprop="articleBody">
           <h4 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h4><p><strong>栈是一个线性结构.</strong><br><strong>栈的特点是只能在某一端添加或者删除数据,遵循先进后出的原则</strong></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/24/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/04/24/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Zhang Yin">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZY">
-      <meta itemprop="description" content="zoeee">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZY">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/04/24/" class="post-title-link" itemprop="url">200424一些面试题(阿里篇)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-04-24 14:57:35" itemprop="dateCreated datePublished" datetime="2020-04-24T14:57:35+08:00">2020-04-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2020-05-13 14:31:17" itemprop="dateModified" datetime="2020-05-13T14:31:17+08:00">2020-05-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><strong>根据网上一篇大厂的面试题总结(阿里篇)<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000020296556">地址</a></strong></p>
-<h4 id="用js描述一棵树"><a href="#用js描述一棵树" class="headerlink" title="用js描述一棵树"></a>用js描述一棵树</h4>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/04/24/#more" rel="contents">

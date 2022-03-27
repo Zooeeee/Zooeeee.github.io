@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="v-if 和 v-show的区别     v-if是增加&#x2F;删除某个元素，而v-show是添加属性display：none   v-if有较高的切换性能需要，v-show有较高的初始性能消耗 v-if适合那些有可能不被使用的元素，v-show适合那些需要频繁切换的元素    v-model是唯一一个双向数据绑定，用在表单元素 v-for中使用key可以防止添加新的元素后出现勾选错误 数组更新检测">
+    <meta name="description" content="v-if 和 v-show的区别   v-if是增加&#x2F;删除某个元素，而v-show是添加属性display：none   v-if有较高的切换性能需要，v-show有较高的初始性能消耗 v-if适合那些有可能不被使用的元素，v-show适合那些需要频繁切换的元素   v-model是唯一一个双向数据绑定，用在表单元素 v-for中使用key可以防止添加新的元素后出现勾选错误 数组更新检">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue基础">
 <meta property="og:url" content="http://example.com/2020/04/12/index.html">
 <meta property="og:site_name" content="ZY">
-<meta property="og:description" content="v-if 和 v-show的区别     v-if是增加&#x2F;删除某个元素，而v-show是添加属性display：none   v-if有较高的切换性能需要，v-show有较高的初始性能消耗 v-if适合那些有可能不被使用的元素，v-show适合那些需要频繁切换的元素    v-model是唯一一个双向数据绑定，用在表单元素 v-for中使用key可以防止添加新的元素后出现勾选错误 数组更新检测">
+<meta property="og:description" content="v-if 和 v-show的区别   v-if是增加&#x2F;删除某个元素，而v-show是添加属性display：none   v-if有较高的切换性能需要，v-show有较高的初始性能消耗 v-if适合那些有可能不被使用的元素，v-show适合那些需要频繁切换的元素   v-model是唯一一个双向数据绑定，用在表单元素 v-for中使用key可以防止添加新的元素后出现勾选错误 数组更新检">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-12T04:06:55.000Z">
 <meta property="article:modified_time" content="2020-04-29T06:24:15.737Z">
@@ -166,7 +166,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -296,12 +296,12 @@
     
     <div class="post-body" itemprop="articleBody">
         <ol>
-<li>v-if 和 v-show的区别  </li>
+<li>v-if 和 v-show的区别</li>
 </ol>
 <ul>
-<li>v-if是增加/删除某个元素，而v-show是添加属性display：none  </li>
+<li>v-if是增加&#x2F;删除某个元素，而v-show是添加属性display：none  </li>
 <li>v-if有较高的切换性能需要，v-show有较高的初始性能消耗</li>
-<li>v-if适合那些有可能不被使用的元素，v-show适合那些需要频繁切换的元素 </li>
+<li>v-if适合那些有可能不被使用的元素，v-show适合那些需要频繁切换的元素</li>
 </ul>
 <ol start="2">
 <li>v-model是唯一一个双向数据绑定，用在表单元素</li>
@@ -311,7 +311,7 @@
 <ul>
 <li>使用以下方法操作数组，可以检测到变动：push(),pop(),shift(),unshift(),splice(),sort(),reverse()</li>
 <li>以下方法检测不到，因为返回的是一个新的数组，没有对原数组操作：filter(),concat(),slice(),map()</li>
-<li>直接利用数组索引值，如array[0] = sth ,是无法检测并刷新视图的，因为这是最底层的东西，而数组的方法是被重写过的，建议用splice()`或者Vue.set()</li>
+<li>直接利用数组索引值，如array[0] &#x3D; sth ,是无法检测并刷新视图的，因为这是最底层的东西，而数组的方法是被重写过的，建议用splice()&#96;或者Vue.set()</li>
 </ul>
 <ol start="5">
 <li>计算属性的性能比方法更高，一个界面多次使用到这个变量计算结果时，函数会使用多次，而计算属性只会使用一次</li>
@@ -324,16 +324,17 @@
 此处如果这么写不会发生动画，因为两个p标签没有dom的改变，没有触发transition标签。<br>解决办法：</li>
 </ul>
 <ol>
-<li>强行写成两个标签</li>
-<li>给两个p添加不同的key值</li>
-</ol>
-<ol start="7">
-<li>组件与示例的区别</li>
+<li><p>强行写成两个标签</p>
+</li>
+<li><p>给两个p添加不同的key值</p>
+</li>
+<li><p>组件与示例的区别</p>
+</li>
 </ol>
 <ul>
 <li>自定义组件需要一个根节点 </li>
 <li>父子组件的data无法共享  </li>
-<li>组件可以有data computed methods 但data必须是一个函数 </li>
+<li>组件可以有data computed methods 但data必须是一个函数</li>
 </ul>
 <ol start="8">
 <li>vue组件中props的命名可以采用驼峰命名，但是在标签上使用属性时要把驼峰改成-链接</li>

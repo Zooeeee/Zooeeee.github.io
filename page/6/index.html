@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -249,6 +249,109 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/04/18/" class="post-title-link" itemprop="url">js高级程序设计第四天</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-04-18 14:22:44" itemprop="dateCreated datePublished" datetime="2020-04-18T14:22:44+08:00">2020-04-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-04-28 19:34:37" itemprop="dateModified" datetime="2020-04-28T19:34:37+08:00">2020-04-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="构造函数生成对象的问题"><a href="#构造函数生成对象的问题" class="headerlink" title="构造函数生成对象的问题"></a>构造函数生成对象的问题</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age)&#123;</span><br><span class="line">  this.name = name ;</span><br><span class="line">  this.age = age ;</span><br><span class="line">  this.sayName = new Function(&quot;alert(this.name)&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>但这样会有一个问题，创建两个Person类的实例person1和person2，它们两个会生成两个sayName方法，即使这个sayName方法本质上一模一样。<br><strong>解决方案</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age)&#123;</span><br><span class="line">  this.name = name ;</span><br><span class="line">  this.age = age ;</span><br><span class="line">  this.sayName = sayName;</span><br><span class="line">&#125;</span><br><span class="line">function sayName()&#123;</span><br><span class="line">  alert(this.name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样在外部给出方法的实现，可以解决两个函数做同一件事的问题，但是却失去了封装的意义。</p>
+<h3 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h3><p>我们创建的每一个函数都有一个prototype属性，这个属性是一个指针，指向一个对象。prototype就是通过调用构造函数而创建的那个对象实例的原型对象。好处是可以让所有对象实例共享它所包含的属性和方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;&#125;;</span><br><span class="line">Person.prototype.name = &quot;zy&quot;;</span><br><span class="line">Person.prototype.sex = &quot;male&quot;;</span><br><span class="line">Person.prototype.sayName = function()&#123;</span><br><span class="line">  alert(this.name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="理解原型对象"><a href="#理解原型对象" class="headerlink" title="理解原型对象"></a>理解原型对象</h2><p><strong>1.无论什么时候，只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个prototype属性，这个属性指向函数的原型对象。在默认情况下，所有原型对象都会自动获得一个constructor属性，这个属性包含一个指向prototype属性所在函数的指针。</strong><br><strong>2.创建了自定义的构造函数后，其原型对象默认指挥取得constructor属性；值与其他方法都是从Object继承而来。</strong><br><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=329834647,3252098432&fm=26&gp=0.jpg" alt="图解"></p>
+<h3 id="更简单的原型方法"><a href="#更简单的原型方法" class="headerlink" title="更简单的原型方法"></a>更简单的原型方法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;&#125;;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">  constructor : Person,//注</span><br><span class="line">  name : &quot;zy&quot;,</span><br><span class="line">  sayName : function()&#123;</span><br><span class="line">    alert(this.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<ol>
+<li>此处如果不加该行代码，则该prototype的constructor将指向由我们覆盖的Object对象，而不是Person对象。</li>
+<li>此处自己覆写的constructor对象将从不可枚举的属性变成可枚举的属性。</li>
+</ol>
+<h3 id="原型对象的问题"><a href="#原型对象的问题" class="headerlink" title="原型对象的问题"></a>原型对象的问题</h3><p>原型模式也不是没有缺点。</p>
+<ol>
+<li>省略了为构造函数传递初始化参数这一环节。</li>
+<li>共享的本性。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;&#125;;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">  constructor : Person ,</span><br><span class="line">  name : &quot;zy&quot;,</span><br><span class="line">  friends:[&quot;aaa&quot;,&quot;bbb&quot;],</span><br><span class="line">  sayName : function()&#123;</span><br><span class="line">    alert(this.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">var person1 = new Person();</span><br><span class="line">var person2 = new Person();</span><br><span class="line"></span><br><span class="line">person1.friends.push(&quot;ccc&quot;);</span><br><span class="line"></span><br><span class="line">alert(person1.friends);//&quot;aaa,bbb,ccc&quot;</span><br><span class="line">alert(person2.friends);//&quot;aaa,bbb,ccc&quot;</span><br><span class="line">alert(person1.friends === person2.friends);//true</span><br></pre></td></tr></table></figure>
+结果反应修改一个实例的属性会导致另一个实例属性的改变，这不符合我们的一般认识。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/04/18/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Zhang Yin">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZY">
+      <meta itemprop="description" content="zoeee">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZY">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
           <a href="/2020/04/18/" class="post-title-link" itemprop="url">js高级程序设计第三天</a>
         </h2>
 
@@ -294,16 +397,19 @@
 <li>[[Configurable]] 表示可否通过delete删除，或能否修改属性特性，或者改为访问器属性。默认为true。</li>
 <li>[[Enumerable]]表示能否通过for-in循环返回属性。默认true。</li>
 <li>[[Writable]]能否修改属性的值。默认为true。</li>
-<li>[[Value]]包含这个属性的数据值。默认为undefined。  </li>
-<li><em>可以用Object.defineProperty来修改属性默认的特性</em>*<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;&#125;;</span><br><span class="line">Object.defineProperty(person,&quot;name&quot;,&#123;</span><br><span class="line">  writable : false,</span><br><span class="line">  value : &quot;Zy&quot;</span><br><span class="line">&#125;);</span><br><span class="line">alert(person.name);//Zy</span><br><span class="line">person.name = 111111;</span><br><span class="line">alert(person.name);//Zy</span><br></pre></td></tr></table></figure></li>
-<li>如果将 configurable 设置为 false ,就不能把它变回可配置的.此时 Object.defineProperty 方法除了修改 writable 之外的特性都会导致错误.*<h4 id="2-访问器属性"><a href="#2-访问器属性" class="headerlink" title="2. 访问器属性"></a>2. 访问器属性</h4></li>
-<li><em>访问器属性不包含数据值，它们包含一对儿getter和setter（非必须）</em>*</li>
+<li>[[Value]]包含这个属性的数据值。默认为undefined。</li>
+</ul>
+<p><strong>可以用Object.defineProperty来修改属性默认的特性</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;&#125;;</span><br><span class="line">Object.defineProperty(person,&quot;name&quot;,&#123;</span><br><span class="line">  writable : false,</span><br><span class="line">  value : &quot;Zy&quot;</span><br><span class="line">&#125;);</span><br><span class="line">alert(person.name);//Zy</span><br><span class="line">person.name = 111111;</span><br><span class="line">alert(person.name);//Zy</span><br></pre></td></tr></table></figure>
+<p><em>如果将 configurable 设置为 false ,就不能把它变回可配置的.此时 Object.defineProperty 方法除了修改 writable 之外的特性都会导致错误.</em></p>
+<h4 id="2-访问器属性"><a href="#2-访问器属性" class="headerlink" title="2. 访问器属性"></a>2. 访问器属性</h4><p><strong>访问器属性不包含数据值，它们包含一对儿getter和setter（非必须）</strong></p>
+<ul>
 <li>[[Configurable]] 表示可否通过delete删除，或能否修改属性特性，或者改为访问器属性。默认为true。</li>
 <li>[[Enumerable]]表示能否通过for-in循环返回属性。默认true。</li>
 <li>[[Get]]读取属性时调用的函数,默认为undefined。</li>
 <li>[[Set]]写入属性时调用的函数,默认为undefined。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var book = &#123;</span><br><span class="line">  _year : 2004,</span><br><span class="line">  edition : 1 </span><br><span class="line">&#125;;</span><br><span class="line">Object.defineProperty(book,&quot;year&quot;,&#123;</span><br><span class="line">  get : function()&#123;</span><br><span class="line">    return this._year;</span><br><span class="line">  &#125;,</span><br><span class="line">  set: function(newValue)&#123;</span><br><span class="line">    if(newValue &gt; 2019)&#123;</span><br><span class="line">      this._year = newValue;</span><br><span class="line">      this.edtion += newValue - 2019;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">book.year = 2020;</span><br><span class="line">alert(book.edition);//1</span><br><span class="line">/*以上代码创建一个book对象,并给他定义两个默认的属性,_year和edtion。_year前面的下划线是一种常用的标记符号，表示只能通过对象方法访问的属性。*/</span><br></pre></td></tr></table></figure></li>
-<li>这里是使用访问器属性的常见方式，即设置一个属性的值会导致其他属性发生变化。且不一定非要同时指定getter和setter。只指定set在读取值时会返回undefined，而只指定getter时表明其不可写入。*</li>
 </ul>
+<p><em>这里是使用访问器属性的常见方式，即设置一个属性的值会导致其他属性发生变化。且不一定非要同时指定getter和setter。只指定set在读取值时会返回undefined，而只指定getter时表明其不可写入。</em></p>
 
       
     </div>
@@ -544,9 +650,9 @@
 </tbody></table>
 <h3 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h3><ol>
 <li>前面加0是八进制，前面加0x是十六进制<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var num1 = 070 //56</span><br><span class="line">var num2 = 0xA ; //10</span><br></pre></td></tr></table></figure></li>
-<li>无意义的浮点数会转化为整数  </li>
+<li>无意义的浮点数会转化为整数</li>
 </ol>
-<p><strong>浮点数值最高精度为17，如0.1+0.2=0.30000000000004</strong><br>3. NaN 意为 not a number<br>本来要返回一个数，却未返回数则返回一个NaN。这样不会抛出错误。<br>例如0/10 = NaN。NaN != NaN。有个函数名为isNaN()可以检测。<br>4. 使用 paserInt解析字符串时最好制定第二个参数作为进制。</p>
+<p><strong>浮点数值最高精度为17，如0.1+0.2&#x3D;0.30000000000004</strong><br>3. NaN 意为 not a number<br>本来要返回一个数，却未返回数则返回一个NaN。这样不会抛出错误。<br>例如0&#x2F;10 &#x3D; NaN。NaN !&#x3D; NaN。有个函数名为isNaN()可以检测。<br>4. 使用 paserInt解析字符串时最好制定第二个参数作为进制。</p>
 <hr>
 <h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><ol>
 <li>null 和 undefind没有toString方法。</li>
@@ -659,7 +765,7 @@
 <h4 id="版本升级"><a href="#版本升级" class="headerlink" title="版本升级"></a>版本升级</h4><p>在许多项目中,需要把webpack的版本从3升级到4,这会引发很多问题</p>
 <ol>
 <li>现在package.json中找到 webpack的版本 并换成4</li>
-<li>一遍遍运行,许多依赖都需要升级,使用npm/cnpm install xxxxx@latest 来找到最新版本</li>
+<li>一遍遍运行,许多依赖都需要升级,使用npm&#x2F;cnpm install xxxxx@latest 来找到最新版本</li>
 <li>在上述命令中  写在dependencies中的用-S ,写在devDependencies中的用-D</li>
 <li>根据报错信息一步一步更新依赖或者修改配置文件</li>
 <li>可能有的最新版本也不支持,这时候用@next的测试版本可以尝试解决问题</li>
@@ -750,10 +856,10 @@
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">jpa:</span></span><br><span class="line">    <span class="attr">properties:</span></span><br><span class="line">      <span class="attr">hibernate:</span></span><br><span class="line">        <span class="attr">jdbc:</span></span><br><span class="line">          <span class="attr">time_zone:</span> <span class="string">Hongkong</span></span><br><span class="line">        <span class="attr">hbm2ddl:</span></span><br><span class="line">          <span class="attr">auto:</span> <span class="string">update</span></span><br><span class="line">        <span class="attr">dialect:</span> <span class="string">org.hibernate.dialect.MySQL5InnoDBDialect</span></span><br><span class="line">        <span class="attr">format_sql:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">show-sql:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">database:</span> <span class="string">mysql</span></span><br></pre></td></tr></table></figure>
 <p>hibernate 指的是实现层框架<br>show-sql 指的是运行dao时会在控制台打印sql语句<br>dialect 指的是不同数据库的 语法糖<br>auto: update 指的是更新表,create就是删除表之后重新创建<br>time_zone: Hongkong 解决mysql时区与中国不同的问题</p>
 <h4 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h4><ol>
-<li>在model中新建数据库中表的对应类,用@Entity注释,用@Table(name = “t_problem”)来映射对应表</li>
+<li>在model中新建数据库中表的对应类,用@Entity注释,用@Table(name &#x3D; “t_problem”)来映射对应表</li>
 <li>主键的注释  –model包<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Id</span>  <span class="comment">//标注主键</span></span><br><span class="line"><span class="meta">@GeneratedValue(strategy = GenerationType.IDENTITY)</span> <span class="comment">//标注主键自增方式</span></span><br><span class="line"><span class="meta">@Column(name = &quot;id&quot;)</span></span><br><span class="line"><span class="keyword">private</span> Integer id;</span><br></pre></td></tr></table></figure></li>
-<li>Dao层<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ProblemDao</span> <span class="keyword">extends</span> <span class="title class_">JpaRepository</span>&lt;Problem,Integer&gt;&#123;&#125;</span><br></pre></td></tr></table></figure>
-JpaRepository是一个基本的jpa仓库来,还有simple,crud,specific等仓库</li>
+<li>Dao层  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ProblemDao</span> <span class="keyword">extends</span> <span class="title class_">JpaRepository</span>&lt;Problem,Integer&gt;&#123;&#125;</span><br></pre></td></tr></table></figure>
+  JpaRepository是一个基本的jpa仓库来,还有simple,crud,specific等仓库</li>
 <li>Service<br>直接注入Dao<h4 id="Dao中自带的方法"><a href="#Dao中自带的方法" class="headerlink" title="Dao中自带的方法"></a>Dao中自带的方法</h4>get,find,delete,save,count<h4 id="Dao中自己写的接口"><a href="#Dao中自己写的接口" class="headerlink" title="Dao中自己写的接口"></a>Dao中自己写的接口</h4>在Dao中可以写自定义的接口,然后jpa会自动生成相应的方法<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法的名称要遵循 findBy + 属性名（首字母大写） + 查询条件(首字母大写 Is Equals)</span></span><br><span class="line"><span class="comment">// findByNameLike(String name)</span></span><br><span class="line"><span class="comment">// findByName(String name)</span></span><br><span class="line"><span class="comment">// findByNameAndAge(String name, Integer age)</span></span><br><span class="line"><span class="comment">// findByNameOrAddress(String name)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> User <span class="title function_">findByUsernameAndPassword</span><span class="params">(String userName,String password)</span>;</span><br><span class="line"><span class="keyword">public</span> User <span class="title function_">findByNickName</span><span class="params">(String nickname)</span>;</span><br></pre></td></tr></table></figure>
 <h4 id="Dao中自定义的jpql"><a href="#Dao中自定义的jpql" class="headerlink" title="Dao中自定义的jpql"></a>Dao中自定义的jpql</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// select 新建一个视图层,返回的泛型就是该VO类</span></span><br><span class="line"><span class="comment">// left join 实现多表连接</span></span><br><span class="line"><span class="comment">// Page 实现分页</span></span><br><span class="line"><span class="meta">@Query(&quot;select new com.zy.vo.problem.ProblemVo(p.id,t.type,s.subject,p.name,p.answer,p.content,p.analysis,d.difficulty,u.nickName) &quot; +</span></span><br><span class="line"><span class="meta">    &quot;from Problem as p &quot; +</span></span><br><span class="line"><span class="meta">    &quot;left join ProblemToType as t on p.type = t.id &quot; +</span></span><br><span class="line"><span class="meta">    &quot;left join ProblemToDifficulty as d on p.difficulty = d.id &quot; +</span></span><br><span class="line"><span class="meta">    &quot;left join ProblemToSubject as s on p.subject = s.id &quot; +</span></span><br><span class="line"><span class="meta">    &quot;left join User as u on p.creator = u.id &quot; +</span></span><br><span class="line"><span class="meta">    &quot;order by p.id &quot;)</span></span><br><span class="line">Page&lt;ProblemVo&gt; <span class="title function_">getProblemVo</span><span class="params">(Pageable pageable)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接返回List的泛型</span></span><br><span class="line"><span class="comment">// 获取所有题型</span></span><br><span class="line"><span class="meta">@Query(&quot;select distinct t.type from Problem as p LEFT JOIN ProblemToType as t on p.type = t.id &quot;)</span></span><br><span class="line">List&lt;String&gt; <span class="title function_">getProblemType</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Query(&quot;select new com.zy.vo.result.ResultVo(r.resultId ,r.examId,r.totalMark,r.createTime,u.nickName,e.name,e.des,u.avatar) from Result as r left join User as u on r.stuId = u.id left join Exam as e on e.id = r.examId where r.stuId = ?1&quot;)</span></span><br><span class="line">List&lt;ResultVo&gt; <span class="title function_">getMyAllResultVo</span><span class="params">(Integer stuId)</span>;</span><br></pre></td></tr></table></figure>
 也可使用sql语句<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用nativeQuery = true来使用sql语句,同时用?idnex来对应传入的参数</span></span><br><span class="line"><span class="meta">@Query(nativeQuery = true,value = &quot;SELECT p.id FROM t_problem as p left join t_problem_subject as s on s.id = p.subject left join t_problem_type as t on t.id = p.type left join t_problem_difficulty as d on d.id = p.difficulty where p.is_used = 1 and s.subject = ?1 and t.type = ?2 and d.difficulty = ?3 ORDER BY RAND() LIMIT ?4&quot;)</span></span><br><span class="line">List&lt;Integer&gt; <span class="title function_">getConditionByRandom</span><span class="params">(String subject,String type,String difficulty,Integer rand)</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -769,7 +875,7 @@ JpaRepository是一个基本的jpa仓库来,还有simple,crud,specific等仓库<
 <p>因为jsonplugin用的是java的内审机制.hibernate会给被管理的pojo加入一个hibernateLazyInitializer属性,jsonplugin会把hibernateLazyInitializer也拿出来操作,并读取里面一个不能被反射操作的属性就产生了这个异常.<br>5. 关于自动添加创建时间和最后修改时间</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Table(name = &quot;sys_service&quot;)</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@EntityListeners(AuditingEntityListener.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SysService</span> <span class="keyword">extends</span> <span class="title class_">ImprovedNamingStrategy</span> &#123;</span><br><span class="line">    <span class="meta">@GeneratedValue(strategy= GenerationType.IDENTITY)</span></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="comment">// 创建时间</span></span><br><span class="line">    <span class="meta">@CreatedDate</span></span><br><span class="line">    <span class="meta">@Column(name = &quot;createTime&quot;,updatable = false,nullable = false)</span></span><br><span class="line">    <span class="keyword">private</span> Date createTime;</span><br><span class="line">    <span class="comment">//最后修改时间</span></span><br><span class="line">    <span class="meta">@LastModifiedDate</span></span><br><span class="line">    <span class="meta">@Column(name = &quot;updateTime&quot;,nullable = false)</span></span><br><span class="line">    <span class="keyword">private</span> Date updateTime;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在启动类中</span></span><br><span class="line"><span class="meta">@EnableJpaAuditing</span></span><br><span class="line"><span class="comment">// 在Model中用Date类型接受</span></span><br></pre></td></tr></table></figure>
 <p>注:时区问题<br>我们这里的时间是 UTC+8 即东八区时间,观察到数据入库之后,时间都为 UTC 时间.<br>解决方法:</p>
-<p>数据库连接添加时区指定: &amp;serverTimezone=Hongkong<br>上面的配置是解决问题的根本方法,以下是一些设置时区的配置</p>
+<p>数据库连接添加时区指定: &amp;serverTimezone&#x3D;Hongkong<br>上面的配置是解决问题的根本方法,以下是一些设置时区的配置</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">jackson:</span></span><br><span class="line">    <span class="attr">time-zone:</span> <span class="string">Hongkong</span> <span class="comment">#jackson时区配置</span></span><br><span class="line">    <span class="attr">date-format:</span> <span class="string">yyyy-MM-dd</span> <span class="string">HH:mm:ss</span>  <span class="comment"># 格式化返回时间</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">jpa:</span></span><br><span class="line">    <span class="attr">properties:</span></span><br><span class="line">      <span class="attr">hibernate:</span></span><br><span class="line">        <span class="attr">jdbc:</span></span><br><span class="line">          <span class="attr">time_zone:</span> <span class="string">Hongkong</span> <span class="comment">#Hibernate时区配置</span></span><br></pre></td></tr></table></figure>
 
       
@@ -870,7 +976,7 @@ JpaRepository是一个基本的jpa仓库来,还有simple,crud,specific等仓库<
 <li>service 服务类,dao类实现基础的crud , service是dao与controller之间的一个类,用于对dao进行更符合要求的封装</li>
 <li>utils 工具类,这里我放置了token生成的工具类</li>
 <li>Vo 视图层,将数据库表中的字段转化成文字,类似于数据库中的视图</li>
-<li>RunApp 启动类,放置在最外层,能够扫描到同级目录以及他们的子目录<h4 id="静态图片资源的非空才能生成target"><a href="#静态图片资源的非空才能生成target" class="headerlink" title="静态图片资源的非空才能生成target"></a>静态图片资源的非空才能生成target</h4>Spring Boot 对静态资源映射提供了默认配置<br>Spring Boot 默认将 /** 所有访问映射到以下目录<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">classpath:/static</span><br><span class="line">classpath:/public</span><br><span class="line">classpath:/resources</span><br><span class="line">classpath:/META-INF/resources</span><br></pre></td></tr></table></figure>
+<li>RunApp 启动类,放置在最外层,能够扫描到同级目录以及他们的子目录<h4 id="静态图片资源的非空才能生成target"><a href="#静态图片资源的非空才能生成target" class="headerlink" title="静态图片资源的非空才能生成target"></a>静态图片资源的非空才能生成target</h4>Spring Boot 对静态资源映射提供了默认配置<br>Spring Boot 默认将 &#x2F;** 所有访问映射到以下目录<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">classpath:/static</span><br><span class="line">classpath:/public</span><br><span class="line">classpath:/resources</span><br><span class="line">classpath:/META-INF/resources</span><br></pre></td></tr></table></figure>
 <img src="https://upload-images.jianshu.io/upload_images/11628766-fb635f16a3af9f5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="resource"><img src="https://upload-images.jianshu.io/upload_images/11628766-0acc059ee71b8c30.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
 要注意的是其实图片是存放在target中的,如果只是在src中新建一个空目录,是不会在target中有对应的目录的,需要的要么是在空目录中放置一个文件,要么是判断有无目录,然后生成
 ![target](https://upload-images.jianshu.io/upload_images/11628766-cbe209297668486a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -971,10 +1077,10 @@ JpaRepository是一个基本的jpa仓库来,还有simple,crud,specific等仓库<
 <li><ul>
 <li>场景：在使用组件时，需要对样式进行修改，却无法做到</li>
 <li>使用less组件穿透修改样式</li>
-<li> 代码：<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.wrapper</span> /<span class="selector-tag">deep</span>/ <span class="selector-class">.swiper-pagination-bullet-active</span>&#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>代码：<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.wrapper</span> /<span class="selector-tag">deep</span>/ <span class="selector-class">.swiper-pagination-bullet-active</span>&#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li>动态添加v-model </li>
+<li>动态添加v-model</li>
 </ol>
 <ul>
 <li>场景：在生成试卷时，因为每次考试的试卷题目都是动态生成的，无法写死v-model</li>
@@ -1078,12 +1184,12 @@ JpaRepository是一个基本的jpa仓库来,还有simple,crud,specific等仓库<
     
     <div class="post-body" itemprop="articleBody">
           <ol>
-<li>v-if 和 v-show的区别  </li>
+<li>v-if 和 v-show的区别</li>
 </ol>
 <ul>
-<li>v-if是增加/删除某个元素，而v-show是添加属性display：none  </li>
+<li>v-if是增加&#x2F;删除某个元素，而v-show是添加属性display：none  </li>
 <li>v-if有较高的切换性能需要，v-show有较高的初始性能消耗</li>
-<li>v-if适合那些有可能不被使用的元素，v-show适合那些需要频繁切换的元素 </li>
+<li>v-if适合那些有可能不被使用的元素，v-show适合那些需要频繁切换的元素</li>
 </ul>
 <ol start="2">
 <li>v-model是唯一一个双向数据绑定，用在表单元素</li>
@@ -1093,7 +1199,7 @@ JpaRepository是一个基本的jpa仓库来,还有simple,crud,specific等仓库<
 <ul>
 <li>使用以下方法操作数组，可以检测到变动：push(),pop(),shift(),unshift(),splice(),sort(),reverse()</li>
 <li>以下方法检测不到，因为返回的是一个新的数组，没有对原数组操作：filter(),concat(),slice(),map()</li>
-<li>直接利用数组索引值，如array[0] = sth ,是无法检测并刷新视图的，因为这是最底层的东西，而数组的方法是被重写过的，建议用splice()`或者Vue.set()</li>
+<li>直接利用数组索引值，如array[0] &#x3D; sth ,是无法检测并刷新视图的，因为这是最底层的东西，而数组的方法是被重写过的，建议用splice()&#96;或者Vue.set()</li>
 </ul>
 <ol start="5">
 <li>计算属性的性能比方法更高，一个界面多次使用到这个变量计算结果时，函数会使用多次，而计算属性只会使用一次</li>
@@ -1106,16 +1212,17 @@ JpaRepository是一个基本的jpa仓库来,还有simple,crud,specific等仓库<
 此处如果这么写不会发生动画，因为两个p标签没有dom的改变，没有触发transition标签。<br>解决办法：</li>
 </ul>
 <ol>
-<li>强行写成两个标签</li>
-<li>给两个p添加不同的key值</li>
-</ol>
-<ol start="7">
-<li>组件与示例的区别</li>
+<li><p>强行写成两个标签</p>
+</li>
+<li><p>给两个p添加不同的key值</p>
+</li>
+<li><p>组件与示例的区别</p>
+</li>
 </ol>
 <ul>
 <li>自定义组件需要一个根节点 </li>
 <li>父子组件的data无法共享  </li>
-<li>组件可以有data computed methods 但data必须是一个函数 </li>
+<li>组件可以有data computed methods 但data必须是一个函数</li>
 </ul>
 <ol start="8">
 <li>vue组件中props的命名可以采用驼峰命名，但是在标签上使用属性时要把驼峰改成-链接</li>

@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="特点 整体的思路基于回调函数和观察者模式.   chrome V8 runtime 数据驱动 非阻塞I&#x2F;O(input&#x2F;output) 单线程  优点:  高并发特别好 适合I&#x2F;O密集型应用。 什么是io?答:正常情况下I&#x2F;O的的操作都是阻塞的(ajax同步):网络请求,数据库处理,文件的读写    缺点:  不适合CPU密集型应用，只支持单核CPU，不能充分利用CPU； 单进程，单线程，一旦代码">
+    <meta name="description" content="特点 整体的思路基于回调函数和观察者模式.   chrome V8 runtime 数据驱动 非阻塞I&#x2F;O(input&#x2F;output) 单线程  优点:  高并发特别好 适合I&#x2F;O密集型应用。 什么是io?答:正常情况下I&#x2F;O的的操作都是阻塞的(ajax同步):网络请求,数据库处理,文件的读写    缺点:  不适合CPU密集型应用，只支持单核CPU，不能充">
 <meta property="og:type" content="article">
 <meta property="og:title" content="200505nodejs">
 <meta property="og:url" content="http://example.com/2020/05/05/index.html">
 <meta property="og:site_name" content="ZY">
-<meta property="og:description" content="特点 整体的思路基于回调函数和观察者模式.   chrome V8 runtime 数据驱动 非阻塞I&#x2F;O(input&#x2F;output) 单线程  优点:  高并发特别好 适合I&#x2F;O密集型应用。 什么是io?答:正常情况下I&#x2F;O的的操作都是阻塞的(ajax同步):网络请求,数据库处理,文件的读写    缺点:  不适合CPU密集型应用，只支持单核CPU，不能充分利用CPU； 单进程，单线程，一旦代码">
+<meta property="og:description" content="特点 整体的思路基于回调函数和观察者模式.   chrome V8 runtime 数据驱动 非阻塞I&#x2F;O(input&#x2F;output) 单线程  优点:  高并发特别好 适合I&#x2F;O密集型应用。 什么是io?答:正常情况下I&#x2F;O的的操作都是阻塞的(ajax同步):网络请求,数据库处理,文件的读写    缺点:  不适合CPU密集型应用，只支持单核CPU，不能充">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-05T01:15:57.000Z">
 <meta property="article:modified_time" content="2020-05-05T06:14:00.653Z">
@@ -165,7 +165,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -294,14 +294,14 @@
 <ol>
 <li>chrome V8 runtime</li>
 <li>数据驱动</li>
-<li>非阻塞I/O(input/output)</li>
+<li>非阻塞I&#x2F;O(input&#x2F;output)</li>
 <li>单线程</li>
 </ol>
 <p>优点:</p>
 <ol>
 <li>高并发特别好</li>
-<li>适合I/O密集型应用。<blockquote>
-<p>什么是io?答:正常情况下I/O的的操作都是阻塞的(ajax同步):网络请求,数据库处理,文件的读写</p>
+<li>适合I&#x2F;O密集型应用。<blockquote>
+<p>什么是io?答:正常情况下I&#x2F;O的的操作都是阻塞的(ajax同步):网络请求,数据库处理,文件的读写</p>
 </blockquote>
 </li>
 </ol>
@@ -312,13 +312,13 @@
 </ol>
 <p>解决方案:</p>
 <ol>
-<li>如何解决CPU密集型？<br>原因，由于JavaScript单线程的原因，如果有长时间运行的计算（比如大循环），将会导致CPU时间片不能释放，使得后续I/O无法发起。<br>解决方案：分解大型运算任务为多个小任务，使得运算能够适时释放，不阻塞I/O调用的发起。</li>
+<li>如何解决CPU密集型？<br>原因，由于JavaScript单线程的原因，如果有长时间运行的计算（比如大循环），将会导致CPU时间片不能释放，使得后续I&#x2F;O无法发起。<br>解决方案：分解大型运算任务为多个小任务，使得运算能够适时释放，不阻塞I&#x2F;O调用的发起。</li>
 <li>单进程、单线程解决方案<br>Nnigx反向代理，负载均衡，开多个进程，绑定多个端口；<br>开多个进程监听同一个端口，使用cluster模块。</li>
 </ol>
 <h1 id="内置的模块"><a href="#内置的模块" class="headerlink" title="内置的模块"></a>内置的模块</h1><h2 id="fs-文件操作系统"><a href="#fs-文件操作系统" class="headerlink" title="fs 文件操作系统"></a>fs 文件操作系统</h2><blockquote>
 <p>回调函数的第一个参数都是err 这样有利于错误处理</p>
 </blockquote>
-<p>const fs = require(‘fs’);</p>
+<p>const fs &#x3D; require(‘fs’);</p>
 <ul>
 <li>readdir</li>
 <li>mkdir</li>
@@ -339,7 +339,7 @@
 <li>unescape 解除</li>
 </ul>
 <h1 id="爬虫案例"><a href="#爬虫案例" class="headerlink" title="爬虫案例"></a>爬虫案例</h1><ol>
-<li>获取目标网站   http/https模块获取html字符串</li>
+<li>获取目标网站   http&#x2F;https模块获取html字符串</li>
 <li>分析网站内容   cheerio 分析标签</li>
 <li>获取有效信息 下载或者其他操作</li>
 </ol>

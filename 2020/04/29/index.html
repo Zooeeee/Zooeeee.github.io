@@ -166,7 +166,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -325,17 +325,17 @@
 <li>px 屏幕分辨率</li>
 <li>em 当前元素的文本字体大小</li>
 <li>rem 根元素的文本字体大小</li>
-<li>rpx 小程序:rpx（responsive pixel）: 可以根据屏幕宽度进行自适应。规定屏幕宽为750rpx。如在 iPhone6 上，屏幕宽度为375px，共有750个物理像素，则750rpx = 375px = 750物理像素，1rpx = 0.5px = 1物理像素。</li>
+<li>rpx 小程序:rpx（responsive pixel）: 可以根据屏幕宽度进行自适应。规定屏幕宽为750rpx。如在 iPhone6 上，屏幕宽度为375px，共有750个物理像素，则750rpx &#x3D; 375px &#x3D; 750物理像素，1rpx &#x3D; 0.5px &#x3D; 1物理像素。</li>
 </ul>
 <h1 id="什么情况下css会使用gpu加速"><a href="#什么情况下css会使用gpu加速" class="headerlink" title="什么情况下css会使用gpu加速"></a>什么情况下css会使用gpu加速</h1><p>为动画DOM元素添加CSS3样式-webkit-transform:transition3d(0,0,0)或-webkit-transform:translateZ(0);，这两个属性都会开启GPU硬件加速模式，从而让浏览器在渲染动画时从CPU转向GPU</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.example1</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateZ</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.example2</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">rotateZ</span>(<span class="number">360deg</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过-webkit-transform:transition3d/translateZ开启GPU硬件加速之后，有些时候可能会导致浏览器频繁闪烁或抖动，可以尝试以下办法解决之：</p>
+<p>通过-webkit-transform:transition3d&#x2F;translateZ开启GPU硬件加速之后，有些时候可能会导致浏览器频繁闪烁或抖动，可以尝试以下办法解决之：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-webkit-<span class="attribute">backface-visibility</span>:hidden;</span><br><span class="line">-webkit-<span class="attribute">perspective</span>:<span class="number">1000</span>;</span><br></pre></td></tr></table></figure>
 <h1 id="css-filter是什么-滤镜"><a href="#css-filter是什么-滤镜" class="headerlink" title="css filter是什么(滤镜)"></a>css filter是什么(滤镜)</h1><p>元素的可视效果例如：模糊与饱和度,高亮</p>
-<h1 id="网页如何去适配不同宽度"><a href="#网页如何去适配不同宽度" class="headerlink" title="网页如何去适配不同宽度"></a>网页如何去适配不同宽度</h1><ol>
-<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>viewport是网页默认的宽度和高度，上面这行代码的意思是，网页宽度默认等于屏幕宽度（width=device-width），原始缩放比例（initial-scale=1）为1.0，即网页初始大小占屏幕面积的100%。<br>2. 宽度使用百分比<br>3. 大小使用rem或者em<br>4. 流动布局或者rem布局<br>5. @media</p>
+<h1 id="网页如何去适配不同宽度"><a href="#网页如何去适配不同宽度" class="headerlink" title="网页如何去适配不同宽度"></a>网页如何去适配不同宽度</h1><p>1. </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>viewport是网页默认的宽度和高度，上面这行代码的意思是，网页宽度默认等于屏幕宽度（width&#x3D;device-width），原始缩放比例（initial-scale&#x3D;1）为1.0，即网页初始大小占屏幕面积的100%。<br>2. 宽度使用百分比<br>3. 大小使用rem或者em<br>4. 流动布局或者rem布局<br>5. @media</p>
 <h1 id="meta元素的作用"><a href="#meta元素的作用" class="headerlink" title="meta元素的作用"></a>meta元素的作用</h1><ul>
 <li>元素可提供有关页面的元信息（meta-information），比如针对搜索引擎和更新频度的描述和关键词。–W3school</li>
 <li>另外还能设置页面基本属性,例如viewport,charset,render等</li>
@@ -350,7 +350,7 @@
 <li>sticky 吸附</li>
 </ul>
 <h1 id="什么是sass和less"><a href="#什么是sass和less" class="headerlink" title="什么是sass和less"></a>什么是sass和less</h1><p>都是css的拓展语言，less和sass最主要的区别是less是通过Javascript编译，而sass是通过ruby编译的，如果没有引入前端工程化，less会消耗客户端性能，sass会消耗服务端性能，但是引入前端工程化的话，gunt，gulp，webpack等，less和sass在打包阶段都会转化成css，所以不会有区别，只是sass是基于ruby，所以每次npm的时候相对慢一点点</p>
-<h1 id="css动画最小间隔"><a href="#css动画最小间隔" class="headerlink" title="css动画最小间隔"></a>css动画最小间隔</h1><p>多数显示器的默认频率是60HZ，即每秒刷新60次。所以理论上的最小间隔是 1/60*1000ms = 16.7ms</p>
+<h1 id="css动画最小间隔"><a href="#css动画最小间隔" class="headerlink" title="css动画最小间隔"></a>css动画最小间隔</h1><p>多数显示器的默认频率是60HZ，即每秒刷新60次。所以理论上的最小间隔是 1&#x2F;60*1000ms &#x3D; 16.7ms</p>
 <h1 id="shadow-dom是什么"><a href="#shadow-dom是什么" class="headerlink" title="shadow dom是什么"></a>shadow dom是什么</h1><p>Shadow-dom 是游离在 DOM 树之外的节点树，但是他的创建基于普通 DOM 元素（非 document），并且创建后的 Shadow-dom 节点可以从界面上直观的看到。更重要的是，Shadow-dom 具有良好的密封性。<br>例如 vidio标签</p>
 <h1 id="svg和canvas的概念和区别"><a href="#svg和canvas的概念和区别" class="headerlink" title="svg和canvas的概念和区别"></a>svg和canvas的概念和区别</h1><p>SVG:</p>
 <blockquote>
@@ -375,7 +375,7 @@
 <li>最适合图像密集型的游戏，其中的许多对象会被频繁重绘</li>
 </ul>
 <h1 id="canvas图层怎么用"><a href="#canvas图层怎么用" class="headerlink" title="canvas图层怎么用"></a>canvas图层怎么用</h1><ol>
-<li>canvas.globalCompositeOperation=”destination-over”;//设置多个图层如何混合，这个可以百度canvas混合模式，这个和PS是相近的</li>
+<li>canvas.globalCompositeOperation&#x3D;”destination-over”;&#x2F;&#x2F;设置多个图层如何混合，这个可以百度canvas混合模式，这个和PS是相近的</li>
 <li>absolute 设置到同一定位,然后设置z-index<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;position: relative;&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;layer1&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100&quot;</span> <span class="attr">height</span>=<span class="string">&quot;100&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">style</span>=<span class="string">&quot;position: absolute; left: 0; top: 0; z-index: 0;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;layer2&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100&quot;</span> <span class="attr">height</span>=<span class="string">&quot;100&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">style</span>=<span class="string">&quot;position: absolute; left: 0; top: 0; z-index: 1;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h1 id="dom渲染的性能损耗在哪里"><a href="#dom渲染的性能损耗在哪里" class="headerlink" title="dom渲染的性能损耗在哪里"></a>dom渲染的性能损耗在哪里</h1><ol>
@@ -427,22 +427,22 @@
 </blockquote>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;error&#x27;</span>, <span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;捕获到异常：&#x27;</span>, error);</span></span><br><span class="line"><span class="language-javascript">&#125;, <span class="literal">true</span>)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./jartto.png&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<h1 id="http和https的区别"><a href="#http和https的区别" class="headerlink" title="http和https的区别"></a>http和https的区别</h1><p>https = http + ssl<br>(443)    (80)</p>
+<h1 id="http和https的区别"><a href="#http和https的区别" class="headerlink" title="http和https的区别"></a>http和https的区别</h1><p>https &#x3D; http + ssl<br>(443)    (80)</p>
 <h1 id="http缓存"><a href="#http缓存" class="headerlink" title="http缓存"></a>http缓存</h1><h2 id="1-0-Expires"><a href="#1-0-Expires" class="headerlink" title="1.0 Expires"></a>1.0 Expires</h2><blockquote>
-<p>Expires是HTTP/1.0控制网页缓存的字段，其值为服务器返回该请求的结果缓存的到期时间，即再次发送请求时，<em>如果客户端的时间小于Expires的值时，直接使用缓存结果</em>。<br>Expires是HTTP/1.0的字段，但是现在浏览器的默认使用的是HTTP/1.1，那么在HTTP/1.1中网页缓存还是否由Expires控制？<br>到了HTTP/1.1，Expires已经被Cache-Control替代，原因在于Expires控制缓存的原理是使用客户端的时间与服务端返回的时间做对比，如果客户端与服务端的时间由于某些原因（时区不同；客户端和服务端有一方的时间不准确）发生误差，那么强制缓存直接失效，那么强制缓存存在的意义就毫无意义。、</p>
+<p>Expires是HTTP&#x2F;1.0控制网页缓存的字段，其值为服务器返回该请求的结果缓存的到期时间，即再次发送请求时，<em>如果客户端的时间小于Expires的值时，直接使用缓存结果</em>。<br>Expires是HTTP&#x2F;1.0的字段，但是现在浏览器的默认使用的是HTTP&#x2F;1.1，那么在HTTP&#x2F;1.1中网页缓存还是否由Expires控制？<br>到了HTTP&#x2F;1.1，Expires已经被Cache-Control替代，原因在于Expires控制缓存的原理是使用客户端的时间与服务端返回的时间做对比，如果客户端与服务端的时间由于某些原因（时区不同；客户端和服务端有一方的时间不准确）发生误差，那么强制缓存直接失效，那么强制缓存存在的意义就毫无意义。、</p>
 </blockquote>
 <h2 id="1-1-Cache-Control"><a href="#1-1-Cache-Control" class="headerlink" title="1.1 Cache-Control"></a>1.1 Cache-Control</h2><ul>
 <li>public    所有内容都将被缓存（客户端和代理服务器都可缓存）</li>
 <li>private   所有内容只有客户端可以缓存，Cache-Control的默认取值</li>
 <li>no-cache  客户端缓存内容，但是是否使用缓存则需要经过协商缓存来验证决定</li>
 <li>no-store  所有内容都不会被缓存，即不使用强制缓存，也不使用协商缓存</li>
-<li>max-age=xxx (xxx is numeric)  缓存内容将在xxx秒后失效</li>
+<li>max-age&#x3D;xxx (xxx is numeric)  缓存内容将在xxx秒后失效</li>
 </ul>
 <h2 id="内存缓存-js-img"><a href="#内存缓存-js-img" class="headerlink" title="内存缓存(js,img)"></a>内存缓存(js,img)</h2><ol>
 <li>快速读取：内存缓存会将编译解析后的文件，直接存入该进程的内存中，占据该进程一定的内存资源，以方便下次运行使用时的快速读取。</li>
 <li>时效性：一旦该进程关闭，则该进程的内存则会清空。</li>
 </ol>
-<h2 id="硬盘缓存-css"><a href="#硬盘缓存-css" class="headerlink" title="硬盘缓存(css)"></a>硬盘缓存(css)</h2><p>硬盘缓存则是直接将缓存写入硬盘文件中，读取缓存需要对该缓存存放的硬盘文件进行I/O操作，然后重新解析该缓存内容，读取复杂，速度比内存缓存慢。</p>
+<h2 id="硬盘缓存-css"><a href="#硬盘缓存-css" class="headerlink" title="硬盘缓存(css)"></a>硬盘缓存(css)</h2><p>硬盘缓存则是直接将缓存写入硬盘文件中，读取缓存需要对该缓存存放的硬盘文件进行I&#x2F;O操作，然后重新解析该缓存内容，读取复杂，速度比内存缓存慢。</p>
 <h2 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h2><blockquote>
 <p>协商缓存就是强制缓存失效后，浏览器携带缓存标识向服务器发起请求，由服务器根据缓存标识决定是否使用缓存的过程，</p>
 </blockquote>
@@ -450,10 +450,10 @@
 <li>协商缓存生效，返回304，如下</li>
 <li>协商缓存失败，返回200和请求结果，如下</li>
 </ol>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>强制缓存优先于协商缓存进行，若强制缓存(Expires和Cache-Control)生效则直接使用缓存，若不生效则进行协商缓存(Last-Modified / If-Modified-Since和Etag / If-None-Match)，协商缓存由服务器决定是否使用缓存，若协商缓存失效，那么代表该请求的缓存失效，重新获取请求结果，再存入浏览器缓存中；生效则返回304，继续使用缓存，主要过程如下：</p>
-<h1 id="详述http-1-0-1-1-2-0的区别"><a href="#详述http-1-0-1-1-2-0的区别" class="headerlink" title="详述http 1.0, 1.1, 2.0的区别"></a>详述http 1.0, 1.1, 2.0的区别</h1><h2 id="1-0"><a href="#1-0" class="headerlink" title="1.0"></a>1.0</h2><p>HTTP 协议老的标准是HTTP/1.0，为了提高系统的效率，HTTP 1.0规定浏览器与服务器只保持短暂的连接，浏览器的每次请求都需要与服务器建立一个TCP连接，服务器完成请求处理后立即断开TCP连接，服务器不跟踪每个客户也不记录过去的请求。<br>问题:<br>连接无法复用，和head of line blocking</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>强制缓存优先于协商缓存进行，若强制缓存(Expires和Cache-Control)生效则直接使用缓存，若不生效则进行协商缓存(Last-Modified &#x2F; If-Modified-Since和Etag &#x2F; If-None-Match)，协商缓存由服务器决定是否使用缓存，若协商缓存失效，那么代表该请求的缓存失效，重新获取请求结果，再存入浏览器缓存中；生效则返回304，继续使用缓存，主要过程如下：</p>
+<h1 id="详述http-1-0-1-1-2-0的区别"><a href="#详述http-1-0-1-1-2-0的区别" class="headerlink" title="详述http 1.0, 1.1, 2.0的区别"></a>详述http 1.0, 1.1, 2.0的区别</h1><h2 id="1-0"><a href="#1-0" class="headerlink" title="1.0"></a>1.0</h2><p>HTTP 协议老的标准是HTTP&#x2F;1.0，为了提高系统的效率，HTTP 1.0规定浏览器与服务器只保持短暂的连接，浏览器的每次请求都需要与服务器建立一个TCP连接，服务器完成请求处理后立即断开TCP连接，服务器不跟踪每个客户也不记录过去的请求。<br>问题:<br>连接无法复用，和head of line blocking</p>
 <h2 id="1-1"><a href="#1-1" class="headerlink" title="1.1"></a>1.1</h2><ol>
-<li>HTTP 1.1支持持久连接（HTTP/1.1的默认模式使用带流水线的持久连接），在一个TCP连接上可以传送多个HTTP请求和响应，减少了建立和关闭连接的消耗和延迟。</li>
+<li>HTTP 1.1支持持久连接（HTTP&#x2F;1.1的默认模式使用带流水线的持久连接），在一个TCP连接上可以传送多个HTTP请求和响应，减少了建立和关闭连接的消耗和延迟。</li>
 <li>HTTP 1.1还允许客户端不用等待上一次请求结果返回，就可以发出下一次请求，但服务器端必须按照接收到客户端请求的先后顺序依次回送响应结果，以保证客户端能够区分出每次请求的响应内容，这样也显著地减少了整个下载过程所需要的时间。</li>
 <li>在HTTP 1.1中增加Host请求头字段。</li>
 <li>HTTP 1.1还提供了与身份认证、状态管理和Cache缓存等机制相关的请求头和响应头。</li>

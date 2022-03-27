@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -222,6 +222,76 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/27/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Zhang Yin">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZY">
+      <meta itemprop="description" content="zoeee">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZY">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/27/" class="post-title-link" itemprop="url">重启博客更新</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-03-27 13:50:07 / 修改时间：13:53:16" itemprop="dateCreated datePublished" datetime="2022-03-27T13:50:07+08:00">2022-03-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>之前学生时代因为面试而启用的博客, 因为参加工作之后疏于维护而导致停止更新<br>在经历近两年的职场生涯后, 深觉程序员是一个不断学习, 不断充实自己的行业<br>于是捡起之前的博客项目, 进行依赖和主题的升级后, 再度在此记录自己学习和职场经历中的学习到的知识点</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -396,7 +466,7 @@
           <span id="more"></span>
 <h1 id="使用正则表达式的便利性"><a href="#使用正则表达式的便利性" class="headerlink" title="使用正则表达式的便利性"></a>使用正则表达式的便利性</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;123ddd213&#x27;</span></span><br><span class="line"><span class="comment">// 使用filter对每一个字符做操作</span></span><br><span class="line"><span class="keyword">let</span> b = [...a].<span class="title function_">filter</span>( <span class="function"><span class="params">e</span> =&gt;</span> !<span class="title class_">Number</span>.<span class="built_in">isNaN</span>(<span class="built_in">parseInt</span>(e))).<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment">// 使用正则表达式</span></span><br><span class="line">c = a.<span class="title function_">match</span>(<span class="regexp">/\d/g</span>).<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b)  <span class="comment">//123213</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c)  <span class="comment">//123213</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="创建正则表达式"><a href="#创建正则表达式" class="headerlink" title="创建正则表达式"></a>创建正则表达式</h1><h2 id="字面量创建"><a href="#字面量创建" class="headerlink" title="字面量创建"></a>字面量创建</h2><p>直接使用//来创建,比较方便,缺点是无法使用变量,需要用eval配合模板字符串使用.</p>
+<h1 id="创建正则表达式"><a href="#创建正则表达式" class="headerlink" title="创建正则表达式"></a>创建正则表达式</h1><h2 id="字面量创建"><a href="#字面量创建" class="headerlink" title="字面量创建"></a>字面量创建</h2><p>直接使用&#x2F;&#x2F;来创建,比较方便,缺点是无法使用变量,需要用eval配合模板字符串使用.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;123ddd213&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b =  <span class="regexp">/2/</span>.<span class="title function_">test</span>(a)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="string">&#x27;3&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="regexp">/c/</span>.<span class="title function_">test</span>(a))   <span class="comment">//false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">eval</span>(<span class="string">`/<span class="subst">$&#123;c&#125;</span>/`</span>).<span class="title function_">test</span>(a))  <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="使用对象"><a href="#使用对象" class="headerlink" title="使用对象"></a>使用对象</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;123ddd213&#x27;</span></span><br><span class="line"><span class="keyword">let</span> b = <span class="string">&#x27;1&#x27;</span></span><br><span class="line"><span class="comment">// 第一个参数是匹配项,第二个参数是模式</span></span><br><span class="line"><span class="keyword">let</span> reg = <span class="keyword">new</span> <span class="title class_">RegExp</span>(b,<span class="string">&#x27;g&#x27;</span>) </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(reg.<span class="title function_">test</span>(a)) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
@@ -409,7 +479,7 @@
 
 <h1 id="起始符"><a href="#起始符" class="headerlink" title="起始符"></a>起始符</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 需求: 3-6位的字符</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;dgfsdfw&#x27;</span></span><br><span class="line"><span class="keyword">let</span> b = <span class="string">&#x27;abdf&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不符合要求,明显a是7位字符,但是正则只要匹配到6位 就会通过</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="regexp">/[a-z]&#123;3,6&#125;/</span>.<span class="title function_">test</span>(a)) <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="regexp">/[a-z]&#123;3,6&#125;/</span>.<span class="title function_">test</span>(b))  <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用^表示开头,使用$表示结尾, 满足需求</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="regexp">/^[a-z]&#123;3,6&#125;$/</span>.<span class="title function_">test</span>(a))<span class="comment">//false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="regexp">/^[a-z]&#123;3,6&#125;$/</span>.<span class="title function_">test</span>(b))<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="lastIndex"><a href="#lastIndex" class="headerlink" title="lastIndex"></a>lastIndex</h1><p>是正则对象的一个属性,记录了这一次匹配到了模板的哪个位置<br>使用一般模式,lastIndex会跳过不匹配的部分,<br>使用/y 模式,lastIndex会遍历</p>
+<h1 id="lastIndex"><a href="#lastIndex" class="headerlink" title="lastIndex"></a>lastIndex</h1><p>是正则对象的一个属性,记录了这一次匹配到了模板的哪个位置<br>使用一般模式,lastIndex会跳过不匹配的部分,<br>使用&#x2F;y 模式,lastIndex会遍历</p>
 
       
     </div>
@@ -906,7 +976,7 @@
 <h2 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h2><p>?</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> add = (<span class="attr">num1</span>:<span class="built_in">number</span> , num2 ?:<span class="built_in">number</span>):<span class="function"><span class="params">number</span> =&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (num2) </span><br><span class="line">    <span class="keyword">return</span> num1 + num2</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> num1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h2><p>:&lt;类型&gt; = &lt;值&gt;</p>
+<h2 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h2><p>:&lt;类型&gt; &#x3D; &lt;值&gt;</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> add = (<span class="attr">num1</span>:<span class="built_in">number</span> , num2 : <span class="built_in">number</span> = <span class="number">2</span>):<span class="function"><span class="params">number</span> =&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> num1 + num2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="剩余参数"><a href="#剩余参数" class="headerlink" title="剩余参数"></a>剩余参数</h2><p>使用展开运算符</p>
@@ -1165,98 +1235,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/05/15/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/05/14/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Zhang Yin">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZY">
-      <meta itemprop="description" content="zoeee">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZY">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/05/14/" class="post-title-link" itemprop="url">200514一些面试题-阿里校招二面</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-05-14 15:44:46" itemprop="dateCreated datePublished" datetime="2020-05-14T15:44:46+08:00">2020-05-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2020-05-15 10:11:42" itemprop="dateModified" datetime="2020-05-15T10:11:42+08:00">2020-05-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Js/" itemprop="url" rel="index"><span itemprop="name">Js</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><strong>根据网上一篇大厂的面试题总结<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000020296556">地址</a></strong></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/14/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

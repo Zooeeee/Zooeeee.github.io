@@ -166,7 +166,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -301,8 +301,8 @@
 <h4 id="文本样式属性"><a href="#文本样式属性" class="headerlink" title="文本样式属性"></a>文本样式属性</h4><ul>
 <li>text-decoration:underline,live-throught,overline   下划线,删除线,上划线</li>
 <li>text-transform: 文本大小写</li>
-<li>text-indent: 首航缩进,一般使用em单位(1em=1font-size)</li>
-<li>line-height: 行高=上边距+下边距+字体大小,默认行高不是固定值,取值有 number(px) || scale(比例值 文字大小)</li>
+<li>text-indent: 首航缩进,一般使用em单位(1em&#x3D;1font-size)</li>
+<li>line-height: 行高&#x3D;上边距+下边距+字体大小,默认行高不是固定值,取值有 number(px) || scale(比例值 文字大小)</li>
 <li>letter-spacing,word-spacing:后者只能应用与英文,前者是字符,后者是单词</li>
 <li>强制折行:word-break || word-wrap :前者表现更强烈,后者可能会产生空白<h4 id="一些选择器"><a href="#一些选择器" class="headerlink" title="一些选择器"></a>一些选择器</h4></li>
 <li>后代选择器: M N{}</li>
@@ -310,10 +310,10 @@
 <li>兄弟选择器: M~N{}</li>
 <li>相邻选择器: M+N{}</li>
 <li>属性选择器: M[attr] {}</li>
-<li>完全匹配: =:</li>
-<li>部分匹配: *=</li>
-<li>起始匹配: ^=</li>
-<li>结束匹配: $=</li>
+<li>完全匹配: &#x3D;:</li>
+<li>部分匹配: *&#x3D;</li>
+<li>起始匹配: ^&#x3D;</li>
+<li>结束匹配: $&#x3D;</li>
 <li>伪类选择器:  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:nth-of-type</span>()&#123;&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:nth-child</span>()&#123;&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:first</span>-of-type()&#123;&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:first</span>-child()&#123;&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:last-of-type</span>()&#123;&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:last-child</span>()&#123;&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:only-of-type</span>()&#123;&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:only-child</span>()&#123;&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="box-sizing"><a href="#box-sizing" class="headerlink" title="box-sizing"></a>box-sizing</h4>取值为 content-box || border-box<br>content-box是默认<br>border-box下,width和height是整个盒子的宽高<br>主要运用于不计算具体的px,和width:100% 下 的问题</li>
 </ul>
@@ -321,8 +321,8 @@
 <li>相邻元素有上下margin的时候,会取较大值最为叠加的值.</li>
 <li>margin的传递问题只会出现在嵌套的结构中,且只会出现在margin-top的传递中<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#box1</span>&#123;<span class="attribute">width</span>:<span class="number">200px</span>;<span class="attribute">height</span>:<span class="number">200px</span>;bacground:red;&#125;</span><br><span class="line"><span class="selector-id">#box2</span>&#123;<span class="attribute">width</span>:<span class="number">200px</span>;<span class="attribute">height</span>:<span class="number">200px</span>;bacground:red;<span class="attribute">margin-top</span>:<span class="number">100px</span>;&#125;</span><br></pre></td></tr></table></figure>
 解决办法:BFC规范,给父容器加边框,margin换成padding</li>
-<li>marigin-left/right:auto 可以实现左右居中,但上下不行</li>
-<li>height 和 width 不写时,会自动计算容器大小. </li>
+<li>marigin-left&#x2F;right:auto 可以实现左右居中,但上下不行</li>
+<li>height 和 width 不写时,会自动计算容器大小.</li>
 </ul>
 <h4 id="标签分类"><a href="#标签分类" class="headerlink" title="标签分类"></a>标签分类</h4><ol>
 <li>按类型(布局一般用块,修饰文本一般用内联)</li>
@@ -425,7 +425,7 @@
 </ol>
 </li>
 <li>sticky 粘性定位 做吸附功能<br>在指定的位置,进行粘性操作</li>
-<li>z-index 层级,图层<br>层级默认是0,根据大小进行覆盖,在嵌套中只比较相同层级. </li>
+<li>z-index 层级,图层<br>层级默认是0,根据大小进行覆盖,在嵌套中只比较相同层级.</li>
 </ol>
 <h4 id="引用标签-有利于被搜索引擎发现-是否具备语义化"><a href="#引用标签-有利于被搜索引擎发现-是否具备语义化" class="headerlink" title="引用标签,有利于被搜索引擎发现,是否具备语义化"></a>引用标签,有利于被搜索引擎发现,是否具备语义化</h4><ul>
 <li>blockquote  引用大段的段落解释</li>

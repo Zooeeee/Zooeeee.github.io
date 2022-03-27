@@ -166,7 +166,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,9 +289,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>大一点的网站都是分开开发移动端和PC端的<br><strong>后端检测设备-&gt;如果是PC端,则继续访问<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-&gt;如果是移动端,重定向到移动端路由</strong></p>
+        <p>大一点的网站都是分开开发移动端和PC端的<br><strong>后端检测设备-&gt;如果是PC端,则继续访问<br>&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;-&gt;如果是移动端,重定向到移动端路由</strong></p>
 <span id="more"></span>
-<h4 id="Viewport视口"><a href="#Viewport视口" class="headerlink" title="Viewport视口"></a>Viewport视口</h4><p>&emsp;在移动端viewport视口就是浏览器显示页面内容的屏幕区域.在viewport中有两种视口,分别表示为,visual viewport(可视视口)和layout viewport(布局视口)<br>&emsp;visual viewport固定大小和屏幕大小相同,在上面,而layout viewport可改变大小,在下面.Layout viewport默认大小为980像素,可通过document.documentElement.clientWidth获取<br>&emsp;<strong>现在网页制作需要将layout viewport设置成跟visual viewport相同大小,方便进行网页制作</strong></p>
+<h4 id="Viewport视口"><a href="#Viewport视口" class="headerlink" title="Viewport视口"></a>Viewport视口</h4><p>&amp;emsp;在移动端viewport视口就是浏览器显示页面内容的屏幕区域.在viewport中有两种视口,分别表示为,visual viewport(可视视口)和layout viewport(布局视口)<br>&amp;emsp;visual viewport固定大小和屏幕大小相同,在上面,而layout viewport可改变大小,在下面.Layout viewport默认大小为980像素,可通过document.documentElement.clientWidth获取<br>&amp;emsp;<strong>现在网页制作需要将layout viewport设置成跟visual viewport相同大小,方便进行网页制作</strong></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 宽度为设备宽度,初始缩放为1,不允许用户缩放 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1.0,user-scaleable=no&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="适配方案"><a href="#适配方案" class="headerlink" title="适配方案"></a>适配方案</h4><h4 id="百分比布局-也叫流式布局-好处是大屏幕下显示更多的内容-坏处是宽屏下比例会有一点不协调"><a href="#百分比布局-也叫流式布局-好处是大屏幕下显示更多的内容-坏处是宽屏下比例会有一点不协调" class="headerlink" title="百分比布局,也叫流式布局,好处是大屏幕下显示更多的内容,坏处是宽屏下比例会有一点不协调"></a>百分比布局,也叫流式布局,好处是大屏幕下显示更多的内容,坏处是宽屏下比例会有一点不协调</h4><ol>
@@ -302,13 +302,37 @@
 <h4 id="等比缩放布局-也叫rem布局"><a href="#等比缩放布局-也叫rem布局" class="headerlink" title="等比缩放布局,也叫rem布局"></a>等比缩放布局,也叫rem布局</h4><ol>
 <li>单位:em是一个相对单位,1em是当前元素或者是父元素的font-size值</li>
 <li>rem 是一个相对单位,1rem等于根元素的font-size值</li>
-<li>vw/vh把屏幕分成一百份,1vw等于屏幕宽的1%</li>
+<li>vw&#x2F;vh把屏幕分成一百份,1vw等于屏幕宽的1%</li>
 <li>原理是代码使用相同的rem尺寸,然后根据屏幕动态设置html标签下的font-size<h4 id="如何动态设置font-size"><a href="#如何动态设置font-size" class="headerlink" title="如何动态设置font-size"></a>如何动态设置font-size</h4></li>
 <li>通过js<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 淘宝网在iphone6下font-size=100px;在plus下font-size为110.4</span></span><br><span class="line"><span class="comment">// iewport = document.documentElement.clientWidth</span></span><br><span class="line"><span class="comment">// iphone 6 = 375</span></span><br><span class="line"><span class="comment">// iphone 6 plus =  414</span></span><br><span class="line"><span class="comment">// iphone 6 : document.documentElement.clientWidth / 3.75 -&gt; 100</span></span><br><span class="line"><span class="comment">// iphone 6 plus : document.documentElement.clientWidth / 3.75 -&gt; 110.4</span></span><br><span class="line"><span class="comment">// 要得到100px 是因为根据设计稿的px换算时,100比较好算</span></span><br><span class="line"><span class="keyword">let</span> fontSize = <span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">clientWidth</span> / <span class="number">3.75</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">style</span>.<span class="property">fontSize</span> = fontSize + <span class="string">&#x27;px&#x27;</span></span><br></pre></td></tr></table></figure></li>
 <li>通过vm<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* vm 把屏幕分成100份,屏幕款=100vw</span></span><br><span class="line"><span class="comment">iphone 6  375px  1vw = 3.75px</span></span><br><span class="line"><span class="comment">iphone 6  plus 414px  1vw = 4.14px</span></span><br><span class="line"><span class="comment">如果在iphone6下想得到100px,该设置多少vw呢</span></span><br><span class="line"><span class="comment">100/3.75 = 26.6666667 </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-tag">html</span>&#123;<span class="attribute">font-size</span>:<span class="number">26.666667vw</span>&#125;</span><br></pre></td></tr></table></figure></li>
 <li>注:要给body重置一下font-size</li>
 </ol>
-<h4 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h4><p>利用媒体查询,即media queries,可以针对不同的媒体类型定义不同的样式,从而实现响应式布局<br>|取值|含义|<br>|:–|:–|<br>|all|用于所有设备|<br>|print|用于打印机和打印浏览|<br>|screen|用于电脑屏幕,平板手机,智能手机等|<br>|speech|应用于屏幕阅读器等发声设备|</p>
+<h4 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h4><p>利用媒体查询,即media queries,可以针对不同的媒体类型定义不同的样式,从而实现响应式布局</p>
+<table>
+<thead>
+<tr>
+<th align="left">取值</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">all</td>
+<td align="left">用于所有设备</td>
+</tr>
+<tr>
+<td align="left">print</td>
+<td align="left">用于打印机和打印浏览</td>
+</tr>
+<tr>
+<td align="left">screen</td>
+<td align="left">用于电脑屏幕,平板手机,智能手机等</td>
+</tr>
+<tr>
+<td align="left">speech</td>
+<td align="left">应用于屏幕阅读器等发声设备</td>
+</tr>
+</tbody></table>
 <p>常见选项:</p>
 <ul>
 <li>媒体类型</li>
